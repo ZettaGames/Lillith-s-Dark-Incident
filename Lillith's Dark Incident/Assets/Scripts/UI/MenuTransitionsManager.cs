@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using TMPro;
 
-public class MenuTransitions : MonoBehaviour
+public class MenuTransitionsManager : MonoBehaviour
 {
 	#region variables
 	// ! General
@@ -35,24 +35,17 @@ public class MenuTransitions : MonoBehaviour
 	// ! Selectable buttons for Settings Menu
 	[Header("Settings Menu Button References")]
 	[SerializeField] private Button _soundButton;
-	[SerializeField] private Button _screenButton;
 	[SerializeField] private Button _returnButton;
 	
 	// ! Selectable buttons for Settings Menu PopOuts
 	[Header("Settings PopOuts Buttons References")]
 	[SerializeField] private Button _musicButton;
 	[SerializeField] private Button _effectsButton;
-	[SerializeField] private Button _fullScreenButton;
-	[SerializeField] private Button _resolutionButton;
-	[SerializeField] private Button _brightButton;
 	
 	// ! Sliders for Sound PopOut
 	[Header("Settings Components")]
 	[SerializeField] private Slider _musicSlider;
 	[SerializeField] private Slider _effectsSlider;
-	[SerializeField] private Toggle _fullscreenToggle;
-	[SerializeField] private TMP_Dropdown _resolutionDropdown;
-	[SerializeField] private Slider _brightSlider;
 	
 	// ! PopOuts controllers
 	// ? Logo
@@ -68,7 +61,6 @@ public class MenuTransitions : MonoBehaviour
 	// ? Settings
 	[Header("Settings PopOuts Animator")]
 	[SerializeField] private Animator soundPopOutAnimator;
-	[SerializeField] private Animator screenPopOutAnimator;
 	#endregion
 	
 	private void Start()
@@ -88,17 +80,6 @@ public class MenuTransitions : MonoBehaviour
 		if (EventSystem.current.currentSelectedGameObject == _effectsSlider.gameObject && submitAction.triggered)
 		{
 			EventSystem.current.SetSelectedGameObject(_effectsButton.gameObject);
-		}
-		
-		//Swap to "bright" slider from button and viceversa
-		if (EventSystem.current.currentSelectedGameObject == _brightButton.gameObject && submitAction.triggered)
-		{
-			EventSystem.current.SetSelectedGameObject(_brightSlider.gameObject);
-		}
-		
-		if (EventSystem.current.currentSelectedGameObject == _brightSlider.gameObject && submitAction.triggered)
-		{
-			EventSystem.current.SetSelectedGameObject(_brightButton.gameObject);
 		}
 	}
 	
@@ -156,16 +137,7 @@ public class MenuTransitions : MonoBehaviour
 	{
 		StartCoroutine(PopOutCorroutines(soundPopOutAnimator, "GoDown", "GoIn", true, settingsCanvasGroup, _soundButton));
 	}
-	
-	public void ScreenButton()
-	{
-		StartCoroutine(PopOutCorroutines(screenPopOutAnimator, "GoUp", "GoOut", false, settingsCanvasGroup, _fullScreenButton));
-	}
-	
-	public void ReturnScreenButton()
-	{
-		StartCoroutine(PopOutCorroutines(screenPopOutAnimator, "GoDown", "GoIn", true, settingsCanvasGroup, _screenButton));
-	}
+
 	#endregion
 	
 	#region Settings <-> Sound Sliders Transitions

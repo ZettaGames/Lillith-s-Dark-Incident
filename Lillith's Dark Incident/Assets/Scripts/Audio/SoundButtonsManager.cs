@@ -1,10 +1,5 @@
-using System.Runtime.CompilerServices;
-using JetBrains.Annotations;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.InputSystem;
-using UnityEngine.UI;
 
 public class SoundButtonsManager : MonoBehaviour
 {
@@ -17,22 +12,21 @@ public class SoundButtonsManager : MonoBehaviour
 	{
 		GameObject currentSelected = EventSystem.current.currentSelectedGameObject;
 
+		// Play "buttonMove" clip when selecting a new button
 		if (currentSelected != lastSelected)
 		{
 			if (currentSelected != null)
 			{
 				SoundFXManager.Instance.PlaySoundFXClip(buttonMove, transform, 1f);
+				// Update the current button
 				lastSelected = currentSelected;
 			}
 		}
-		
-		
 	}
 
+	// Method for playing "buttonClick" when pressing a new button
 	public void PlaySoundButton()
 	{
 		SoundFXManager.Instance.PlaySoundFXClip(buttonClick, transform, 1f);
 	}
-	
-
 }

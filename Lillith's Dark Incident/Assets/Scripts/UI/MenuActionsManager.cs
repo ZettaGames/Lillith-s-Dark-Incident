@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class MainMenuActions : MonoBehaviour
+public class MenuActionsManager : MonoBehaviour
 {
 	public void NewGameYes()
 	{

@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
 
-public class BackgroundController : MonoBehaviour
+public class BackgroundImagesManager : MonoBehaviour
 {
 	// ! Misc variables
 	private Button _currentButton;
@@ -23,11 +23,13 @@ public class BackgroundController : MonoBehaviour
 	[SerializeField] private Button _returnButton;
 
 	// ! Images for the transition
-	[Header("Menu Backgrounds")]
+	[Header("Main Menu Backgrounds")]
 	[SerializeField] private Image _newGameBackground;
 	[SerializeField] private Image _loadGameBackground;
 	[SerializeField] private Image _settingsBackground;
 	[SerializeField] private Image _exitBackground;
+	
+	[Header("Settings Menu Backgrounds")]
 	[SerializeField] private Image _soundBackground;
 	[SerializeField] private Image _screenBackground;
 	[SerializeField] private Image _controlsBackground;

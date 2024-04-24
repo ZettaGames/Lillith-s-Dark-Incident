@@ -34,4 +34,13 @@ public class LevelLoader : MonoBehaviour
 		yield return new WaitForSeconds(1f);
 		SceneManager.LoadScene(index);
 	}
+	
+	private IEnumerator Load(string name)
+	{
+		yield return new WaitForSeconds(0.25f);
+		SceneManager.LoadSceneAsync(name).allowSceneActivation = false;
+		transitionAnimator.SetTrigger("StartTransition");
+		yield return new WaitForSeconds(1f);
+		SceneManager.LoadScene(name);
+	}
 }
