@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 568990}
   - component: {fileID: 568989}
   m_Layer: 5
-  m_Name: ReturnText
+  m_Name: ButtonText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -517,7 +517,7 @@ GameObject:
   - component: {fileID: 51394899}
   - component: {fileID: 51394898}
   m_Layer: 5
-  m_Name: SoundText
+  m_Name: ButtonText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -896,7 +896,7 @@ GameObject:
   - component: {fileID: 66561777}
   - component: {fileID: 66561776}
   m_Layer: 5
-  m_Name: MusicText
+  m_Name: ButtonText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1239,7 +1239,7 @@ GameObject:
   - component: {fileID: 149248166}
   - component: {fileID: 149248165}
   m_Layer: 5
-  m_Name: NewGameYesText
+  m_Name: ButtonText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1373,7 +1373,7 @@ GameObject:
   - component: {fileID: 178629145}
   - component: {fileID: 178629144}
   m_Layer: 5
-  m_Name: NewGameText
+  m_Name: ButtonText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1677,7 +1677,7 @@ GameObject:
   - component: {fileID: 210515127}
   - component: {fileID: 210515126}
   m_Layer: 5
-  m_Name: LoadGameNoText
+  m_Name: ButtonText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2414,7 +2414,7 @@ Animator:
   m_GameObject: {fileID: 243492161}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7b0cd2a085674994ca972c6e9c878e9b, type: 2}
+  m_Controller: {fileID: 9100000, guid: d76efa6676c00e84ab70ac3740127a9e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -3114,7 +3114,7 @@ Animator:
   m_GameObject: {fileID: 359951170}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 22938100af197204abfafd08c2c904f0, type: 2}
+  m_Controller: {fileID: 9100000, guid: d76efa6676c00e84ab70ac3740127a9e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -3373,7 +3373,7 @@ Animator:
   m_GameObject: {fileID: 447596618}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: daf5ed10165ffbe4b9ffeff1fd46460f, type: 2}
+  m_Controller: {fileID: 9100000, guid: d76efa6676c00e84ab70ac3740127a9e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -3678,7 +3678,7 @@ Animator:
   m_GameObject: {fileID: 473221907}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 9ac7d8cf63ca9734c822da4010896693, type: 2}
+  m_Controller: {fileID: 9100000, guid: d76efa6676c00e84ab70ac3740127a9e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -4154,7 +4154,7 @@ Animator:
   m_GameObject: {fileID: 554933177}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 88e7efc4be7ac0140a0c78cf105c17df, type: 2}
+  m_Controller: {fileID: 9100000, guid: d76efa6676c00e84ab70ac3740127a9e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -4853,7 +4853,7 @@ GameObject:
   - component: {fileID: 626406265}
   - component: {fileID: 626406264}
   m_Layer: 5
-  m_Name: NewGameNoText
+  m_Name: ButtonText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4987,7 +4987,7 @@ GameObject:
   - component: {fileID: 644129148}
   - component: {fileID: 644129147}
   m_Layer: 5
-  m_Name: ExitText
+  m_Name: ButtonText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5748,7 +5748,7 @@ Animator:
   m_GameObject: {fileID: 747015390}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6f09e50f85c584549a039ac93df6f14e, type: 2}
+  m_Controller: {fileID: 9100000, guid: d76efa6676c00e84ab70ac3740127a9e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -6072,7 +6072,7 @@ Animator:
   m_GameObject: {fileID: 766613295}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b9c19e857bbae7b4d8ae72559c259b21, type: 2}
+  m_Controller: {fileID: 9100000, guid: d76efa6676c00e84ab70ac3740127a9e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -6132,7 +6132,7 @@ Animator:
   m_GameObject: {fileID: 774100250}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 92b1943dc362b8b4d8b05fe6e8d2a9b7, type: 2}
+  m_Controller: {fileID: 9100000, guid: d76efa6676c00e84ab70ac3740127a9e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -7223,7 +7223,7 @@ GameObject:
   - component: {fileID: 947596502}
   - component: {fileID: 947596501}
   m_Layer: 5
-  m_Name: ExitNoText
+  m_Name: ButtonText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8009,7 +8009,7 @@ GameObject:
   - component: {fileID: 1058157340}
   - component: {fileID: 1058157339}
   m_Layer: 5
-  m_Name: SettingsText
+  m_Name: ButtonText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8292,7 +8292,7 @@ Animator:
   m_GameObject: {fileID: 1081427015}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 33530b93945522445b680eb0556326af, type: 2}
+  m_Controller: {fileID: 9100000, guid: d76efa6676c00e84ab70ac3740127a9e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -9291,7 +9291,7 @@ Animator:
   m_GameObject: {fileID: 1251239670}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 30c2fe876f4bacd45ad2b060e160b2b1, type: 2}
+  m_Controller: {fileID: 9100000, guid: d76efa6676c00e84ab70ac3740127a9e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -9880,7 +9880,7 @@ Animator:
   m_GameObject: {fileID: 1341425839}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d4c1243480826ae4aba2161bb1263e23, type: 2}
+  m_Controller: {fileID: 9100000, guid: d76efa6676c00e84ab70ac3740127a9e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -9903,7 +9903,7 @@ GameObject:
   - component: {fileID: 1374368693}
   - component: {fileID: 1374368692}
   m_Layer: 5
-  m_Name: ExitYesText
+  m_Name: ButtonText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10292,7 +10292,7 @@ Animator:
   m_GameObject: {fileID: 1411297254}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 728312fc19797e44cbb8d1fb7fb8a068, type: 2}
+  m_Controller: {fileID: 9100000, guid: d76efa6676c00e84ab70ac3740127a9e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -10669,7 +10669,7 @@ Animator:
   m_GameObject: {fileID: 1595199986}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 2657b6c243e4c19499c76a27c25969b6, type: 2}
+  m_Controller: {fileID: 9100000, guid: d76efa6676c00e84ab70ac3740127a9e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -10720,7 +10720,7 @@ GameObject:
   - component: {fileID: 1658580192}
   - component: {fileID: 1658580191}
   m_Layer: 5
-  m_Name: LoadGameYesText
+  m_Name: ButtonText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11014,7 +11014,7 @@ Animator:
   m_GameObject: {fileID: 1676864086}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 2ab53b7186ca18845bd54491f7d34f76, type: 2}
+  m_Controller: {fileID: 9100000, guid: d76efa6676c00e84ab70ac3740127a9e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -11110,7 +11110,7 @@ GameObject:
   - component: {fileID: 1707271507}
   - component: {fileID: 1707271506}
   m_Layer: 5
-  m_Name: ControlsText
+  m_Name: ButtonText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11795,7 +11795,7 @@ GameObject:
   - component: {fileID: 1800329882}
   - component: {fileID: 1800329881}
   m_Layer: 5
-  m_Name: EffectsText
+  m_Name: ButtonText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12694,7 +12694,7 @@ GameObject:
   - component: {fileID: 1958213749}
   - component: {fileID: 1958213748}
   m_Layer: 5
-  m_Name: LoadGameText
+  m_Name: ButtonText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12998,7 +12998,7 @@ GameObject:
   - component: {fileID: 1997230182}
   - component: {fileID: 1997230181}
   m_Layer: 5
-  m_Name: ScreenText
+  m_Name: ButtonText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13217,7 +13217,7 @@ Animator:
   m_GameObject: {fileID: 1997323001}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4aba2ba4b066f15459868283636d724b, type: 2}
+  m_Controller: {fileID: 9100000, guid: d76efa6676c00e84ab70ac3740127a9e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

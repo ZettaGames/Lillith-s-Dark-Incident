@@ -3,13 +3,16 @@ using JetBrains.Annotations;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class SoundButtonsManager : MonoBehaviour
 {
+	[Header("Audio Clips")]
 	[SerializeField] private AudioClip buttonClick;
 	[SerializeField] private AudioClip buttonMove;
 	private GameObject lastSelected;
-
+	
 	private void Update()
 	{
 		GameObject currentSelected = EventSystem.current.currentSelectedGameObject;
@@ -22,10 +25,14 @@ public class SoundButtonsManager : MonoBehaviour
 				lastSelected = currentSelected;
 			}
 		}
+		
+		
 	}
 
 	public void PlaySoundButton()
 	{
 		SoundFXManager.Instance.PlaySoundFXClip(buttonClick, transform, 1f);
 	}
+	
+
 }
