@@ -1,26 +1,29 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class MenuActionsManager : MonoBehaviour
 {
 	public void NewGameYes()
 	{
-		StartCoroutine(New());
+		StartCoroutine(LoadNewGame());
 	}
 	
-	public void ExitButton()
+	public void ExitYes()
 	{
 		StartCoroutine(ExitTransition());
 	}
 	
-	private IEnumerator New()
+	private IEnumerator LoadNewGame()
 	{
+		EventSystem.current.SetSelectedGameObject(null);
 		LevelLoader.Instance.LoadLevel(2);
 		yield return null;
 	}
 	
 	private IEnumerator ExitTransition()
 	{
+		EventSystem.current.SetSelectedGameObject(null);
 		LevelLoader.Instance.LoadLevel(3);
 		yield return null;
 	}
