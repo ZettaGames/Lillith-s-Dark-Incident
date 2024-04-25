@@ -26,6 +26,11 @@ public class LevelLoader : MonoBehaviour
 		StartCoroutine(Load(index));
 	}
 	
+	public void LoadLevel(string name)
+	{
+		StartCoroutine(Load(name));
+	}
+	
 	private IEnumerator Load(int index)
 	{
 		yield return new WaitForSeconds(0.25f);

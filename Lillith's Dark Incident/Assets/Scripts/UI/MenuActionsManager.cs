@@ -24,7 +24,7 @@ public class MenuActionsManager : MonoBehaviour
 	private IEnumerator ExitTransition()
 	{
 		EventSystem.current.SetSelectedGameObject(null);
-		LevelLoader.Instance.LoadLevel(3);
+		LevelLoader.Instance.LoadLevel("ExitScene");
 		yield return null;
 	}
 }
