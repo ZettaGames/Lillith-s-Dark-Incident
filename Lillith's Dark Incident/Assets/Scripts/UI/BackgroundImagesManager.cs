@@ -110,7 +110,7 @@ public class BackgroundImagesManager : MonoBehaviour
 		}
 	}
 
-	// ! Increase the opacityA
+	// ! Increase the opacity
 	private float IncreaseAlpha(float alpha)
 	{
 		alpha = Mathf.Lerp(0f, 1f, transitionTimer / transitionTime);
