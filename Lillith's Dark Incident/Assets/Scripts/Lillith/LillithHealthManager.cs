@@ -80,14 +80,14 @@ public class LillithHealthManager : MonoBehaviour
 		StartCoroutine(NoControl());
 		StartCoroutine(Invincibility());
 		ScreenShake.Instance.Shake(0.1f, 5f);
-		_lillithController.KnockBack(position);
+		//_lillithController.KnockBack(position);
 	}
 
 	private IEnumerator NoControl()
 	{
-		_lillithController.canMove = false;
+		_lillithController.CanMove = false;
 		yield return new WaitForSeconds(_noControlTime);
-		_lillithController.canMove = true;
+		_lillithController.CanMove = true;
 	}
 
 	private IEnumerator Invincibility()

@@ -39,11 +39,13 @@ public class MenuTransitionsManager : MonoBehaviour
 	
 	// ! Selectable buttons for Settings Menu PopOuts
 	[Header("Settings PopOuts Buttons References")]
+	[SerializeField] private Button _masterButton;
 	[SerializeField] private Button _musicButton;
 	[SerializeField] private Button _effectsButton;
 	
 	// ! Sliders for Sound PopOut
 	[Header("Settings Components")]
+	[SerializeField] private Slider _masterSlider;
 	[SerializeField] private Slider _musicSlider;
 	[SerializeField] private Slider _effectsSlider;
 	
@@ -71,7 +73,12 @@ public class MenuTransitionsManager : MonoBehaviour
 	
 	private void Update()
 	{	
-		// Swap to "music" or "effects" button when on a slider
+		// Swap to "master", "music" or "effects" button when on a slider
+		if (EventSystem.current.currentSelectedGameObject == _masterSlider.gameObject && submitAction.triggered)
+		{
+			EventSystem.current.SetSelectedGameObject(_masterButton.gameObject);
+		}
+		
 		if (EventSystem.current.currentSelectedGameObject == _musicSlider.gameObject && submitAction.triggered)
 		{
 			EventSystem.current.SetSelectedGameObject(_musicButton.gameObject);
@@ -130,7 +137,7 @@ public class MenuTransitionsManager : MonoBehaviour
 	#region Settings <-> PopOuts Transitions
 	public void SoundButton()
 	{
-		StartCoroutine(PopOutCorroutines(soundPopOutAnimator, "GoUp", "GoOut", false, settingsCanvasGroup, _musicButton));
+		StartCoroutine(PopOutCorroutines(soundPopOutAnimator, "GoUp", "GoOut", false, settingsCanvasGroup, _masterButton));
 	}
 	
 	public void ReturnSoundButton()
@@ -141,6 +148,11 @@ public class MenuTransitionsManager : MonoBehaviour
 	#endregion
 	
 	#region Settings <-> Sound Sliders Transitions
+	public void MoveToSliderMaster()
+	{
+		StartCoroutine(SelectSlider(_masterSlider));
+	}
+	
 	public void MoveToSliderMusic()
 	{
 		StartCoroutine(SelectSlider(_musicSlider));

@@ -14,7 +14,7 @@ public class BackgroundOffsetController : MonoBehaviour
 	
 	private void Update()
 	{
-		offset.y = scrollSpeed * Time.deltaTime;
+		offset.y = scrollSpeed * Time.deltaTime * LocalTime.TimeScale;
 		material.mainTextureOffset += offset;
 		
 		if (material.mainTextureOffset.y > 1)
