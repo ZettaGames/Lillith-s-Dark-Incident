@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+	// ! Singleton instance of the Game Manager
 	public static GameManager Instance { get; private set; }
 
 	private void Awake()

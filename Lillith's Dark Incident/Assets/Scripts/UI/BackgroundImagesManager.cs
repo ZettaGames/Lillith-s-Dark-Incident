@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 public class BackgroundImagesManager : MonoBehaviour
 {
+	#region variables
 	// ! Misc variables
 	private Button _currentButton;
 	Dictionary<Button, Image> _buttonBackgrounds = new Dictionary<Button, Image>();
@@ -28,7 +29,7 @@ public class BackgroundImagesManager : MonoBehaviour
 	[SerializeField] private Image _loadGameBackground;
 	[SerializeField] private Image _settingsBackground;
 	[SerializeField] private Image _exitBackground;
-	
+
 	[Header("Settings Menu Backgrounds")]
 	[SerializeField] private Image _soundBackground;
 	[SerializeField] private Image _screenBackground;
@@ -46,7 +47,9 @@ public class BackgroundImagesManager : MonoBehaviour
 	[SerializeField] private float transitionTime = 0.5f;
 	private float transitionTimer = 0f;
 	private bool transitionCompleted = false;
+	#endregion
 
+	#region unity_methods
 	private void Awake()
 	{
 		// Add the buttons and their backgrounds to the dictionary
@@ -70,14 +73,7 @@ public class BackgroundImagesManager : MonoBehaviour
 	{
 		var previousButton = _currentButton;
 		// Detect the current selected button
-		try
-		{
-			_currentButton = EventSystem.current.currentSelectedGameObject.GetComponent<Button>();
-		}
-		catch (System.NullReferenceException)
-		{
-			_currentButton = null;
-		}
+		_currentButton = EventSystem.current.currentSelectedGameObject?.GetComponent<Button>();
 
 		// If the current button is different from the previous one, reset the transition timer
 		if (previousButton != _currentButton)
@@ -93,7 +89,9 @@ public class BackgroundImagesManager : MonoBehaviour
 			TransitionBackgrounds();
 		}
 	}
+	#endregion
 
+	#region transition_methods
 	// ! Transition controller
 	private void TransitionBackgrounds()
 	{
@@ -136,4 +134,5 @@ public class BackgroundImagesManager : MonoBehaviour
 		alpha = Mathf.Clamp01(alpha);
 		return alpha;
 	}
+	#endregion
 }

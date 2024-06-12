@@ -4,9 +4,13 @@ using UnityEngine.EventSystems;
 
 public class MenuActionsManager : MonoBehaviour
 {
+	// ! Constants
+	private const int NEW_GAME_INDEX = 2;
+	private const string EXIT_SCENE_NAME = "ExitScene";
+	
 	public void NewGameYes()
 	{
-		StartCoroutine(LoadNewGame());
+		StartCoroutine(StartNewGame());
 	}
 	
 	public void ExitYes()
@@ -14,17 +18,17 @@ public class MenuActionsManager : MonoBehaviour
 		StartCoroutine(ExitTransition());
 	}
 	
-	private IEnumerator LoadNewGame()
+	private IEnumerator StartNewGame()
 	{
 		EventSystem.current.SetSelectedGameObject(null);
-		LevelLoader.Instance.LoadLevel(2);
+		LevelLoader.Instance.LoadLevel(NEW_GAME_INDEX);
 		yield return null;
 	}
 	
 	private IEnumerator ExitTransition()
 	{
 		EventSystem.current.SetSelectedGameObject(null);
-		LevelLoader.Instance.LoadLevel("ExitScene");
+		LevelLoader.Instance.LoadLevel(EXIT_SCENE_NAME);
 		yield return null;
 	}
 }

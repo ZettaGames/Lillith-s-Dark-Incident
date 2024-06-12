@@ -465,7 +465,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6db9489d5383ce44b706e5a2ecc2098, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundFXObject: {fileID: 1144504878337877406, guid: b6c20a22927c20247b17abd20da5b656, type: 3}
+  _soundFXObject: {fileID: 1144504878337877406, guid: b6c20a22927c20247b17abd20da5b656, type: 3}
 --- !u!1 &34464233
 GameObject:
   m_ObjectHideFlags: 0
@@ -762,7 +762,7 @@ GameObject:
   - component: {fileID: 59219685}
   - component: {fileID: 59219684}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: MainCamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1168,7 +1168,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1695343673}
         m_TargetAssemblyTypeName: SoundMixerManager, Assembly-CSharp
-        m_MethodName: SetMasterFXVolume
+        m_MethodName: SetMasterVolume
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4005,7 +4005,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &448147366
 Transform:
   m_ObjectHideFlags: 0
@@ -4065,10 +4065,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61785e54bec2f4041b60501c991c1227, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeTime: 4
-  actionAsset: {fileID: -944628639613478452, guid: d70bcd28689dc92449e154bae16e032b, type: 3}
-  mainCanvasGroup: {fileID: 1200020552}
-  settingsCanvasGroup: {fileID: 2054349701}
+  _fadeTime: 4
+  _actionAsset: {fileID: -944628639613478452, guid: d70bcd28689dc92449e154bae16e032b, type: 3}
+  _mainCanvasGroup: {fileID: 1200020552}
+  _settingsCanvasGroup: {fileID: 2054349701}
   _newGameButton: {fileID: 1114939223}
   _loadGameButton: {fileID: 1251239673}
   _settingsButton: {fileID: 1676864087}
@@ -4084,11 +4084,11 @@ MonoBehaviour:
   _masterSlider: {fileID: 130651947}
   _musicSlider: {fileID: 957614394}
   _effectsSlider: {fileID: 2087469390}
-  logoAnimator: {fileID: 912415995}
-  newGamePopOutAnimator: {fileID: 871788663}
-  loadGamePopOutAnimator: {fileID: 266719922}
-  exitPopOutAnimator: {fileID: 705749589}
-  soundPopOutAnimator: {fileID: 1402292798}
+  _logoAnimator: {fileID: 912415995}
+  _newGamePopOutAnimator: {fileID: 871788663}
+  _loadGamePopOutAnimator: {fileID: 266719922}
+  _exitPopOutAnimator: {fileID: 705749589}
+  _soundPopOutAnimator: {fileID: 1402292798}
 --- !u!1 &461359381
 GameObject:
   m_ObjectHideFlags: 0
@@ -4427,7 +4427,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &534195854
 Transform:
   m_ObjectHideFlags: 0
@@ -5187,7 +5187,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &572091451
 Transform:
   m_ObjectHideFlags: 0
@@ -5696,7 +5696,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &651234685
 Transform:
   m_ObjectHideFlags: 0
@@ -5906,8 +5906,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eb2c96fd265d8a46b99975889ab1c22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonClick: {fileID: 8300000, guid: 7e724dd2793940d4d904eb3db426c85a, type: 3}
-  buttonMove: {fileID: 8300000, guid: 4ec650f8d151559469649ba0fc855942, type: 3}
+  _buttonClickAudio: {fileID: 8300000, guid: 7e724dd2793940d4d904eb3db426c85a, type: 3}
+  _buttonSelectAudio: {fileID: 8300000, guid: 4ec650f8d151559469649ba0fc855942, type: 3}
 --- !u!1 &705749587
 GameObject:
   m_ObjectHideFlags: 0
@@ -10580,7 +10580,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1305275983
 Transform:
   m_ObjectHideFlags: 0
@@ -12143,13 +12143,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a7babcb64a2d5e4db83426321c69b9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioMixer: {fileID: 24100000, guid: 77d741376a195f84a9750d370c33fdcb, type: 2}
-  masterVolumeText: {fileID: 336105352}
-  soundFXVolumeText: {fileID: 307658108}
-  musicVolumeText: {fileID: 993537345}
-  masterSlider: {fileID: 130651947}
-  soundFXSlider: {fileID: 2087469390}
-  musicSlider: {fileID: 957614394}
+  _audioMixer: {fileID: 24100000, guid: 77d741376a195f84a9750d370c33fdcb, type: 2}
+  _masterVolumeText: {fileID: 336105352}
+  _musicVolumeText: {fileID: 993537345}
+  _soundFXVolumeText: {fileID: 307658108}
+  _masterSlider: {fileID: 130651947}
+  _musicSlider: {fileID: 957614394}
+  _soundFXSlider: {fileID: 2087469390}
 --- !u!4 &1695343674
 Transform:
   m_ObjectHideFlags: 0
@@ -12314,7 +12314,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1714345417
 Transform:
   m_ObjectHideFlags: 0
@@ -14679,7 +14679,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2032356868
 Transform:
   m_ObjectHideFlags: 0

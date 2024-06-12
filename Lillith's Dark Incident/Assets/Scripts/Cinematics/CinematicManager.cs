@@ -1,79 +1,116 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class IntroCinematic : MonoBehaviour
 {
-	[SerializeField] private Image[] images;
-	[SerializeField] private float delay = 0.75f;
-	private int currentIndex = 0;
-	
+	// ! Constants for the cinematic direction
+	private const int NEXT = 1;
+	private const int PREVIOUS = -1;
+
+	// ! Constant for the scene to load
+	private const int FLOERA_LEVEL = 3;
+
+	// ! Variables for the cinematic transition
+	[SerializeField] private Image[] _images;
+	[SerializeField] private float _delay = 0.75f;
+	private int _currentIndex = 0;
+
 	private void Start()
 	{
-		for (int i = 0; i < images.Length; i++)
+		for (int i = 0; i < _images.Length; i++)
 		{
-			images[i].gameObject.SetActive(false);
+			_images[i].gameObject.SetActive(false);
 		}
-		images[0].gameObject.SetActive(true);
+		_images[0].gameObject.SetActive(true);
 	}
-	
+
 	private void Update()
 	{
-		if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.Joystick1Button0))
+		MoveForward();
+		MoveBackward();
+		SkipCinematic();
+	}
+
+	#region input_methods
+	private void MoveForward()
+	{
+		var gamepad = Gamepad.current;
+
+		// Transition to the next image
+		if ((gamepad != null && gamepad.buttonSouth.wasPressedThisFrame) || Keyboard.current[Key.RightArrow].wasPressedThisFrame)
 		{
-			if (images[currentIndex] == images[images.Length - 1])
+			// Load the next scene if the last image is reached
+			if (_images[_currentIndex] == _images[_images.Length - 1])
 			{
-				LevelLoader.Instance.LoadLevel(3);
+				// Load the scene and deactivate the cinematic
+				LevelLoader.Instance.LoadLevel(FLOERA_LEVEL);
 				gameObject.SetActive(false);
 			}
 			else
 			{
-				ShowNextImage();
+				ShowImage(NEXT); // Load the next image
 			}
 		}
-		
-		if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.Joystick1Button2))
+	}
+
+	private void MoveBackward()
+	{
+		var gamepad = Gamepad.current;
+
+		// Transition to the previous image
+		if ((gamepad != null && gamepad.buttonEast.wasPressedThisFrame) || Keyboard.current[Key.LeftArrow].wasPressedThisFrame)
 		{
-			if (images[currentIndex] != images[0])
+			// Only transition if the current image is not the first one
+			if (_images[_currentIndex] != _images[0])
 			{
-				ShowPreviousImage();
+				ShowImage(PREVIOUS); // Load the previous image
 			}
 		}
-		
-		if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Joystick1Button1))
+	}
+
+	private void SkipCinematic()
+	{
+		var gamepad = Gamepad.current;
+
+		// Skip the cinematic
+		if ((gamepad != null && gamepad.buttonNorth.wasPressedThisFrame) || Keyboard.current[Key.Escape].wasPressedThisFrame)
 		{
-			LevelLoader.Instance.LoadLevel(3);
-				gameObject.SetActive(false);
+			// Load the scene and deactivate the cinematic
+			LevelLoader.Instance.LoadLevel(FLOERA_LEVEL);
+			gameObject.SetActive(false);
 		}
 	}
-	
-	private void ShowNextImage()
+	#endregion
+
+	#region image_transition
+	private void ShowImage(int direction)
 	{
-		Image currentImage = images[currentIndex];
-		StartCoroutine(FadeImage(currentImage, 1.0f, 0.0f, delay / 2.0f));
-		currentIndex = (currentIndex + 1) % images.Length;
-		Image nextImage = images[currentIndex];
+		// Fade out the current image
+		Image currentImage = _images[_currentIndex];
+		StartCoroutine(FadeImage(currentImage, 1.0f, 0.0f, _delay / 2.0f));
+		
+		// Update the current index
+		_currentIndex = (_currentIndex + direction) % _images.Length;
+		
+		// Fade in the next image
+		Image nextImage = _images[_currentIndex];
 		nextImage.gameObject.SetActive(true);
 		nextImage.color = new Color(nextImage.color.r, nextImage.color.g, nextImage.color.b, 0.0f); // set alpha to 0
-		StartCoroutine(FadeImage(nextImage, 0.0f, 1.0f, delay / 2.0f));
+		StartCoroutine(FadeImage(nextImage, 0.0f, 1.0f, _delay / 2.0f));
 	}
-	
-	private void ShowPreviousImage()
-	{
-		Image currentImage = images[currentIndex];
-		StartCoroutine(FadeImage(currentImage, 1.0f, 0.0f, delay / 2.0f));
-		currentIndex = (currentIndex - 1) % images.Length;
-		Image nextImage = images[currentIndex];
-		nextImage.gameObject.SetActive(true);
-		nextImage.color = new Color(nextImage.color.r, nextImage.color.g, nextImage.color.b, 0.0f); // set alpha to 0
-		StartCoroutine(FadeImage(nextImage, 0.0f, 1.0f, delay / 2.0f));
-	}
-	
+
 	private IEnumerator FadeImage(Image image, float startAlpha, float endAlpha, float duration)
 	{
+		// Get the current color of the image
 		image.color = new Color(image.color.r, image.color.g, image.color.b, startAlpha);
+		
+		// Calculate the rate of change
 		float rate = 1.0f / duration;
 		float elapsedTime = 0.0f;
+		
+		// Interpolate the alpha value
 		while (elapsedTime < duration)
 		{
 			float alpha = Mathf.Lerp(startAlpha, endAlpha, elapsedTime * rate);
@@ -81,6 +118,9 @@ public class IntroCinematic : MonoBehaviour
 			elapsedTime += Time.deltaTime;
 			yield return null;
 		}
+		
+		// Set the final alpha value of the image
 		image.color = new Color(image.color.r, image.color.g, image.color.b, endAlpha);
 	}
+	#endregion
 }

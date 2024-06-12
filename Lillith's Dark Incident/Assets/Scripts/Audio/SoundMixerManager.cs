@@ -5,56 +5,76 @@ using UnityEngine.UI;
 
 public class SoundMixerManager : MonoBehaviour
 {
+	// ! Audio mixer reference
 	[Header("Audio Mixer")]
-	[SerializeField] private AudioMixer audioMixer;
+	[SerializeField] private AudioMixer _audioMixer;
 	
+	// ! Text for the volume percentage
 	[Header("Text")]
-	[SerializeField] private TMP_Text masterVolumeText;
-	[SerializeField] private TMP_Text soundFXVolumeText;
-	[SerializeField] private TMP_Text musicVolumeText;
+	[SerializeField] private TMP_Text _masterVolumeText;
+	[SerializeField] private TMP_Text _musicVolumeText;
+	[SerializeField] private TMP_Text _soundFXVolumeText;
 
+	// ! Sliders for the volume control
 	[Header("Sliders")]
-	[SerializeField] private Slider masterSlider;
-	[SerializeField] private Slider soundFXSlider;
-	[SerializeField] private Slider musicSlider;
+	[SerializeField] private Slider _masterSlider;
+	[SerializeField] private Slider _musicSlider;
+	[SerializeField] private Slider _soundFXSlider;
 
 	private void Start()
 	{
 		// Set the sliders to the saved volume
-		masterSlider.value = PlayerPrefs.GetFloat("masterVolume", 0.8f);
-		soundFXSlider.value = PlayerPrefs.GetFloat("soundFXVolume", 0.8f);
-		musicSlider.value = PlayerPrefs.GetFloat("musicVolume", 0.8f);
+		_masterSlider.value = PlayerPrefs.GetFloat("masterVolume", 0.8f);
+		_soundFXSlider.value = PlayerPrefs.GetFloat("soundFXVolume", 0.8f);
+		_musicSlider.value = PlayerPrefs.GetFloat("musicVolume", 0.8f);
 
 		// Convert the loaded linear volume to decibels
-		SetMasterFXVolume(masterSlider.value);
-		SetSoundFXVolume(soundFXSlider.value);
-		SetMusicVolume(musicSlider.value);
+		SetMasterVolume(_masterSlider.value);
+		SetSoundFXVolume(_soundFXSlider.value);
+		SetMusicVolume(_musicSlider.value);
 	}
 
+	#region volume_controllers
 	// Update master volume
-	public void SetMasterFXVolume(float volume)
+	public void SetMasterVolume(float volume)
 	{
-		masterVolumeText.text = ((int)(volume * 100)).ToString();
+		// Convert the linear volume to decibels
 		float fixedVolume = Mathf.Log10(volume) * 20f;
-		audioMixer.SetFloat("masterVolume", fixedVolume);
+		
+		// Update the text and the audio mixer
+		_masterVolumeText.text = ((int)(volume * 100)).ToString();
+		_audioMixer.SetFloat("masterVolume", fixedVolume);
+		
+		// Save the volume to the player preferences
 		PlayerPrefs.SetFloat("masterVolume", volume);
 	}
 
 	// Update FX volume
 	public void SetSoundFXVolume(float volume)
 	{
-		soundFXVolumeText.text = ((int)(volume * 100)).ToString();
+		// Convert the linear volume to decibels
 		float fixedVolume = Mathf.Log10(volume) * 20f;
-		audioMixer.SetFloat("soundFXVolume", fixedVolume);
+		
+		// Update the text and the audio mixer
+		_soundFXVolumeText.text = ((int)(volume * 100)).ToString();
+		_audioMixer.SetFloat("soundFXVolume", fixedVolume);
+		
+		// Save the volume to the player preferences
 		PlayerPrefs.SetFloat("soundFXVolume", volume);
 	}
 
 	// Update music volume
 	public void SetMusicVolume(float volume)
 	{
-		musicVolumeText.text = ((int)(volume * 100)).ToString();
+		// Convert the linear volume to decibels
 		float fixedVolume = Mathf.Log10(volume) * 20f;
-		audioMixer.SetFloat("musicVolume", fixedVolume);
+		
+		// Update the text and the audio mixer
+		_musicVolumeText.text = ((int)(volume * 100)).ToString();
+		_audioMixer.SetFloat("musicVolume", fixedVolume);
+		
+		// Save the volume to the player preferences
 		PlayerPrefs.SetFloat("musicVolume", volume);
 	}
+	#endregion
 }

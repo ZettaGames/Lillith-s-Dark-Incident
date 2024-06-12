@@ -341,7 +341,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &719113126
 Transform:
   m_ObjectHideFlags: 0
@@ -658,7 +658,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &815039217
 Transform:
   m_ObjectHideFlags: 0
@@ -1125,7 +1125,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1111218770
 Transform:
   m_ObjectHideFlags: 0
@@ -1221,7 +1221,7 @@ GameObject:
   - component: {fileID: 1243907865}
   - component: {fileID: 1243907864}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: MainCamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1443,7 +1443,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3a36feee6a2f9f4a80326b3a40b5056, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  images:
+  _images:
   - {fileID: 1765610063}
   - {fileID: 215158291}
   - {fileID: 1016707471}
@@ -1462,7 +1462,7 @@ MonoBehaviour:
   - {fileID: 2006649963}
   - {fileID: 1482719770}
   - {fileID: 23292103}
-  delay: 0.75
+  _delay: 0.75
 --- !u!4 &1316033421
 Transform:
   m_ObjectHideFlags: 0
@@ -1915,7 +1915,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1420444782
 Transform:
   m_ObjectHideFlags: 0
@@ -3046,7 +3046,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2042485899
 Transform:
   m_ObjectHideFlags: 0
