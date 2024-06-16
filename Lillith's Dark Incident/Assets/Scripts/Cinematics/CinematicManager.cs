@@ -60,7 +60,7 @@ public class IntroCinematic : MonoBehaviour
 		var gamepad = Gamepad.current;
 
 		// Transition to the previous image
-		if ((gamepad != null && gamepad.buttonEast.wasPressedThisFrame) || Keyboard.current[Key.LeftArrow].wasPressedThisFrame)
+		if ((gamepad != null && gamepad.buttonWest.wasPressedThisFrame) || Keyboard.current[Key.LeftArrow].wasPressedThisFrame)
 		{
 			// Only transition if the current image is not the first one
 			if (_images[_currentIndex] != _images[0])
@@ -75,7 +75,7 @@ public class IntroCinematic : MonoBehaviour
 		var gamepad = Gamepad.current;
 
 		// Skip the cinematic
-		if ((gamepad != null && gamepad.buttonNorth.wasPressedThisFrame) || Keyboard.current[Key.Escape].wasPressedThisFrame)
+		if ((gamepad != null && gamepad.buttonEast.wasPressedThisFrame) || Keyboard.current[Key.Escape].wasPressedThisFrame)
 		{
 			// Load the scene and deactivate the cinematic
 			LevelLoader.Instance.LoadLevel(FLOERA_LEVEL);

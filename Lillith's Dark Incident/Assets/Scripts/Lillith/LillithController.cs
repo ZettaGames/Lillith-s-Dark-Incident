@@ -1,129 +1,136 @@
-using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(PlayerInput), typeof(Animator))]
+[RequireComponent(typeof(Rigidbody2D), typeof(PlayerInput), typeof(Animator))]
 public class LillithController : MonoBehaviour
 {
 	#region variables
-	// ! Tags
-	private const string BORDER_TAG = "Border";
-
-	// ! Action Map actions names
-	private const string MOVE = "Move";
-	private const string SHOOT = "Shoot";
-
-	// ! Movement-related variables
+	// ! Constant for the animator
+	private const string SPEED_TRIGGER = "xSpeed";
+	
+	// ! Constants for the input actions
+	private const string MOVE_ACTION = "Move";
+	private const string SHOOT_ACTION = "Shoot";
+	
+	// ! Movement-related settings
 	[Header("Movement")]
-
-	// ? Number variables
+	// ? Movement variables
 	[SerializeField] private float _moveSpeed;
-	[SerializeField, Range(0, 0.1f)] private float _moveSmoothness;
-
+	[SerializeField, Range(0.05f, 0.15f)] private float _smoothMove;
+	
 	// ? Vector variables
 	private Vector2 _input;
-	private Vector2 _finalInput;
-	private Vector2 _speed = Vector2.zero;
+	private Vector2 _fixedInput;
+	private Vector2 _velocity = Vector2.zero;
 	
-	// ? Move controller
-	public bool CanMove { get; set; } = true;
-
-	// ! Shooting-related variables
+	// ! Shooting-related settings
 	[Header("Shooting")]
-	[SerializeField, Range(0, 0.05f)] private float _bulletCooldown;
-	private float _bulletCooldownTimer;
-
-	// ! Collision variables
-	private Dictionary<GameObject, Vector2> _borderNormals = new Dictionary<GameObject, Vector2>();
-
-	// ! Components variables
+	[SerializeField, Range(0.01f, 0.05f)] private float _shootCooldown;
+	private float _shootTimer;
+	
+	// ! Damage-related settings
+	[Header("Damage")]
+	[SerializeField] private Vector2 _knockBackForce;
+	public bool CanMove { get; set; } = true;
+	
+	// ! Components
+	// ? Unity components
+	private Rigidbody2D _rigidbody;
 	private PlayerInput _playerInput;
 	private Animator _animator;
+	
+	// ? Script components
+	private LillithHealthManager _lillithHealthManager;
 	#endregion
-
-	#region unity_functions
-	private void Awake()
+		
+	#region unity_methods
+	private void Start()
 	{
-		// Components initialization
+		// Initialization of components
+		_rigidbody = GetComponent<Rigidbody2D>();
 		_playerInput = GetComponent<PlayerInput>();
 		_animator = GetComponent<Animator>();
+		_lillithHealthManager = GetComponent<LillithHealthManager>();
 	}
-
+	
 	private void Update()
 	{
-		// 
-		_bulletCooldownTimer += Time.deltaTime;
-
-		// Handle right-left animation
-		_animator.SetFloat("xSpeed", _input.x);
-
-		// Actions
-		HandleBorderCollisions();
-		ReadInput();
+		// Update the animator
+		_animator.SetFloat(SPEED_TRIGGER, _input.x);
+		
+		// Shoot
+		_shootTimer += Time.deltaTime;
 		Shoot();
-
+		
+		// Read input
+		ReadInput();
+	}
+	
+	private void FixedUpdate()
+	{
+		// Move the player
 		if (CanMove)
 		{
 			Move();
 		}
 	}
 	#endregion
-
-	#region actions_functions
+	
+	#region lillith_actions
 	private void ReadInput()
 	{
-		_input = _playerInput.actions[MOVE].ReadValue<Vector2>().normalized;
+		// Read input from the player
+		_input = _playerInput.actions[MOVE_ACTION].ReadValue<Vector2>().normalized;
 	}
 	
 	private void Move()
 	{
-		// Smooth movement with Vector2.SmoothDamp
-		// For more information: https://docs.unity3d.com/ScriptReference/Vector2.SmoothDamp.html
-		_finalInput = Vector2.SmoothDamp(_finalInput, _input, ref _speed, _moveSmoothness);
-		transform.position += new Vector3(_finalInput.x, _finalInput.y, 0) * _moveSpeed * Time.deltaTime;
+		// Smooth the input
+		_fixedInput = Vector2.SmoothDamp(_fixedInput, _input, ref _velocity, _smoothMove);
+		
+		// Move the player
+		_rigidbody.velocity = _fixedInput * _moveSpeed;
 	}
-
+	
 	private void Shoot()
 	{
-		if (_playerInput.actions[SHOOT].IsPressed() && _bulletCooldownTimer > _bulletCooldown)
+		if (_playerInput.actions[SHOOT_ACTION].IsPressed() && _shootTimer >= _shootCooldown)
 		{
-			_bulletCooldownTimer = 0;
-			// Instantiate from pool manager script
-			GameObject bullet = LillithPoolManager.Instance.ShootBullet();
-			bullet.transform.position = transform.position + transform.up * 0.5f;
+			// Reset the timer
+			_shootTimer = 0f;
+			
+			// Shoot a bullet from the pool manager
+			var bullet = LillithPoolManager.Instance.ShootBullet();
+			bullet.transform.position = transform.position;
 			bullet.transform.rotation = transform.rotation;
 		}
 	}
 	#endregion
 	
-	#region collision_functions
-	private void HandleBorderCollisions()
+	#region damaging_methods
+	private void OnTriggerEnter2D(Collider2D other)
 	{
-		foreach (Vector2 borderNormal in _borderNormals.Values)
+		// Check if the player collided with an enemy
+		if (other.CompareTag("Enemy"))
 		{
-			if (Vector2.Dot(borderNormal, _input) < 0)
-			{
-				// Counteract the movement if hitting a border
-				_input -= Vector2.Dot(_input, borderNormal) * borderNormal;
-			}
+			// Take damage
+			KnockBack(transform.position);
+			_lillithHealthManager.TakeDamage();
 		}
 	}
-
-	private void OnCollisionEnter2D(Collision2D other)
+	
+	private void KnockBack(Vector2 hitPoint)
 	{
-		// Stop the player in the direction of the border
-		if (other.gameObject.CompareTag(BORDER_TAG))
-		{
-			_borderNormals[other.gameObject] = other.contacts[0].normal;
-		}
+		Vector2 direction = (Vector2.zero - hitPoint).normalized;
+		_rigidbody.velocity = direction * _knockBackForce;
 	}
-
-	private void OnCollisionExit2D(Collision2D other)
+	
+	private IEnumerator CancelInput()
 	{
-		if (other.gameObject.CompareTag(BORDER_TAG))
-		{
-			_borderNormals.Remove(other.gameObject);
-		}
+		_playerInput.enabled = false;
+		yield return new WaitForSeconds(0.25f);
+		_playerInput.enabled = true;
 	}
 	#endregion
 }

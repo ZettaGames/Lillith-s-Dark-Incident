@@ -1462,7 +1462,7 @@ MonoBehaviour:
   - {fileID: 2006649963}
   - {fileID: 1482719770}
   - {fileID: 23292103}
-  _delay: 0.75
+  _delay: 2
 --- !u!4 &1316033421
 Transform:
   m_ObjectHideFlags: 0

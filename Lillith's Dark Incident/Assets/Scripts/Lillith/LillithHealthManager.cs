@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(LillithController))]
 public class LillithHealthManager : MonoBehaviour
 {
 	// ! Health variables
@@ -23,36 +24,23 @@ public class LillithHealthManager : MonoBehaviour
 	// ! Components variables
 	private LillithController _lillithController;
 	
-	// ! Singleton
-	private static LillithHealthManager _instance;
-	public static LillithHealthManager Instance { get { return _instance; } }
-
-	private void Awake()
-	{
-		if (_instance != null && _instance != this)
-		{
-			Destroy(gameObject);
-		}
-		else
-		{
-			_instance = this;
-		}
-	}
-
 	private void Start()
 	{
+		// Initialization of components
 		_lillithController = GetComponent<LillithController>();
 	}
-
+	
 	private void Update()
 	{
+		// Set the stars to the maximum amount
 		if (_currentStars > _maxStars)
 		{
 			_currentStars = _maxStars;
 		}
-
+		
 		for (int i = 0; i < _stars.Length; i++)
 		{
+			// Set the stars to full or empty
 			if (i < _currentStars)
 			{
 				_stars[i].sprite = _fullStar;
@@ -61,7 +49,8 @@ public class LillithHealthManager : MonoBehaviour
 			{
 				_stars[i].sprite = _emptyStar;
 			}
-
+			
+			// Enable or disable the stars
 			if (i < _maxStars)
 			{
 				_stars[i].enabled = true;
@@ -71,38 +60,47 @@ public class LillithHealthManager : MonoBehaviour
 				_stars[i].enabled = false;
 			}
 		}
+		
+		// Kill the player if there are no stars left
+		if (_currentStars <= 0)
+		{
+			Destroy(gameObject);
+		}
 	}
-
-	#region health_functions
-	public void TakeDamage(Vector2 position)
+	
+	#region damaging_methods
+	public void TakeDamage()
 	{
+		// Decrease the amount of stars
 		_currentStars--;
+		
+		// Apply the damaging effects
 		StartCoroutine(NoControl());
 		StartCoroutine(Invincibility());
-		ScreenShake.Instance.Shake(0.1f, 5f);
-		//_lillithController.KnockBack(position);
 	}
-
+	
 	private IEnumerator NoControl()
 	{
+		// Disable the player's movement
 		_lillithController.CanMove = false;
+		
+		// Wait for a certain amount of time
 		yield return new WaitForSeconds(_noControlTime);
+		
+		// Enable the player's movement
 		_lillithController.CanMove = true;
 	}
-
+	
 	private IEnumerator Invincibility()
 	{
+		// Transparent the player
 		GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.75f);
+		
+		// Wait for a certain amount of time
 		yield return new WaitForSeconds(_invincibilityTime);
+		
+		// Make the player visible
 		GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
 	}
 	#endregion
-	
-	private void OnTriggerEnter2D(Collider2D other)
-	{
-		if (other.CompareTag("Enemy"))
-		{
-			TakeDamage(transform.position);
-		}
-	}
 }

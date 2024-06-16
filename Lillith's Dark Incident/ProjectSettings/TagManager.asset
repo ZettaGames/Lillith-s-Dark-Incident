@@ -6,7 +6,6 @@ TagManager:
   tags:
   - Pool
   - Enemy
-  - Border
   layers:
   - Default
   - TransparentFX

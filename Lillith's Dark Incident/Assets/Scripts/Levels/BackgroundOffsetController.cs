@@ -2,24 +2,29 @@ using UnityEngine;
 
 public class BackgroundOffsetController : MonoBehaviour
 {
-	[SerializeField] private float scrollSpeed;
-	private Vector2 offset;
+	// ! This script is used to scroll the background texture of the level.
+	[SerializeField] private float _scrollSpeed;
+	private Vector2 _offset;
 	
-	private Material material;
+	// ! Material of the sprite renderer.
+	private Material _material;
 	
 	private void Start()
 	{
-		material = GetComponent<SpriteRenderer>().material;
+		// Assignment of the material.
+		_material = GetComponent<SpriteRenderer>().material;
 	}
 	
 	private void Update()
 	{
-		offset.y = scrollSpeed * Time.deltaTime * LocalTime.TimeScale;
-		material.mainTextureOffset += offset;
+		// Scroll the background down.
+		_offset.y = _scrollSpeed * Time.deltaTime * LocalTime.TimeScale;
+		_material.mainTextureOffset += _offset;
 		
-		if (material.mainTextureOffset.y > 1)
+		// Reset the texture offset every time it reaches the end.
+		if (_material.mainTextureOffset.y > 1)
 		{
-			material.mainTextureOffset = new Vector2(0, 0);
+			_material.mainTextureOffset = new Vector2(0, 0);
 		}
 	}
 }
