@@ -11,10 +11,11 @@ GameObject:
   - component: {fileID: 530310332551211471}
   - component: {fileID: 4991276336266445032}
   - component: {fileID: 6994378076597086577}
+  - component: {fileID: -5635417456627903290}
   - component: {fileID: -4446228524555805815}
   m_Layer: 0
   m_Name: ObstacleForest
-  m_TagString: Enemy
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,6 +101,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 6.75
   _destroyTime: 5
+--- !u!50 &-5635417456627903290
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2182406226348133719}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!58 &-4446228524555805815
 CircleCollider2D:
   m_ObjectHideFlags: 0

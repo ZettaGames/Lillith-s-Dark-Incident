@@ -1,13 +1,28 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(LillithController))]
 public class LillithHealthManager : MonoBehaviour
 {
+	// ! Constants for the tags
+	private const string PLAYER_TAG = "Player";
+	private const string UNTAGGED = "Untagged";
+	
+	// ! Constants for the shake
+	private const float SHAKE_INTENSITY = 0.1f;
+	private const float GAMEPAD_SHAKE = 0.5f;
+	private const float SHAKE_DURATION = 0.25f;
+	
+	// ! Colors for invulnerability
+	private readonly Color _traslucidColor = new Color(1, 1, 1, 0.75f);
+	private readonly Color _solidColor = new Color(1, 1, 1, 1);
+	
 	// ! Health variables
 	[Header("Health")]
-	[SerializeField] private int _currentStars;
+	[SerializeField] private int currentStars;
+	public int CurrentStars { get { return currentStars; } }
 	[SerializeField] private int _maxStars;
 	[SerializeField] private Image[] _stars;
 
@@ -23,25 +38,25 @@ public class LillithHealthManager : MonoBehaviour
 
 	// ! Components variables
 	private LillithController _lillithController;
-	
+
 	private void Start()
 	{
 		// Initialization of components
 		_lillithController = GetComponent<LillithController>();
 	}
-	
+
 	private void Update()
 	{
 		// Set the stars to the maximum amount
-		if (_currentStars > _maxStars)
+		if (currentStars > _maxStars)
 		{
-			_currentStars = _maxStars;
+			currentStars = _maxStars;
 		}
-		
+
 		for (int i = 0; i < _stars.Length; i++)
 		{
 			// Set the stars to full or empty
-			if (i < _currentStars)
+			if (i < currentStars)
 			{
 				_stars[i].sprite = _fullStar;
 			}
@@ -49,7 +64,7 @@ public class LillithHealthManager : MonoBehaviour
 			{
 				_stars[i].sprite = _emptyStar;
 			}
-			
+
 			// Enable or disable the stars
 			if (i < _maxStars)
 			{
@@ -60,47 +75,78 @@ public class LillithHealthManager : MonoBehaviour
 				_stars[i].enabled = false;
 			}
 		}
-		
+
 		// Kill the player if there are no stars left
-		if (_currentStars <= 0)
+		if (currentStars <= 0)
 		{
-			Destroy(gameObject);
+			StopAllCoroutines();
+			gameObject.SetActive(false);
 		}
 	}
-	
+
 	#region damaging_methods
 	public void TakeDamage()
 	{
 		// Decrease the amount of stars
-		_currentStars--;
-		
+		currentStars--;
+
 		// Apply the damaging effects
 		StartCoroutine(NoControl());
 		StartCoroutine(Invincibility());
+		
+		// Shake the screen
+		ScreenShake.Instance.Shake(SHAKE_INTENSITY, SHAKE_DURATION);
+		
+		// Shake the gamepad
+		StartCoroutine(ShakeGamepad(GAMEPAD_SHAKE, GAMEPAD_SHAKE, SHAKE_DURATION));
 	}
-	
+
 	private IEnumerator NoControl()
 	{
 		// Disable the player's movement
 		_lillithController.CanMove = false;
-		
+
 		// Wait for a certain amount of time
 		yield return new WaitForSeconds(_noControlTime);
-		
+
 		// Enable the player's movement
 		_lillithController.CanMove = true;
 	}
-	
+
 	private IEnumerator Invincibility()
 	{
-		// Transparent the player
-		GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.75f);
-		
-		// Wait for a certain amount of time
-		yield return new WaitForSeconds(_invincibilityTime);
-		
-		// Make the player visible
-		GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
+		// Make the player traslucid and untargetable
+		GetComponent<SpriteRenderer>().color = _traslucidColor;
+		gameObject.tag = UNTAGGED;
+
+		float elapsedTime = 0.0f; // Elapsed time since the invincibility started
+
+		// Loop until the invincibility time is over
+		while (elapsedTime < _invincibilityTime)
+		{
+			// Only count the time if the game is not paused
+			if (LocalTime.TimeScale != 0.0f)
+			{
+				elapsedTime += Time.deltaTime;
+			}
+			yield return null;
+		}
+
+		// Make the player solid and targetable
+		GetComponent<SpriteRenderer>().color = _solidColor;
+		gameObject.tag = PLAYER_TAG;
+	}
+	
+	private IEnumerator ShakeGamepad(float lowFreqIntensity, float highFreqIntensity, float duration)
+	{
+		// Check if there is a gamepad connected
+		if (Gamepad.current != null)
+		{
+			// Shake the gamepad for a certain amount of time
+			Gamepad.current.SetMotorSpeeds(lowFreqIntensity, highFreqIntensity);
+			yield return new WaitForSeconds(duration);
+			Gamepad.current.SetMotorSpeeds(0.0f, 0.0f);
+		}
 	}
 	#endregion
 }

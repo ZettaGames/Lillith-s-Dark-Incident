@@ -1,26 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ObstacleBehaviour : MonoBehaviour
 {
+	private const string POOL_TAG = "ObsPool";
+
 	[Header("Obstacle Settings")]
 	[SerializeField] private float _speed;
 	[SerializeField] private float _destroyTime;
 
-	private void OnEnable()
-	{
-		StartCoroutine(DestroyObstacle());
-	}
-
 	private void Update()
 	{
-		transform.Translate(Vector2.down * _speed * Time.deltaTime);
+		transform.Translate(Vector2.down * _speed * Time.deltaTime * LocalTime.TimeScale);
 	}
-
-	private IEnumerator DestroyObstacle()
+	
+	private void OnTriggerEnter2D(Collider2D other)
 	{
-		yield return new WaitForSeconds(_destroyTime);
-		gameObject.SetActive(false);
+		if (other.CompareTag(POOL_TAG))
+		{
+			gameObject.SetActive(false);
+		}
 	}
 }
