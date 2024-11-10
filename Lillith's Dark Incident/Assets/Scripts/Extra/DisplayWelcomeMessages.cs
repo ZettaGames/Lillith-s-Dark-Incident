@@ -18,7 +18,9 @@ public class DisplayWelcomeMessages : MonoBehaviour
 		WorkMessage,
 		GlassesMessage,
 		OrtographyMessage,
-		TenthMessage
+		VoiceMessage,
+		MarianaMessage,
+		VencesMessage
 	}
 
 	private void Start()
@@ -29,13 +31,15 @@ public class DisplayWelcomeMessages : MonoBehaviour
 
 	private IEnumerator DisplayRandomWelcomeMessage()
 	{
-		if (_randomTen != 10)
+		yield return new WaitForSeconds(0.75f);
+
+        if (_randomTen != 10)
 		{
 			_welcomeMessage.text = GetRandomWelcomeMessage();
 		}
 		else if (_randomTen == 10)
 		{
-			_welcomeMessage.text = "10 is a lucky number: 10 fingers, 10 months, 10 days a week... Wait, what?";
+			_welcomeMessage.text = "10 is a lucky number: 10 months, 10 days a week, 10 aliens... Wait, what?";
 		}
 
 		while (_welcomeMessage.alpha < 1)
@@ -57,7 +61,7 @@ public class DisplayWelcomeMessages : MonoBehaviour
 
 	private string GetRandomWelcomeMessage()
 	{
-		var randomMessage = (WelcomeMessages)Random.Range(0, 9);
+		var randomMessage = (WelcomeMessages)Random.Range(0, 12);
 		switch (randomMessage)
 		{
 			case WelcomeMessages.HowdyMessage:
@@ -78,6 +82,12 @@ public class DisplayWelcomeMessages : MonoBehaviour
 				return "It was easier to be the boy with glasses.";
 			case WelcomeMessages.OrtographyMessage:
 				return "Imajine writin porperli, wat a dreem.";
+			case WelcomeMessages.VoiceMessage:
+				return "I swear the VA was treated humanely... kinda.";
+			case WelcomeMessages.MarianaMessage:
+				return "If life gives you lemons, drop out of the career.";
+			case WelcomeMessages.VencesMessage:
+				return "Pending message, Vences not working.";
 			default:
 				return "Is even possible to get here?";
 		}

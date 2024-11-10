@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 public class MenuActionsManager : MonoBehaviour
 {
 	// ! Constants
-	private const int NEW_GAME_INDEX = 2;
+	private const int NEW_GAME_INDEX = 3;
 	private const string EXIT_SCENE_NAME = "ExitScene";
 	
 	public void NewGameYes()

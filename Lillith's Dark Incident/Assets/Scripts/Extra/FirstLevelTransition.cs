@@ -6,12 +6,12 @@ using UnityEngine.UI;
 public class FirstLevelTransition : MonoBehaviour
 {
 	// ! Constants for the menu transition
-	private const int MAIN_MENU = 1;
-	private const float INITIAL_DELAY = 1.5f;
+	private const int MAIN_MENU = 2;
+	private const float INITIAL_DELAY = 2.0f;
 	private const float TRANSITION_DELAY = 1.0f;
 
-	// ! Transition-related variables
-	[Header("Transition Settings")]
+    // ! Transition-related variables
+    [Header("Transition Settings")]
 	[SerializeField] private Animator _transitionAnimator;
 	[SerializeField] private Image _coverImage;
 

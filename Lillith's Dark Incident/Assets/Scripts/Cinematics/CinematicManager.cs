@@ -10,7 +10,7 @@ public class IntroCinematic : MonoBehaviour
 	private const int PREVIOUS = -1;
 
 	// ! Constant for the scene to load
-	private const int FLOERA_LEVEL = 3;
+	private const int FLOERA_LEVEL = 4;
 
 	// ! Variables for the cinematic transition
 	[SerializeField] private Image[] _images;
