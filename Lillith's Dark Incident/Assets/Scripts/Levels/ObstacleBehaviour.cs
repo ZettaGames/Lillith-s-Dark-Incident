@@ -2,18 +2,34 @@ using UnityEngine;
 
 public class ObstacleBehaviour : MonoBehaviour
 {
-	private const string POOL_TAG = "ObsPool";
+    // Constant tag for the pool of enemies
+    private const string POOL_TAG = "EnemyPool";
 
-	[Header("Obstacle Settings")]
-	[SerializeField] private float _speed;
-	[SerializeField] private float _destroyTime;
+    // Obstacle speed
+    private float _speed = 6.75f;
+	private float _speedMultiplier = 1.4f;
 
-	private void Update()
+    private void Update()
 	{
-		transform.Translate(Vector2.down * _speed * Time.deltaTime * LocalTime.TimeScale);
+        transform.Translate(Vector2.down * _speed * Time.deltaTime * LocalTime.TimeScale);
 	}
-	
-	private void OnTriggerEnter2D(Collider2D other)
+
+    private void IncreaseSpeed()
+    {
+        _speed *= _speedMultiplier;
+    }
+
+    private void OnEnable()
+    {
+        GameEvents.OnPhaseTwoStart += IncreaseSpeed;
+    }
+
+    private void OnDisable()
+    {
+        GameEvents.OnPhaseTwoStart -= IncreaseSpeed;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
 	{
 		if (other.CompareTag(POOL_TAG))
 		{

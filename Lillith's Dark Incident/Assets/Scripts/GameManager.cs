@@ -33,13 +33,13 @@ public class GameManager : MonoBehaviour
 #if UNITY_EDITOR
 		if (Input.GetKeyDown(KeyCode.Escape) && LocalTime.TimeScale > 0.0f)
 		{
-			LocalTime.SetTimeScale(0.0f);
-		}
+			LocalTime.TimeScale = 0.0f;
+        }
 		else if (Input.GetKeyDown(KeyCode.Escape) && LocalTime.TimeScale == 0.0f)
 		{
-			LocalTime.SetTimeScale(1.0f);
+			LocalTime.TimeScale = 1.0f;
 
-			if (Input.GetKeyDown(KeyCode.F1))
+            if (Input.GetKeyDown(KeyCode.F1))
 			{
 				ScreenShake.Instance.Shake(0.5f, 0.1f);
 			}

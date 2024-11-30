@@ -6,8 +6,8 @@ TagManager:
   tags:
   - Pool
   - Enemy
-  - ObsPool
   - Obstacle
+  - EnemyPool
   layers:
   - Default
   - TransparentFX
