@@ -127,11 +127,17 @@ public class LillithController : MonoBehaviour
 		}
 	}
 
-	private void KnockBack(Vector2 hitPoint)
+    private void OnParticleCollision(GameObject other)
+    {
+		KnockBack(transform.position);
+		_lillithHealthManager.TakeDamage();
+    }
+
+    private void KnockBack(Vector2 hitPoint)
 	{
 		// Move the player from the hit point
 		Vector2 direction = (Vector2.zero - hitPoint).normalized;
 		_rigidbody.velocity = direction * _knockBackForce;
 	}
-	#endregion
+    #endregion
 }

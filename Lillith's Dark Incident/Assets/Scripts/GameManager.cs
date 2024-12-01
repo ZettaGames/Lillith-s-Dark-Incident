@@ -30,20 +30,14 @@ public class GameManager : MonoBehaviour
 
 	private void Update()
 	{
-#if UNITY_EDITOR
-		if (Input.GetKeyDown(KeyCode.Escape) && LocalTime.TimeScale > 0.0f)
+		if (Input.GetKeyDown(KeyCode.F1))
 		{
 			LocalTime.TimeScale = 0.0f;
         }
-		else if (Input.GetKeyDown(KeyCode.Escape) && LocalTime.TimeScale == 0.0f)
+
+        if (Input.GetKeyDown(KeyCode.F2))
 		{
 			LocalTime.TimeScale = 1.0f;
-
-            if (Input.GetKeyDown(KeyCode.F1))
-			{
-				ScreenShake.Instance.Shake(0.5f, 0.1f);
-			}
-		}
-#endif
-	}
+        }
+    }
 }
