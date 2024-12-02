@@ -25,9 +25,10 @@ public class LillithHealthManager : MonoBehaviour
 	public int CurrentStars { get { return currentStars; } }
 	[SerializeField] private int _maxStars;
 	[SerializeField] private Image[] _stars;
+	private bool hasDied = false;
 
-	// ! Sprites variables
-	[Header("Sprites")]
+    // ! Sprites variables
+    [Header("Sprites")]
 	[SerializeField] private Sprite _fullStar;
 	[SerializeField] private Sprite _emptyStar;
 
@@ -37,18 +38,30 @@ public class LillithHealthManager : MonoBehaviour
 	[SerializeField] private float _invincibilityTime;
 
 	// ! Components variables
+	private Animator _animator;
 	private LillithController _lillithController;
 
 	private void Start()
 	{
 		// Initialization of components
+        _animator = GetComponent<Animator>();
 		_lillithController = GetComponent<LillithController>();
-	}
+    }
 
 	private void Update()
 	{
-		// Set the stars to the maximum amount
-		if (currentStars > _maxStars)
+        // Kill the player if there are no stars left
+        if (currentStars <= 0)
+        {
+            if (!hasDied)
+            {
+                hasDied = true;
+                StartCoroutine(Death());
+            }
+        }
+
+        // Set the stars to the maximum amount
+        if (currentStars > _maxStars)
 		{
 			currentStars = _maxStars;
 		}
@@ -75,13 +88,6 @@ public class LillithHealthManager : MonoBehaviour
 				_stars[i].enabled = false;
 			}
 		}
-
-		// Kill the player if there are no stars left
-		if (currentStars <= 0)
-		{
-			StopAllCoroutines();
-			gameObject.SetActive(false);
-		}
 	}
 
 	#region damaging_methods
@@ -90,8 +96,8 @@ public class LillithHealthManager : MonoBehaviour
 		// Decrease the amount of stars
 		currentStars--;
 
-		// Apply the damaging effects
-		StartCoroutine(NoControl());
+        // Apply the damaging effects
+        StartCoroutine(NoControl());
 		StartCoroutine(Invincibility());
 		
 		// Shake the screen
@@ -103,8 +109,8 @@ public class LillithHealthManager : MonoBehaviour
 
 	private IEnumerator NoControl()
 	{
-		// Disable the player's movement
-		_lillithController.CanMove = false;
+        // Disable the player's movement
+        _lillithController.CanMove = false;
 
 		// Wait for a certain amount of time
 		yield return new WaitForSeconds(_noControlTime);
@@ -115,8 +121,8 @@ public class LillithHealthManager : MonoBehaviour
 
 	private IEnumerator Invincibility()
 	{
-		// Make the player traslucid and untargetable
-		GetComponent<SpriteRenderer>().color = _traslucidColor;
+        // Make the player traslucid and untargetable
+        GetComponent<SpriteRenderer>().color = _traslucidColor;
 		gameObject.tag = UNTAGGED;
 		gameObject.layer = LayerMask.NameToLayer("Default");
 
@@ -151,4 +157,33 @@ public class LillithHealthManager : MonoBehaviour
 		}
 	}
 	#endregion
+
+	private IEnumerator Death()
+	{
+		GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1f);
+
+        Debug.Log("Before pausing the game");
+        LocalTime.TimeScale = 0.0f;
+
+        Debug.Log("Before deactivating the collider");
+        GetComponent<CircleCollider2D>().enabled = false;
+
+		Debug.Log("Before waiting for 2 seconds");
+        yield return new WaitForSeconds(1.5f);
+
+        Debug.Log("Before playing the death animation");
+        _animator.SetTrigger("death");
+
+        Debug.Log("Before waiting for 3.5 seconds");
+        yield return new WaitForSeconds(2.5f);
+
+        Debug.Log("Before loading the level");
+        LevelLoader.Instance.LoadLevel(2);
+
+		Debug.Log("Before waiting for 1 second");
+        yield return new WaitForSeconds(1.2f);
+
+        Debug.Log("Before setting the time scale to 1");
+        LocalTime.TimeScale = 1.0f;
+    }
 }

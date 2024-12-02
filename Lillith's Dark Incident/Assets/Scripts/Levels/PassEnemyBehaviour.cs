@@ -8,7 +8,7 @@ public class PassEnemyBehaviour : MonoBehaviour
     private const string POOL_TAG = "EnemyPool";
 
     // Enemy settings
-    private int _health = 10;
+    private int _health = 12;
     private float _speed = 2.0f;
     private float _speedMultiplier = 0.7f;
 
@@ -33,7 +33,7 @@ public class PassEnemyBehaviour : MonoBehaviour
     private void OnEnable()
     {
         // Reset the enemys
-        _health = 10;
+        _health = 12;
         GetComponent<SpriteRenderer>().enabled = true;
         GetComponent<BoxCollider2D>().enabled = true;
         _bulletSystem.StartSpawner();

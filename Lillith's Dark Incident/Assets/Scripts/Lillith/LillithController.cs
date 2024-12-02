@@ -122,15 +122,15 @@ public class LillithController : MonoBehaviour
 		if ((other.CompareTag(ENEMY_TAG) || other.CompareTag(OBSTACLE_TAG)) && gameObject.CompareTag(PLAYER_TAG))
 		{
 			// Take damage
-			KnockBack(transform.position);
 			_lillithHealthManager.TakeDamage();
+			KnockBack(transform.position);
 		}
 	}
 
     private void OnParticleCollision(GameObject other)
     {
-		KnockBack(transform.position);
 		_lillithHealthManager.TakeDamage();
+		KnockBack(transform.position);
     }
 
     private void KnockBack(Vector2 hitPoint)

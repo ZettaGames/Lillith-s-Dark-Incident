@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1247803121410966864}
   - component: {fileID: 9123310310434011771}
   - component: {fileID: 1404820849065696316}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: LillithPlayer
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -58,7 +58,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 59dc3a1fd1532544c883d8285c2fb20c, type: 2}
+  - {fileID: 2100000, guid: c7bbf782fc1613e418b7218ed5c6c196, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -218,6 +218,7 @@ MonoBehaviour:
   _moveSpeed: 10
   _smoothMove: 0.1
   _shootCooldown: 0.045
+  _knockBackForce: {x: -3.5, y: -3.5}
 --- !u!114 &1404820849065696316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,7 +231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6ff58e953fac204099d87698686cd6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currentStars: 15
+  currentStars: 3
   _maxStars: 10
   _stars:
   - {fileID: 0}
@@ -246,4 +247,4 @@ MonoBehaviour:
   _fullStar: {fileID: 21300000, guid: 9dd12ed7b90a9cb4abd22626af9a92c8, type: 3}
   _emptyStar: {fileID: 21300000, guid: 10fccc2a05678404485f024b2e185506, type: 3}
   _noControlTime: 0.25
-  _invincibilityTime: 0.25
+  _invincibilityTime: 1.5

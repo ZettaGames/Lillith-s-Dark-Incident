@@ -8,7 +8,7 @@ public class FollowEnemyBehaviour : MonoBehaviour
     private const string BULLET_TAG = "Bullet";
 
     // Enemy settings
-    private int _health = 6;
+    private int _health = 10;
     private float _speed = 1.75f;
     private float _speedMultiplier = 1.4f;
 
@@ -185,7 +185,7 @@ public class FollowEnemyBehaviour : MonoBehaviour
     private void OnEnable()
     {
         // Reset the enemy
-        _health = 6;
+        _health = 10;
         _followTimer = _followTime;
         GetComponent<SpriteRenderer>().enabled = true;
         GetComponent<BoxCollider2D>().enabled = true;

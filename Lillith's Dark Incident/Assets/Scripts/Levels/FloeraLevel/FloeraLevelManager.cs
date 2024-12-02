@@ -4,7 +4,7 @@ using UnityEngine;
 public class FloeraLevelManager : MonoBehaviour
 {
     // Stage Settings
-    private float _stageDuration = 20f;
+    private float _stageDuration = 300f;
     private float _midStage;
     private int _stageIndex = 1;
     private bool _isStageActive = true;
@@ -35,7 +35,7 @@ public class FloeraLevelManager : MonoBehaviour
 
     private void Start()
     {
-        _midStage = _stageDuration / 2;
+        _midStage = _stageDuration / 3;
         StartCoroutine(PhaseOne());
     }
 
