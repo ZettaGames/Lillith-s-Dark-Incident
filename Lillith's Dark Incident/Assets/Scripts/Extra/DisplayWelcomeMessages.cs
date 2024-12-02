@@ -19,9 +19,10 @@ public class DisplayWelcomeMessages : MonoBehaviour
 		GlassesMessage,
 		OrtographyMessage,
 		VoiceMessage,
-		MarianaMessage,
-		VencesMessage
-	}
+		DannyMessage,
+		VencesMessage,
+        MemeMessage
+    }
 
 	private void Start()
 	{
@@ -61,7 +62,7 @@ public class DisplayWelcomeMessages : MonoBehaviour
 
 	private string GetRandomWelcomeMessage()
 	{
-		var randomMessage = (WelcomeMessages)Random.Range(0, 12);
+		var randomMessage = (WelcomeMessages)Random.Range(0, 13);
 		switch (randomMessage)
 		{
 			case WelcomeMessages.HowdyMessage:
@@ -84,11 +85,13 @@ public class DisplayWelcomeMessages : MonoBehaviour
 				return "Imajine writin porperli, wat a dreem.";
 			case WelcomeMessages.VoiceMessage:
 				return "I swear the VA was treated humanely... kinda.";
-			case WelcomeMessages.MarianaMessage:
+			case WelcomeMessages.DannyMessage: // From: Danny Hernández
 				return "If life gives you lemons, drop out of the career.";
 			case WelcomeMessages.VencesMessage:
 				return "Pending message, Vences not working.";
-			default:
+			case WelcomeMessages.MemeMessage:
+                return "IS THAT A LILLITH REFERENCE?!?!?!"; // From: Meme4K 
+            default:
 				return "Is even possible to get here?";
 		}
 	}

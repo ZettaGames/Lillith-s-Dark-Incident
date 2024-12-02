@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class IntroCinematic : MonoBehaviour
 {
-	// ! Constants for the cinematic direction
+	// ! Constants for the direction
 	private const int NEXT = 1;
 	private const int PREVIOUS = -1;
 
@@ -19,7 +19,8 @@ public class IntroCinematic : MonoBehaviour
 
 	private void Start()
 	{
-		for (int i = 0; i < _images.Length; i++)
+        // Deactivate all images except the first one
+        for (int i = 0; i < _images.Length; i++)
 		{
 			_images[i].gameObject.SetActive(false);
 		}
@@ -79,7 +80,8 @@ public class IntroCinematic : MonoBehaviour
 		{
 			// Load the scene and deactivate the cinematic
 			LevelLoader.Instance.LoadLevel(FLOERA_LEVEL);
-			gameObject.SetActive(false);
+            // Deactivate the object to prevent unexpected behaviour
+            gameObject.SetActive(false);
 		}
 	}
 	#endregion

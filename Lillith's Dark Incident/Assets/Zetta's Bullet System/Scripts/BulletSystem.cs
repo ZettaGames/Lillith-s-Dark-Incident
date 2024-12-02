@@ -413,7 +413,7 @@ public class BulletSystem : MonoBehaviour
         if (_spawnerName == string.Empty) _spawnerName = "TargetShoot";
         if (_target == null)
         {
-            Debug.LogError("Target is not assigned");
+            Debug.Log("Target is not assigned");
             return;
         }
 

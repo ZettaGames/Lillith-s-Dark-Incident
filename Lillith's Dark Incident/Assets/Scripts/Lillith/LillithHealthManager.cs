@@ -118,6 +118,7 @@ public class LillithHealthManager : MonoBehaviour
 		// Make the player traslucid and untargetable
 		GetComponent<SpriteRenderer>().color = _traslucidColor;
 		gameObject.tag = UNTAGGED;
+		gameObject.layer = LayerMask.NameToLayer("Default");
 
 		float elapsedTime = 0.0f; // Elapsed time since the invincibility started
 
@@ -135,7 +136,8 @@ public class LillithHealthManager : MonoBehaviour
 		// Make the player solid and targetable
 		GetComponent<SpriteRenderer>().color = _solidColor;
 		gameObject.tag = PLAYER_TAG;
-	}
+        gameObject.layer = LayerMask.NameToLayer("Player");
+    }
 	
 	private IEnumerator ShakeGamepad(float lowFreqIntensity, float highFreqIntensity, float duration)
 	{

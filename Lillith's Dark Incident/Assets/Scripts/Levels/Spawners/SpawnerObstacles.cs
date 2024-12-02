@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class SpawnerObstacles : SpawnerGeneric
 {
-    private Coroutine _spawnCoroutine;
-
     public void TrySpawn(float probability)
     {
         if (Random.value < probability)

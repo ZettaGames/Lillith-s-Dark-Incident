@@ -5,17 +5,17 @@ using UnityEngine.UI;
 
 public class SoundMixerManager : MonoBehaviour
 {
-	// ! Audio mixer reference
+	// Audio mixer reference
 	[Header("Audio Mixer")]
 	[SerializeField] private AudioMixer _audioMixer;
 	
-	// ! Text for the volume percentage
+	// Text for the volume percentage
 	[Header("Text")]
 	[SerializeField] private TMP_Text _masterVolumeText;
 	[SerializeField] private TMP_Text _musicVolumeText;
 	[SerializeField] private TMP_Text _soundFXVolumeText;
 
-	// ! Sliders for the volume control
+	// Sliders for the volume control
 	[Header("Sliders")]
 	[SerializeField] private Slider _masterSlider;
 	[SerializeField] private Slider _musicSlider;
@@ -28,8 +28,8 @@ public class SoundMixerManager : MonoBehaviour
 		_soundFXSlider.value = PlayerPrefs.GetFloat("soundFXVolume", 0.8f);
 		_musicSlider.value = PlayerPrefs.GetFloat("musicVolume", 0.8f);
 
-		// Convert the loaded linear volume to decibels
-		SetMasterVolume(_masterSlider.value);
+        // Set the saved volume for every slider
+        SetMasterVolume(_masterSlider.value);
 		SetSoundFXVolume(_soundFXSlider.value);
 		SetMusicVolume(_musicSlider.value);
 	}

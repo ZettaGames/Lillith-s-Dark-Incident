@@ -15,8 +15,14 @@ public class FloeraLevelManager : MonoBehaviour
     private float _obstacleCooldownP1 = 0.5f;
     private float _obstacleCooldownP2 = 0.25f;
 
+    private float _followEnemyCooldownP1 = 7.5f;
+    private int _followEnemyAmountP1 = 3;
+    private float _followEnemyCooldownP2 = 7.0f;
+    private int _followEnemyAmountP2 = 4;
+
     // Spawners
     [SerializeField] private SpawnerObstacles _spawnerObstacles;
+    [SerializeField] private SpawnerFollowEnemy _spawnerFollowEnemy;
 
     // Scroll Controller
     [SerializeField] private BackgroundOffsetController[] _backgroundController;
@@ -45,6 +51,11 @@ public class FloeraLevelManager : MonoBehaviour
             _spawnerObstacles.TrySpawn(_obstacleProbabilityP1);
             yield return new WaitForSeconds(_obstacleCooldownP1);
 
+            // 3 follow enemies every 7.5 seconds
+            _spawnerFollowEnemy.SpawnWave(0.5f, _followEnemyAmountP1);
+            yield return new WaitForSeconds(_followEnemyCooldownP1);
+
+
             if (_stageDuration <= _midStage)
             {
                 _stageIndex = 2;
@@ -70,6 +81,10 @@ public class FloeraLevelManager : MonoBehaviour
             // 90% chance of spawning an obstacle every 0.25 seconds
             _spawnerObstacles.TrySpawn(_obstacleProbabilityP2);
             yield return new WaitForSeconds(_obstacleCooldownP2);
+
+            // 4 follow enemies every 7.0 seconds
+            _spawnerFollowEnemy.SpawnWave(0.5f, _followEnemyAmountP2);
+            yield return new WaitForSeconds(_followEnemyCooldownP2);
 
             if (_stageDuration <= 0)
             {

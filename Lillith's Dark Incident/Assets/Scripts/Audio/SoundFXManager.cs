@@ -3,9 +3,9 @@ using UnityEngine;
 public class SoundFXManager : MonoBehaviour
 {
 	[SerializeField] private AudioSource _soundFXObject;
-	
-	// Create instance of the manager
-	public static SoundFXManager Instance { get; private set; }
+
+    // Instance of the SoundFXManager
+    public static SoundFXManager Instance { get; private set; }
 	private void Awake()
 	{
 		if (Instance == null)
