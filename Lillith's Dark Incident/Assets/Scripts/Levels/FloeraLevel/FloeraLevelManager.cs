@@ -10,10 +10,10 @@ public class FloeraLevelManager : MonoBehaviour
     private bool _isStageActive = true;
 
     // Enemies Values
-    private float _obstacleProbabilityP1 = 0.75f;
-    private float _obstacleProbabilityP2 = 0.90f;
-    private float _obstacleCooldownP1 = 0.5f;
-    private float _obstacleCooldownP2 = 0.25f;
+    private float _obstacleProbabilityP1 = 0.50f;
+    private float _obstacleProbabilityP2 = 0.65f;
+    private float _obstacleCooldownP1 = 1.0f;
+    private float _obstacleCooldownP2 = 1.0f;
 
     private float _followEnemyCooldownP1 = 7.5f;
     private int _followEnemyAmountP1 = 3;
@@ -23,9 +23,15 @@ public class FloeraLevelManager : MonoBehaviour
     // Spawners
     [SerializeField] private SpawnerObstacles _spawnerObstacles;
     [SerializeField] private SpawnerFollowEnemy _spawnerFollowEnemy;
+    [SerializeField] private SpawnerPassEnemy _spawnerPassEnemy;
 
     // Scroll Controller
     [SerializeField] private BackgroundOffsetController[] _backgroundController;
+
+    // Control variables for coroutines
+    private bool _isSpawningObstacles = false;
+    private bool _isSpawningFollowEnemies = false;
+    private bool _isSpawningPassEnemies = false;
 
     private void Start()
     {
@@ -45,17 +51,26 @@ public class FloeraLevelManager : MonoBehaviour
     {
         Debug.Log("Fase 1");
 
+        if (!_isSpawningObstacles)
+        {
+            _isSpawningObstacles = true;
+            StartCoroutine(SpawnObstacles(_obstacleProbabilityP1, _obstacleCooldownP1));
+        }
+
+        if (!_isSpawningFollowEnemies)
+        {
+            _isSpawningFollowEnemies = true;
+            StartCoroutine(SpawnFollowEnemies(_followEnemyCooldownP1, _followEnemyAmountP1));
+        }
+
+        if (!_isSpawningPassEnemies)
+        {
+            _isSpawningPassEnemies = true;
+            StartCoroutine(SpawnPassEnemies());
+        }
+
         while (_stageIndex == 1)
         {
-            // 75% chance of spawning an obstacle every 0.5 seconds
-            _spawnerObstacles.TrySpawn(_obstacleProbabilityP1);
-            yield return new WaitForSeconds(_obstacleCooldownP1);
-
-            // 3 follow enemies every 7.5 seconds
-            _spawnerFollowEnemy.SpawnWave(0.5f, _followEnemyAmountP1);
-            yield return new WaitForSeconds(_followEnemyCooldownP1);
-
-
             if (_stageDuration <= _midStage)
             {
                 _stageIndex = 2;
@@ -76,16 +91,26 @@ public class FloeraLevelManager : MonoBehaviour
 
         GameEvents.TriggerPhaseTwoStart();
 
+        if (!_isSpawningObstacles)
+        {
+            _isSpawningObstacles = true;
+            StartCoroutine(SpawnObstacles(_obstacleProbabilityP2, _obstacleCooldownP2));
+        }
+
+        if (!_isSpawningFollowEnemies)
+        {
+            _isSpawningFollowEnemies = true;
+            StartCoroutine(SpawnFollowEnemies(_followEnemyCooldownP2, _followEnemyAmountP2));
+        }
+
+        if (!_isSpawningPassEnemies)
+        {
+            _isSpawningPassEnemies = true;
+            StartCoroutine(SpawnPassEnemies());
+        }
+
         while (_stageIndex == 2)
         {
-            // 90% chance of spawning an obstacle every 0.25 seconds
-            _spawnerObstacles.TrySpawn(_obstacleProbabilityP2);
-            yield return new WaitForSeconds(_obstacleCooldownP2);
-
-            // 4 follow enemies every 7.0 seconds
-            _spawnerFollowEnemy.SpawnWave(0.5f, _followEnemyAmountP2);
-            yield return new WaitForSeconds(_followEnemyCooldownP2);
-
             if (_stageDuration <= 0)
             {
                 _stageIndex = 3;
@@ -105,5 +130,33 @@ public class FloeraLevelManager : MonoBehaviour
             _backgroundController[i].StopScrolling();
         }
         yield return null;
+    }
+
+    private IEnumerator SpawnObstacles(float probability, float cooldown)
+    {
+        while (_isStageActive)
+        {
+            _spawnerObstacles.TrySpawn(probability);
+            yield return new WaitForSeconds(cooldown);
+        }
+    }
+
+    private IEnumerator SpawnFollowEnemies(float cooldown, int amount)
+    {
+        while (_isStageActive)
+        {
+            _spawnerFollowEnemy.SpawnWave(0.5f, amount);
+            yield return new WaitForSeconds(cooldown);
+        }
+    }
+
+    private IEnumerator SpawnPassEnemies()
+    {
+        while (_isStageActive)
+        {
+            var randomTime = Random.Range(2.5f, 6.5f);
+            _spawnerPassEnemy.Spawn();
+            yield return new WaitForSeconds(randomTime);
+        }
     }
 }

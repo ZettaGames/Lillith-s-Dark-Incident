@@ -8,22 +8,25 @@ public class FollowEnemyBehaviour : MonoBehaviour
     private const string BULLET_TAG = "Bullet";
 
     // Enemy settings
-    private int _health = 25;
-    private float _speed = 3f;
+    private int _health = 6;
+    private float _speed = 1.75f;
     private float _speedMultiplier = 1.4f;
 
     // Player follow settings
     private float _followDistance = 2.0f;
-    private float _followTime = 20f;
+    private float _followTime = 8.0f;
     private float _followTimer;
 
     // The distance to maintain from other objects of the same type
-    private float _minDistanceBetweenEnemies = 5f;
+    private float _minDistanceBetweenEnemies = 1.0f;
 
     // Player reference
     [Header("References")]
     private Transform _player;
     [SerializeField] private BulletSystem _bulletSystem;
+
+    // Static variable to store the phase 2 state
+    private static bool _isPhase2Active = false;
 
     private void Awake()
     {
@@ -69,6 +72,29 @@ public class FollowEnemyBehaviour : MonoBehaviour
             transform.position += Vector3.down * _speed * LocalTime.TimeScale * Time.deltaTime;
             _bulletSystem.StopSpawner();
         }
+
+        // Avoid overlapping with other enemies
+        AvoidOverlapWithOtherEnemies();
+    }
+
+    private void AvoidOverlapWithOtherEnemies()
+    {
+        // Get all enemies with the same script
+        FollowEnemyBehaviour[] allEnemies = FindObjectsOfType<FollowEnemyBehaviour>();
+
+        foreach (var enemy in allEnemies)
+        {
+            if (enemy != this)
+            {
+                float distanceToEnemy = Vector2.Distance(transform.position, enemy.transform.position);
+                if (distanceToEnemy < _minDistanceBetweenEnemies)
+                {
+                    // Calculate a direction to move away from the other enemy
+                    Vector2 directionAway = (transform.position - enemy.transform.position).normalized;
+                    transform.position += (Vector3)directionAway * (_minDistanceBetweenEnemies - distanceToEnemy);
+                }
+            }
+        }
     }
 
     private void StartPhase2()
@@ -78,6 +104,9 @@ public class FollowEnemyBehaviour : MonoBehaviour
 
         // Increase the speed
         _speed *= _speedMultiplier;
+
+        // Update the static variable
+        _isPhase2Active = true;
     }
 
     private void SetBulletPatternP1()
@@ -156,13 +185,19 @@ public class FollowEnemyBehaviour : MonoBehaviour
     private void OnEnable()
     {
         // Reset the enemy
-        _health = 25;
+        _health = 6;
         _followTimer = _followTime;
         GetComponent<SpriteRenderer>().enabled = true;
         GetComponent<BoxCollider2D>().enabled = true;
         SetBulletPatternP1();
         _bulletSystem.Target = _player;
         _bulletSystem.StartSpawner();
+
+        // Apply phase 2 changes if phase 2 is active
+        if (_isPhase2Active)
+        {
+            StartPhase2();
+        }
 
         // Subscribe to the phase two event
         GameEvents.OnPhaseTwoStart += StartPhase2;
