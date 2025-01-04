@@ -368,6 +368,15 @@ public class BulletSystem : MonoBehaviour
         }
     }
 
+    // Kills all spawners instantly
+    public void InstantKill()
+    {
+        foreach (Transform spawner in transform)
+        {
+            Destroy(spawner.gameObject);
+        }
+    }
+
     private float[] CalculatePolygonalSpeeds()
     {
         // Set the default values of speed and angle

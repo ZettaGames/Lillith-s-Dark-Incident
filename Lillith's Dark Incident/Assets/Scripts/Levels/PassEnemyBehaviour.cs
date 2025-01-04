@@ -1,82 +1,111 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PassEnemyBehaviour : MonoBehaviour
 {
-    // Constant for the pool of enemies
+    // Constants
     private const string POOL_TAG = "EnemyPool";
+    private const string BULLET_TAG = "Bullet";
+    private const string FINISH = "Finish";
+    private const string NO_COLLISION = "NoCollision";
+    private const string SUPER = "Super";
 
-    // Enemy settings
-    private int _health = 12;
-    private float _speed = 2.0f;
-    private float _speedMultiplier = 0.7f;
+    // Enemy Settings
+    private int _health = 15;
+    private float _speed = 1.25f;
+    private float _moveTime = 3.0f;
+    private float _stopTime = 1.5f;
+    private float _stopChance = 0.75f;
+    private bool _isMoving = true;
 
-    // Bullet settings
-    [SerializeField] private BulletSystem _bulletSystem;
+    // Bullet Spawner Component
+    private BulletSystem _bulletSystem;
 
     private void Start()
     {
+        // Initialization of the bullet system
+        _bulletSystem = GetComponent<BulletSystem>();
         _bulletSystem.StartSpawner();
+        StartCoroutine(MoveAndStop());
     }
 
     private void Update()
     {
-        transform.Translate(Vector2.down * _speed * Time.deltaTime * LocalTime.TimeScale);
-    }
-
-    private void StartPhase2()
-    {
-        _speed *= _speedMultiplier;
-    }
-
-    private void OnEnable()
-    {
-        // Reset the enemys
-        _health = 12;
-        GetComponent<SpriteRenderer>().enabled = true;
-        GetComponent<BoxCollider2D>().enabled = true;
-        _bulletSystem.StartSpawner();
-
-        GameEvents.OnPhaseTwoStart += StartPhase2;
-    }
-
-    private void OnDisable()
-    {
-        GameEvents.OnPhaseTwoStart -= StartPhase2;
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag(POOL_TAG))
+        if (_isMoving)
         {
-            gameObject.SetActive(false);
+            transform.position += Vector3.down * _speed * Time.deltaTime * LocalTime.TimeScale;
         }
+    }
 
-        if (other.CompareTag("Bullet"))
+    private IEnumerator MoveAndStop()
+    {
+        while (true)
         {
-            StartCoroutine(TakeDamage());
+            if (Random.value < _stopChance)
+            {
+                _isMoving = false;
+                yield return new WaitForSeconds(_stopTime);
+                _isMoving = true;
+            }
+            else
+            {
+                yield return new WaitForSeconds(_moveTime);
+            }
         }
     }
 
     private IEnumerator TakeDamage()
     {
-        // Decrease the health
+        // Reduce the health
         _health--;
 
-        // Make the enemy blink
+        // Change the enemy color
         GetComponent<SpriteRenderer>().color = Color.red;
         yield return new WaitForSeconds(0.1f);
         GetComponent<SpriteRenderer>().color = Color.white;
 
+        // Check if the enemy is dead
         if (_health <= 0)
         {
-            // Deactivate renderer and collider
-            GetComponent<SpriteRenderer>().enabled = false;
-            GetComponent<BoxCollider2D>().enabled = false;
-
-            // Stop the bullet system
+            // Deactivate the enemy
             _bulletSystem.StopSpawner();
+            gameObject.tag = NO_COLLISION;
+            GetComponent<BoxCollider2D>().isTrigger = true;
+            GetComponent<SpriteRenderer>().enabled = false;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        // Check if it reached the end of the screen
+        if (collision.CompareTag(FINISH))
+        {
+            // Stop the spawner
+            _bulletSystem.StopSpawner();
+        }
+
+        // Check if the collision is with a bullet
+        if (collision.CompareTag(BULLET_TAG))
+        {
+            // Take damage
+            StartCoroutine(TakeDamage());
+        }
+
+        // Check if the collision is with the pool
+        if (collision.CompareTag(POOL_TAG))
+        {
+            // Stop the spawner
+            _bulletSystem.InstantKill();
+
+            // Destroy the enemy
+            Destroy(gameObject);
+        }
+
+        // Check if the collision is with the super attack
+        if (collision.CompareTag(SUPER))
+        {
+            _health = 1;
+            StartCoroutine(TakeDamage());
         }
     }
 }

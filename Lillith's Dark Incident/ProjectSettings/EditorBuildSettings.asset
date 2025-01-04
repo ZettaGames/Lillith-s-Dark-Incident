@@ -21,6 +21,12 @@ EditorBuildSettings:
     path: Assets/Scenes/04_FloeraLevel.unity
     guid: 16ae8d32fa898fb489e28f29c24924e9
   - enabled: 1
+    path: Assets/Scenes/05_FloeraVictory.unity
+    guid: f132cdf44c0301941bb6668467c23186
+  - enabled: 1
+    path: Assets/Scenes/06_SkidLevel.unity
+    guid: 81f26bf9497fff74da61962c954f6ceb
+  - enabled: 1
     path: Assets/Scenes/ExitScene.unity
     guid: 8cd342fc0f680084c83ede210b7c2ac8
   m_configObjects: {}

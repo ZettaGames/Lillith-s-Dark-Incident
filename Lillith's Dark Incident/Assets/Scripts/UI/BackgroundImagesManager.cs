@@ -6,11 +6,11 @@ using System.Collections.Generic;
 public class BackgroundImagesManager : MonoBehaviour
 {
 	#region variables
-	// ! Misc variables
+	// Misc variables
 	private Button _currentButton;
 	Dictionary<Button, Image> _buttonBackgrounds = new Dictionary<Button, Image>();
 
-	// ! Buttons for the transition
+	// Buttons for the transition
 	[Header("Main Menu Buttons")]
 	[SerializeField] private Button _newGameButton;
 	[SerializeField] private Button _loadGameButton;
@@ -23,10 +23,10 @@ public class BackgroundImagesManager : MonoBehaviour
 	[SerializeField] private Button _controlsButton;
 	[SerializeField] private Button _returnButton;
 
-	// ! Images for the transition
+	// Images for the transition
 	[Header("Main Menu Backgrounds")]
 	[SerializeField] private Image _newGameBackground;
-	[SerializeField] private Image _loadGameBackground;
+	[SerializeField] private Image[] _loadGameBackgrounds;
 	[SerializeField] private Image _settingsBackground;
 	[SerializeField] private Image _exitBackground;
 
@@ -36,13 +36,13 @@ public class BackgroundImagesManager : MonoBehaviour
 	[SerializeField] private Image _controlsBackground;
 	[SerializeField] private Image _returnMenuBackground;
 
-	// ! Images for the load variants
+	// Images for the load variants
 	[Header("Load Variants")]
 	[SerializeField] private Image _treeBackground;
 	[SerializeField] private Image _squidBackground;
 	[SerializeField] private Image _cloudBackground;
 
-	// ! Transition variables
+	// Transition variables
 	[Header("Transition Settings")]
 	[SerializeField] private float transitionTime = 0.5f;
 	private float transitionTimer = 0f;
@@ -52,9 +52,11 @@ public class BackgroundImagesManager : MonoBehaviour
 	#region unity_methods
 	private void Awake()
 	{
+		var loadIndex = Random.Range(0, 3);
+		
 		// Add the buttons and their backgrounds to the dictionary
 		_buttonBackgrounds.Add(_newGameButton, _newGameBackground);
-		_buttonBackgrounds.Add(_loadGameButton, _loadGameBackground);
+		_buttonBackgrounds.Add(_loadGameButton, _loadGameBackgrounds[loadIndex]);
 		_buttonBackgrounds.Add(_settingsButton, _settingsBackground);
 		_buttonBackgrounds.Add(_exitButton, _exitBackground);
 		_buttonBackgrounds.Add(_soundButton, _soundBackground);
@@ -92,7 +94,7 @@ public class BackgroundImagesManager : MonoBehaviour
 	#endregion
 
 	#region transition_methods
-	// ! Transition controller
+	// Transition controller
 	private void TransitionBackgrounds()
 	{
 		// Change the alpha of the backgrounds if the corresponding button is selected
@@ -108,7 +110,7 @@ public class BackgroundImagesManager : MonoBehaviour
 		}
 	}
 
-	// ! Increase the opacity
+	// Increase the opacity
 	private float IncreaseAlpha(float alpha)
 	{
 		alpha = Mathf.Lerp(0f, 1f, transitionTimer / transitionTime);
@@ -120,7 +122,7 @@ public class BackgroundImagesManager : MonoBehaviour
 		return alpha;
 	}
 
-	// ! Decrease the opacity
+	// Decrease the opacity
 	private float DecreaseAlpha(float alpha, float timer)
 	{
 		float localTimer = 0f;

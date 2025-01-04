@@ -248,7 +248,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fe98305cd951c34da96d330652ff69b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sceneIndex: 1
   _transitionAnimator: {fileID: 392982565}
   _coverImage: {fileID: 1782441792}
 --- !u!1 &502946588
@@ -538,7 +537,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: -80, y: 80}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 225, y: 50}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &1360083615
 MonoBehaviour:

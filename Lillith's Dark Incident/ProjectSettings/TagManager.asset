@@ -10,6 +10,8 @@ TagManager:
   - EnemyPool
   - NoCollision
   - Bullet
+  - Super
+  - SuperPool
   layers:
   - Default
   - TransparentFX
@@ -17,7 +19,7 @@ TagManager:
   - Player
   - Water
   - UI
-  - 
+  - Bubble
   - 
   - 
   - 

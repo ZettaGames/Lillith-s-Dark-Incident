@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -10,8 +9,9 @@ public class GameLogoTransition : MonoBehaviour
 
     // Const for the logo
     private const int SCENE_01 = 1;
-    private const float FADE_DELAY = 1.0f;
-    private const float FADE_DURATION = 1.5f;
+    private const float INITIAL_DELAY = 1.75f;
+    private const float FADE_TIME = 1.5f;
+    private const float FADE_DURATION = 2.25f;
 
     private void Start()
     {
@@ -20,15 +20,14 @@ public class GameLogoTransition : MonoBehaviour
 
     private IEnumerator FadeSequence()
     {
-        yield return new WaitForSeconds(FADE_DELAY);
+        yield return new WaitForSeconds(INITIAL_DELAY);
 
-        StartCoroutine(Fade(0f, 1f, FADE_DELAY));
-
+        // Fade the logo in and out
+        StartCoroutine(Fade(0f, 1f, FADE_TIME));
         yield return new WaitForSeconds(FADE_DURATION);
+        StartCoroutine(Fade(1f, 0f, FADE_TIME));
 
-        StartCoroutine(Fade(1f, 0f, FADE_DELAY));
-
-        yield return new WaitForSeconds(FADE_DURATION);
+        yield return new WaitForSeconds(INITIAL_DELAY);
 
         // Load the scene asynchronously
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(SCENE_01);
@@ -40,6 +39,7 @@ public class GameLogoTransition : MonoBehaviour
         float time = 0f;
         while (time < duration)
         {
+            // Lerp the alpha value of the logo
             time += Time.deltaTime;
             float alpha = Mathf.Lerp(startAlpha, endAlpha, time / duration);
             _logoImage.alpha = alpha;

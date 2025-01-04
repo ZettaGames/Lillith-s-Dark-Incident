@@ -5,15 +5,15 @@ using UnityEngine.UI;
 
 public class IntroCinematic : MonoBehaviour
 {
-	// ! Constants for the direction
+	// Constants for the direction
 	private const int NEXT = 1;
 	private const int PREVIOUS = -1;
 
-	// ! Constant for the scene to load
-	private const int FLOERA_LEVEL = 4;
+	// Scene to load
+	[SerializeField] private int _sceneToLoad;
 
-	// ! Variables for the cinematic transition
-	[SerializeField] private Image[] _images;
+    // Variables for the cinematic transition
+    [SerializeField] private Image[] _images;
 	[SerializeField] private float _delay = 0.75f;
 	private int _currentIndex = 0;
 
@@ -46,7 +46,7 @@ public class IntroCinematic : MonoBehaviour
 			if (_images[_currentIndex] == _images[_images.Length - 1])
 			{
 				// Load the scene and deactivate the cinematic
-				LevelLoader.Instance.LoadLevel(FLOERA_LEVEL);
+				LevelLoader.Instance.LoadLevel(_sceneToLoad);
 				gameObject.SetActive(false);
 			}
 			else
@@ -79,7 +79,7 @@ public class IntroCinematic : MonoBehaviour
 		if ((gamepad != null && gamepad.buttonEast.wasPressedThisFrame) || Keyboard.current[Key.Escape].wasPressedThisFrame)
 		{
 			// Load the scene and deactivate the cinematic
-			LevelLoader.Instance.LoadLevel(FLOERA_LEVEL);
+			LevelLoader.Instance.LoadLevel(_sceneToLoad);
             // Deactivate the object to prevent unexpected behaviour
             gameObject.SetActive(false);
 		}

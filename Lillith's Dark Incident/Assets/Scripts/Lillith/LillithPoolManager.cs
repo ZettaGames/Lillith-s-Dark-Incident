@@ -3,13 +3,12 @@ using UnityEngine;
 
 public class LillithPoolManager : MonoBehaviour
 {
-	// ! Settings variables
 	[Header("Bullet Pool settings")]
 	[SerializeField] private GameObject _bulletPrefab;
 	[SerializeField] private int _bulletPoolSize;
 	private List<GameObject> _bulletPool = new List<GameObject>();
 
-	// ! Instance variable
+	// Singleton instance
 	private static LillithPoolManager _instance;
 	public static LillithPoolManager Instance { get { return _instance; } }
 
@@ -23,6 +22,12 @@ public class LillithPoolManager : MonoBehaviour
 		{
 			_instance = this;
 		}
+	}
+	
+	private void Start()
+	{
+		// Initialize the bullet pool with the desired amount of bullets.
+		NewBullet(_bulletPoolSize);
 	}
 
 	private void NewBullet(int amount)

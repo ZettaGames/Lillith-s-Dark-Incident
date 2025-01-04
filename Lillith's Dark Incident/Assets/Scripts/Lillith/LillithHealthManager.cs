@@ -1,69 +1,79 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(LillithController))]
+[RequireComponent(typeof(Rigidbody2D), typeof(LillithController))]
 public class LillithHealthManager : MonoBehaviour
 {
-	// ! Constants for the tags
-	private const string PLAYER_TAG = "Player";
+    // Constant of the menu scene
+    private const int MAIN_MENU = 2;
+
+    // Constant for the animator
+    private const string DEATH = "death";
+
+    // Constants for the tags and layers
+    private const string PLAYER = "Player";
+	private const string ENEMY = "Enemy";
+	private const string OBSTACLE = "Obstacle";
 	private const string UNTAGGED = "Untagged";
-	
-	// ! Constants for the shake
-	private const float SHAKE_INTENSITY = 0.1f;
+	private const string DEFAULT = "Default";
+
+    // Constants for the shake
+    private const float SCREEN_SHAKE = 0.1f;
 	private const float GAMEPAD_SHAKE = 0.5f;
 	private const float SHAKE_DURATION = 0.25f;
-	
-	// ! Colors for invulnerability
-	private readonly Color _traslucidColor = new Color(1, 1, 1, 0.75f);
-	private readonly Color _solidColor = new Color(1, 1, 1, 1);
-	
-	// ! Health variables
+
+	// Colors for invulnerability
+	private readonly Color _traslucid = new Color(1, 1, 1, 0.75f);
+	private readonly Color _solid = new Color(1, 1, 1, 1);
+
+	// Health variables
 	[Header("Health")]
 	[SerializeField] private int currentStars;
-	public int CurrentStars { get { return currentStars; } }
 	[SerializeField] private int _maxStars;
 	[SerializeField] private Image[] _stars;
+	public int CurrentStars { get { return currentStars; } }
 	private bool hasDied = false;
 
-    // ! Sprites variables
-    [Header("Sprites")]
+	// Sprites variables
+	[Header("Sprites")]
 	[SerializeField] private Sprite _fullStar;
 	[SerializeField] private Sprite _emptyStar;
 
-	// ! Damaging variables
+	// Damaging variables
 	[Header("Damaging")]
 	[SerializeField] private float _noControlTime;
 	[SerializeField] private float _invincibilityTime;
+	
+	[Header("Knockback")]
+	[SerializeField] private Vector2 _knockBackForce;
 
-	// ! Components variables
+	// Components variables
 	private Animator _animator;
+	private Rigidbody2D _rigidbody;
 	private LillithController _lillithController;
 
 	private void Start()
 	{
 		// Initialization of components
-        _animator = GetComponent<Animator>();
+		_animator = GetComponent<Animator>();
+		_rigidbody = GetComponent<Rigidbody2D>();
 		_lillithController = GetComponent<LillithController>();
-    }
-
-	private void Update()
-	{
-        // Kill the player if there are no stars left
-        if (currentStars <= 0)
-        {
-            if (!hasDied)
-            {
-                hasDied = true;
-                StartCoroutine(Death());
-            }
-        }
-
-        // Set the stars to the maximum amount
-        if (currentStars > _maxStars)
+		
+		// Set the stars to the maximum amount
+		if (currentStars > _maxStars)
 		{
 			currentStars = _maxStars;
+		}
+	}
+
+	private void Update()
+	{	
+		// Kill the player if there are no stars left
+		if (currentStars <= 0 && !hasDied)
+		{
+			hasDied = true;
+			StartCoroutine(Death());
 		}
 
 		for (int i = 0; i < _stars.Length; i++)
@@ -90,43 +100,41 @@ public class LillithHealthManager : MonoBehaviour
 		}
 	}
 
-	#region damaging_methods
-	public void TakeDamage()
+    #region damaging_methods
+    public void TakeDamage()
 	{
 		// Decrease the amount of stars
 		currentStars--;
 
-        // Apply the damaging effects
-        StartCoroutine(NoControl());
+		// Apply the damaging effects
+		StartCoroutine(NoControl());
 		StartCoroutine(Invincibility());
-		
+
 		// Shake the screen
-		ScreenShake.Instance.Shake(SHAKE_INTENSITY, SHAKE_DURATION);
-		
+		ScreenShake.Instance.Shake(SCREEN_SHAKE, SHAKE_DURATION);
 		// Shake the gamepad
-		StartCoroutine(ShakeGamepad(GAMEPAD_SHAKE, GAMEPAD_SHAKE, SHAKE_DURATION));
+		_lillithController.ShakeGamepad(GAMEPAD_SHAKE, GAMEPAD_SHAKE, SHAKE_DURATION);
 	}
 
 	private IEnumerator NoControl()
 	{
-        // Disable the player's movement
-        _lillithController.CanMove = false;
-
+		// Disable the player's movement
+		_lillithController.CanMove = false;
 		// Wait for a certain amount of time
 		yield return new WaitForSeconds(_noControlTime);
-
 		// Enable the player's movement
 		_lillithController.CanMove = true;
 	}
 
 	private IEnumerator Invincibility()
 	{
-        // Make the player traslucid and untargetable
-        GetComponent<SpriteRenderer>().color = _traslucidColor;
+		// Make the player traslucid and untargetable
+		GetComponent<SpriteRenderer>().color = _traslucid;
 		gameObject.tag = UNTAGGED;
-		gameObject.layer = LayerMask.NameToLayer("Default");
+		gameObject.layer = LayerMask.NameToLayer(DEFAULT);
 
-		float elapsedTime = 0.0f; // Elapsed time since the invincibility started
+        // Elapsed time since the invincibility started
+        float elapsedTime = 0.0f;
 
 		// Loop until the invincibility time is over
 		while (elapsedTime < _invincibilityTime)
@@ -140,50 +148,64 @@ public class LillithHealthManager : MonoBehaviour
 		}
 
 		// Make the player solid and targetable
-		GetComponent<SpriteRenderer>().color = _solidColor;
-		gameObject.tag = PLAYER_TAG;
-        gameObject.layer = LayerMask.NameToLayer("Player");
-    }
-	
-	private IEnumerator ShakeGamepad(float lowFreqIntensity, float highFreqIntensity, float duration)
-	{
-		// Check if there is a gamepad connected
-		if (Gamepad.current != null)
-		{
-			// Shake the gamepad for a certain amount of time
-			Gamepad.current.SetMotorSpeeds(lowFreqIntensity, highFreqIntensity);
-			yield return new WaitForSeconds(duration);
-			Gamepad.current.SetMotorSpeeds(0.0f, 0.0f);
-		}
+		GetComponent<SpriteRenderer>().color = _solid;
+		gameObject.tag = PLAYER;
+		gameObject.layer = LayerMask.NameToLayer(PLAYER);
 	}
-	#endregion
+	
+	private void KnockBack(Vector2 hitPoint)
+	{
+		// Move the player from the hit point
+		Vector2 direction = (Vector2.zero - hitPoint).normalized;
+		_rigidbody.velocity = direction * _knockBackForce;
+	}
 
 	private IEnumerator Death()
 	{
-		GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1f);
+        // Make the player solid
+        GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1f);
 
-        Debug.Log("Before pausing the game");
+        // Stop the game
         LocalTime.TimeScale = 0.0f;
 
-        Debug.Log("Before deactivating the collider");
+        // Prevent more collisions
         GetComponent<CircleCollider2D>().enabled = false;
+		yield return new WaitForSeconds(0.25f);
 
-		Debug.Log("Before waiting for 2 seconds");
-        yield return new WaitForSeconds(1.5f);
+        // Play the death animation
+        _animator.SetTrigger(DEATH);
+		yield return new WaitForSeconds(1.5f);
 
-        Debug.Log("Before playing the death animation");
-        _animator.SetTrigger("death");
+        // Load the main menu and resume the game
+        LevelLoader.Instance.LoadLevel(MAIN_MENU);
+		yield return new WaitForSeconds(1.2f);
+		LocalTime.TimeScale = 1.0f;
+	}
+    #endregion
 
-        Debug.Log("Before waiting for 3.5 seconds");
-        yield return new WaitForSeconds(2.5f);
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // Check if the player collided with an enemy
+        if ((collision.collider.CompareTag(ENEMY) || collision.collider.CompareTag(OBSTACLE)) && gameObject.CompareTag(PLAYER))
+        {
+            TakeDamage();
+            KnockBack(collision.collider.transform.position);
+        }
+    }
 
-        Debug.Log("Before loading the level");
-        LevelLoader.Instance.LoadLevel(2);
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        // Check if the player collided with an enemy
+        if ((other.CompareTag(ENEMY) || other.CompareTag(OBSTACLE)) && gameObject.CompareTag(PLAYER))
+        {
+            TakeDamage();
+            KnockBack(other.transform.position);
+        }
+    }
 
-		Debug.Log("Before waiting for 1 second");
-        yield return new WaitForSeconds(1.2f);
-
-        Debug.Log("Before setting the time scale to 1");
-        LocalTime.TimeScale = 1.0f;
+    private void OnParticleCollision(GameObject other)
+    {
+        TakeDamage();
+        KnockBack(other.transform.position);
     }
 }

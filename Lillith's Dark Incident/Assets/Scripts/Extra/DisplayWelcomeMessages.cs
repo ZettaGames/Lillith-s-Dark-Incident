@@ -21,8 +21,9 @@ public class DisplayWelcomeMessages : MonoBehaviour
 		VoiceMessage,
 		DannyMessage,
 		VencesMessage,
-        MemeMessage
-    }
+		MemeMessage,
+		AriMessage
+	}
 
 	private void Start()
 	{
@@ -34,7 +35,7 @@ public class DisplayWelcomeMessages : MonoBehaviour
 	{
 		yield return new WaitForSeconds(0.75f);
 
-        if (_randomTen != 10)
+		if (_randomTen != 10)
 		{
 			_welcomeMessage.text = GetRandomWelcomeMessage();
 		}
@@ -62,7 +63,7 @@ public class DisplayWelcomeMessages : MonoBehaviour
 
 	private string GetRandomWelcomeMessage()
 	{
-		var randomMessage = (WelcomeMessages)Random.Range(0, 13);
+		var randomMessage = (WelcomeMessages)Random.Range(0, 14);
 		switch (randomMessage)
 		{
 			case WelcomeMessages.HowdyMessage:
@@ -85,13 +86,15 @@ public class DisplayWelcomeMessages : MonoBehaviour
 				return "Imajine writin porperli, wat a dreem.";
 			case WelcomeMessages.VoiceMessage:
 				return "I swear the VA was treated humanely... kinda.";
-			case WelcomeMessages.DannyMessage: // From: Danny Hernández
+			case WelcomeMessages.DannyMessage: // From: Danny Hernandez
 				return "If life gives you lemons, drop out of the career.";
 			case WelcomeMessages.VencesMessage:
 				return "Pending message, Vences not working.";
-			case WelcomeMessages.MemeMessage:
-                return "IS THAT A LILLITH REFERENCE?!?!?!"; // From: Meme4K 
-            default:
+			case WelcomeMessages.MemeMessage: // From: Meme4K
+				return "I S   T H A T   A   L I L L I T H   R E F E R E N C E ? ! ? ! ? !"; // From: Meme4K
+			case WelcomeMessages.AriMessage: // From: AriMichito
+				return "Error, brain ain't braining. Please try again later. ^w^";
+			default:
 				return "Is even possible to get here?";
 		}
 	}
