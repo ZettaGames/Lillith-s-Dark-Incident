@@ -15,7 +15,7 @@ public class PassEnemyBehaviour : MonoBehaviour
     private float _speed = 1.25f;
     private float _moveTime = 3.0f;
     private float _stopTime = 1.5f;
-    private float _stopChance = 0.75f;
+    private float _stopChance = 0.5f;
     private bool _isMoving = true;
 
     // Bullet Spawner Component

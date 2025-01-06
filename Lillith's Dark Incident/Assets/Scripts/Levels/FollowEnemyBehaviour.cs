@@ -10,12 +10,14 @@ public class FollowEnemyBehaviour : MonoBehaviour
     private const string SUPER = "Super";
 
     // Enemy Settings
-    private int _health = 10;
-    private float _speed = 1.75f;
+    [Header("Enemy Settings")]
+    [SerializeField] private int _health = 10;
+    [SerializeField] private float _speed = 1.75f;
 
     // Follow Settings
-    private float _followTime = 5.5f;
-    private float _followRadius = 3.5f;
+    [Header("Follow Settings")]
+    [SerializeField] private float _followTime = 5.5f;
+    [SerializeField] private float _followRadius = 3.5f;
     private float _followTimer = 0.0f;
     private Transform _followTarget;
 

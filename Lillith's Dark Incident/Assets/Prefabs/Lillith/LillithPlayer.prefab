@@ -32,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 4658964938735743434}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -4, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -218,7 +218,15 @@ MonoBehaviour:
   _moveSpeed: 10
   _smoothMove: 0.1
   _shootCooldown: 0.045
-  _knockBackForce: {x: -3.5, y: -3.5}
+  _superAttack: {fileID: 0}
+  _superCooldown: 0
+  _superText: {fileID: 0}
+  _superIcon: {fileID: 0}
+  _shield: {fileID: 0}
+  _shieldDuration: 0
+  _shieldCooldown: 0
+  _shieldText: {fileID: 0}
+  _shieldIcon: {fileID: 0}
 --- !u!114 &1404820849065696316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -248,3 +256,4 @@ MonoBehaviour:
   _emptyStar: {fileID: 21300000, guid: 10fccc2a05678404485f024b2e185506, type: 3}
   _noControlTime: 0.25
   _invincibilityTime: 1.5
+  _knockBackForce: {x: 0, y: 0}
