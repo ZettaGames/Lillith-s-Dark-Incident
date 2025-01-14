@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SpawnerFollowEnemy : SpawnerGeneric
@@ -9,6 +8,7 @@ public class SpawnerFollowEnemy : SpawnerGeneric
         StartCoroutine(SpawnWaveCoroutine(delay, amount));
     }
 
+    // Spawns a wave of enemies with a delay between each spawn
     private IEnumerator SpawnWaveCoroutine(float delay, int amount)
     {
         for (int i = 0; i < amount; i++)
