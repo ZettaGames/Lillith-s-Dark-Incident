@@ -29,37 +29,67 @@ public class FloeraLevelManager : MonoBehaviour
     // Pass Enemies
     private float _passEnemyTime;
 
+    // Coroutines
+    private Coroutine _obstacleCoroutine;
+    private Coroutine _followEnemyCoroutine;
+    private Coroutine _passEnemyCoroutine;
+
     private void Start()
     {
+        // Coroutines assignment
+
         StartCoroutine(LevelFlow());
     }
 
     private IEnumerator LevelFlow()
     {
+        Debug.Log("Phase 1 started");
+
         _isPhase1 = true;
         // 40% chance of spawning obstacles
-        StartCoroutine(SpawnObstacles(_obsProbabilityP1));
+        _obstacleCoroutine = StartCoroutine(SpawnObstacles(_obsProbabilityP1));
         // 3 follow enemies with 0.2s delay between each spawn
-        StartCoroutine(SpawnFollowEnemies(_followEnemyDelayP1, _followEnemyAmountP1));
+        _followEnemyCoroutine = StartCoroutine(SpawnFollowEnemies(_followEnemyDelayP1, _followEnemyAmountP1));
         // 1 pass enemy every random 2-5 seconds
-        StartCoroutine(SpawnPassEnemies(_passEnemyTime));
+        _passEnemyCoroutine = StartCoroutine(SpawnPassEnemies(_passEnemyTime));
         // Wait for phase 1 to end
         yield return new WaitForSeconds(_phase1Duration);
+        _isPhase1 = false;
 
         // Stop all coroutines from phase 1
-        StopCoroutine(SpawnObstacles(_obsProbabilityP1));
-        StopCoroutine(SpawnFollowEnemies(_followEnemyDelayP1, _followEnemyAmountP1));
-        StopCoroutine(SpawnPassEnemies(_passEnemyTime));
+        StopCoroutine(_obstacleCoroutine);
+        StopCoroutine(_followEnemyCoroutine);
+        StopCoroutine(_passEnemyCoroutine);
 
         Debug.Log("Phase 1 ended");
+
+        Debug.Log("Phase 2 started");
+
+        _isPhase2 = true;
+        // 60% chance of spawning obstacles
+         _obstacleCoroutine = StartCoroutine(SpawnObstacles(_obsProbabilityP2));
+        // 4 follow enemies with 0.1s delay between each spawn
+        _followEnemyCoroutine = StartCoroutine(SpawnFollowEnemies(_followEnemyDelayP2, _followEnemyAmountP2));
+        // 1 pass enemy every random 2-5 seconds
+        _passEnemyCoroutine = StartCoroutine(SpawnPassEnemies(_passEnemyTime));
+        // Wait for phase 2 to end
+        yield return new WaitForSeconds(_phase2Duration);
+        _isPhase2 = false;
+
+        // Stop all coroutines from phase 2
+        StopCoroutine(_obstacleCoroutine);
+        StopCoroutine(_followEnemyCoroutine);
+        StopCoroutine(_passEnemyCoroutine);
+
+        Debug.Log("Phase 2 ended");
     }
 
     private IEnumerator SpawnObstacles(float probability)
     {
         while (_isPhase1 || _isPhase2)
         {
-            // Repeat the process every 5-7.5 seconds
-            _obsTime = Random.Range(2.5f, 5.5f);
+            // Repeat the process every 1.5-3.5 seconds
+            _obsTime = Random.Range(1.5f, 3.5f);
             _obstacleSpawner.TrySpawn(probability);
             yield return new WaitForSeconds(_obsTime);
         }

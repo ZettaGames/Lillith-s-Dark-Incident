@@ -8,6 +8,7 @@ public class FollowEnemyBehaviour : MonoBehaviour
     private const string BULLET_TAG = "Bullet";
     private const string NO_COLLISION = "NoCollision";
     private const string SUPER = "Super";
+    private const string CHECK = "Check";
 
     // Enemy Settings
     [Header("Enemy Settings")]
@@ -21,14 +22,24 @@ public class FollowEnemyBehaviour : MonoBehaviour
     private float _followTimer = 0.0f;
     private Transform _followTarget;
 
+    // Avoidance Settings
+    [Header("Avoidance Settings")]
+    [SerializeField] private float _avoidanceRadius = 1.5f;
+
     // Bullet Spawner Component
     private BulletSystem _bulletSystem;
+
+    private void Awake()
+    {
+        // Set the target from the player layer
+        _followTarget = GameObject.FindObjectOfType<LillithController>().transform;
+    }
 
     private void Start()
     {
         // Initialization of the bullet system
         _bulletSystem = GetComponent<BulletSystem>();
-        _followTarget = _bulletSystem.Target;
+        _bulletSystem.Target = _followTarget;
         _bulletSystem.StartSpawner();
     }
 
@@ -65,7 +76,7 @@ public class FollowEnemyBehaviour : MonoBehaviour
         Vector3 direction = _followTarget.position - transform.position;
         float distance = direction.magnitude;
         // Tolerance for the distance to avoid jittering
-        float epsilon = 0.01f;
+        float epsilon = 0.05f;
 
         // Move the enemy based on the distance to the target
         if (distance > _followRadius + epsilon)
@@ -80,6 +91,9 @@ public class FollowEnemyBehaviour : MonoBehaviour
             Vector3 moveDirection = -direction.normalized * _speed * Time.deltaTime;
             transform.position += moveDirection;
         }
+
+        // Avoid other enemies
+        AvoidOtherEnemies();
     }
 
     private IEnumerator TakeDamage()
@@ -100,6 +114,30 @@ public class FollowEnemyBehaviour : MonoBehaviour
             gameObject.tag = NO_COLLISION;
             GetComponent<BoxCollider2D>().isTrigger = true;
             GetComponent<SpriteRenderer>().enabled = false;
+        }
+    }
+
+
+    private void AvoidOtherEnemies()
+    {
+        // Find all enemies in the scene
+        FollowEnemyBehaviour[] enemies = FindObjectsOfType<FollowEnemyBehaviour>();
+
+        foreach (var enemy in enemies)
+        {
+            // Skip self
+            if (enemy == this) continue;
+
+            // Calculate the distance to the other enemy
+            Vector3 directionToEnemy = enemy.transform.position - transform.position;
+            float distanceToEnemy = directionToEnemy.magnitude;
+
+            // If the other enemy is within the avoidance radius, move away
+            if (distanceToEnemy < _avoidanceRadius)
+            {
+                Vector3 moveDirection = -directionToEnemy.normalized * _speed * Time.deltaTime;
+                transform.position += moveDirection;
+            }
         }
     }
 
@@ -144,6 +182,12 @@ public class FollowEnemyBehaviour : MonoBehaviour
         {
             _health = 1;
             StartCoroutine(TakeDamage());
+        }
+
+        // Deactive trigger collision if collides with check
+        if (collision.CompareTag(CHECK))
+        {
+            GetComponent<BoxCollider2D>().isTrigger = false;
         }
     }
 }
