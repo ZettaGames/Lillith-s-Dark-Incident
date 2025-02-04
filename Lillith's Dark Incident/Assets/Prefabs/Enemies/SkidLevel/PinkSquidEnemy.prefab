@@ -198,6 +198,7 @@ MonoBehaviour:
   _speed: 2
   _followTime: 5.5
   _followRadius: 3.5
+  _avoidanceRadius: 1.5
 --- !u!114 &5003081939577590965
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,6 +219,7 @@ MonoBehaviour:
   _collisionMask:
     serializedVersion: 2
     m_Bits: 72
+  _bulletsTag: Ink
   _lifeLoss: 1
   _bulletSpeed: 5
   _bulletLifeTime: 10

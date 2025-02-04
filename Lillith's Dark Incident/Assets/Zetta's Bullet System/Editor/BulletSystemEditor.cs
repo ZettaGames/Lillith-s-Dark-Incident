@@ -13,6 +13,7 @@ public class BulletSystemEditor : Editor
     // Collision Detection
     private SerializedProperty _useCollision;
     private SerializedProperty _collisionMask;
+    private SerializedProperty _bulletsTag;
     private SerializedProperty _lifeLoss;
 
     // Bullet Configurations
@@ -52,6 +53,7 @@ public class BulletSystemEditor : Editor
         // Collision Detection
         _useCollision = serializedObject.FindProperty("_useCollision");
         _collisionMask = serializedObject.FindProperty("_collisionMask");
+        _bulletsTag = serializedObject.FindProperty("_bulletsTag");
         _lifeLoss = serializedObject.FindProperty("_lifeLoss");
 
         // Bullet Configurations
@@ -113,6 +115,13 @@ public class BulletSystemEditor : Editor
         if (bulletSystem.UseCollision)
         {
             EditorGUILayout.PropertyField(_collisionMask, GUIContent.none);
+        }
+        GUILayout.EndHorizontal();
+
+        GUILayout.BeginHorizontal();
+        if (bulletSystem.UseCollision)
+        {
+            EditorGUILayout.PropertyField(_bulletsTag, new GUIContent("Bullets Tag:", "The tag that the bullets will have."));
         }
         GUILayout.EndHorizontal();
 

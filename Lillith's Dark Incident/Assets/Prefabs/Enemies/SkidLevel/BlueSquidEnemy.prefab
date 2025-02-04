@@ -214,6 +214,7 @@ MonoBehaviour:
   _collisionMask:
     serializedVersion: 2
     m_Bits: 72
+  _bulletsTag: Ink
   _lifeLoss: 1
   _bulletSpeed: 5
   _bulletLifeTime: 10

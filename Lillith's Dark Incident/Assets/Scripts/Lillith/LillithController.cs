@@ -12,13 +12,13 @@ public class LillithController : MonoBehaviour
 	private const string SPEED = "xSpeed";
 	private const string BREAK = "Break";
 
-    // Constants for the input actions
-    private const string MOVE = "Move";
+	// Constants for the input actions
+	private const string MOVE = "Move";
 	private const string SHOOT = "Shoot";
 	private const string SUPER = "Super";
 	private const string SHIELD = "Shield";
 
-    [Header("Movement")]
+	[Header("Movement")]
 	// Movement variables
 	[SerializeField] private float _moveSpeed;
 	[SerializeField, Range(0.05f, 0.15f)] private float _smoothMove;
@@ -35,25 +35,25 @@ public class LillithController : MonoBehaviour
 
 	[Header("Super Attack")]
 	[SerializeField] private GameObject _superAttack;
-    [SerializeField] private float _superCooldown;
-    private float _superTimer;
+	[SerializeField] private float _superCooldown;
+	private float _superTimer;
 
 	[Header("Super UI")]
-    [SerializeField] private TMP_Text _superText;
+	[SerializeField] private TMP_Text _superText;
 	[SerializeField] private Image _superIcon;
 
-    [Header("Shield")]
-    [SerializeField] private GameObject _shield;
-    [SerializeField] private float _shieldDuration;
-    [SerializeField] private float _shieldCooldown;
-    private float _shieldTimer;
+	[Header("Shield")]
+	[SerializeField] private GameObject _shield;
+	[SerializeField] private float _shieldDuration;
+	[SerializeField] private float _shieldCooldown;
+	private float _shieldTimer;
 
 	[Header("Shield UI")]
-    [SerializeField] private TMP_Text _shieldText;
-    [SerializeField] private Image _shieldIcon;
+	[SerializeField] private TMP_Text _shieldText;
+	[SerializeField] private Image _shieldIcon;
 
-    // Unity components
-    private Rigidbody2D _rigidbody;
+	// Unity components
+	private Rigidbody2D _rigidbody;
 	private PlayerInput _playerInput;
 	private Animator _animator;
 	#endregion
@@ -66,42 +66,42 @@ public class LillithController : MonoBehaviour
 		_playerInput = GetComponent<PlayerInput>();
 		_animator = GetComponent<Animator>();
 
-        // Hability cooldowns
-        _shootTimer = _shootCooldown;
-        _superTimer = _superCooldown;
-        _shieldTimer = _shieldCooldown;
-    }
+		// Hability cooldowns
+		_shootTimer = _shootCooldown;
+		_superTimer = _superCooldown;
+		_shieldTimer = _shieldCooldown;
+	}
 
-    private void Update()
+	private void Update()
 	{
 		// Update the animator
 		_animator.SetFloat(SPEED, _input.x);
 
-        // Update the UI for Super Attack
-        if (_superTimer >= _superCooldown)
-        {
-            _superText.text = ": Ready";
-            _superIcon.color = Color.white;
-        }
-        else
-        {
-            _superText.text = $": {(int)(_superCooldown - _superTimer)} s";
-            _superIcon.color = Color.grey;
-        }
+		// Update the UI for Super Attack
+		if (_superTimer >= _superCooldown)
+		{
+			_superText.text = ": Ready";
+			_superIcon.color = Color.white;
+		}
+		else
+		{
+			_superText.text = $": {(int)(_superCooldown - _superTimer)} s";
+			_superIcon.color = Color.grey;
+		}
 
-        // Update the UI for Shield
-        if (_shieldTimer >= _shieldCooldown)
-        {
-            _shieldText.text = ": Ready";
-            _shieldIcon.color = Color.white;
-        }
-        else
-        {
-            _shieldText.text = $": {(int)(_shieldCooldown - _shieldTimer)} s";
-            _shieldIcon.color = Color.grey;
-        }
+		// Update the UI for Shield
+		if (_shieldTimer >= _shieldCooldown)
+		{
+			_shieldText.text = ": Ready";
+			_shieldIcon.color = Color.white;
+		}
+		else
+		{
+			_shieldText.text = $": {(int)(_shieldCooldown - _shieldTimer)} s";
+			_shieldIcon.color = Color.grey;
+		}
 
-        if (LocalTime.TimeScale > 0.0f)
+		if (LocalTime.TimeScale > 0.0f && CanMove)
 		{
 			// Shoot
 			_shootTimer += Time.deltaTime;
@@ -110,15 +110,15 @@ public class LillithController : MonoBehaviour
 			// Read input
 			ReadInput();
 
-            // Super shoot
-            _superTimer += Time.deltaTime;
-            SuperShoot();
+			// Super shoot
+			_superTimer += Time.deltaTime;
+			SuperShoot();
 
-            // Shield
-            _shieldTimer += Time.deltaTime;
-            BubbleShield();
-        }
-    }
+			// Shield
+			_shieldTimer += Time.deltaTime;
+			BubbleShield();
+		}
+	}
 
 	private void FixedUpdate()
 	{
@@ -136,8 +136,8 @@ public class LillithController : MonoBehaviour
 		_input = _playerInput.actions[MOVE].ReadValue<Vector2>().normalized;
 	}
 
-    #region lillith_actions
-    private void Move()
+	#region lillith_actions
+	private void Move()
 	{
 		// Smooth the input
 		_fixedInput = Vector2.SmoothDamp(_fixedInput, _input, ref _velocity, _smoothMove);
@@ -164,46 +164,68 @@ public class LillithController : MonoBehaviour
 	{
 		if (_playerInput.actions[SUPER].IsPressed() && _superTimer >= _superCooldown)
 		{
-            // Reset the timer
-            _superTimer = 0f;
+			// Reset the timer
+			_superTimer = 0f;
 
-            // Launch the player backwards and shoot the super attack
-            StartCoroutine(Super());
-        }
-    }
+			// Launch the player backwards and shoot the super attack
+			StartCoroutine(Super());
+		}
+	}
 
-    private void BubbleShield()
-    {
-        if (_playerInput.actions[SHIELD].IsPressed() && _shieldTimer >= _shieldCooldown)
-        {
-            // Reset the timer
-            _shieldTimer = 0f;
+	private void BubbleShield()
+	{
+		if (_playerInput.actions[SHIELD].IsPressed() && _shieldTimer >= _shieldCooldown)
+		{
+			// Reset the timer
+			_shieldTimer = 0f;
 
-            // Create the shield
-            StartCoroutine(Bubble());
-        }
-    }
-    #endregion
+			// Create the shield
+			StartCoroutine(Bubble());
+		}
+	}
 
 	private IEnumerator Super()
 	{
 		CanMove = false;
 		_rigidbody.velocity = Vector2.down * 2.5f;
 		ShakeGamepad(0.25f, 0.25f, 0.25f);
-        Instantiate(_superAttack, transform.position, Quaternion.identity);
-        yield return new WaitForSeconds(0.3f);
-        CanMove = true;
-    }
+		Instantiate(_superAttack, transform.position, Quaternion.identity);
+		yield return new WaitForSeconds(0.3f);
+		CanMove = true;
+	}
 
 	private IEnumerator Bubble()
 	{
-        CanMove = false;
+		CanMove = false;
+		_rigidbody.velocity = Vector2.zero;
+		var bubble = Instantiate(_shield, transform.position, Quaternion.identity);
+		bubble.transform.parent = transform;
+		yield return new WaitForSeconds(0.3f);
+		CanMove = true;
+		GetComponentInChildren<LillithShield>().Break(_shieldDuration, BREAK);
+	}
+	#endregion
+
+	// Return the player to the initial position
+	public void ReturnToStart()
+	{
+		StartCoroutine(ReturnPlayer());
+	}
+
+    private IEnumerator ReturnPlayer()
+    {
+        // Start position
+        var startPosition = new Vector3(0f, -4f, 0f);
+
+        // Stop the player
         _rigidbody.velocity = Vector2.zero;
-        var bubble = Instantiate(_shield, transform.position, Quaternion.identity);
-        bubble.transform.parent = transform;
-        yield return new WaitForSeconds(0.3f);
-        CanMove = true;
-        GetComponentInChildren<LillithShield>().Break(_shieldDuration, BREAK);
+
+        // Smoothly return the player to the initial position
+        while (Vector2.Distance(transform.position, startPosition) > 0.1f)
+        {
+            transform.position = Vector2.Lerp(transform.position, startPosition, 0.05f);
+            yield return null;
+        }
     }
 
     #region gamepad_shake

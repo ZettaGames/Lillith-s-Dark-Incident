@@ -219,6 +219,9 @@ MonoBehaviour:
   _collisionMask:
     serializedVersion: 2
     m_Bits: 72
+  _bulletsLayer:
+    serializedVersion: 2
+    m_Bits: 0
   _lifeLoss: 1
   _bulletSpeed: 5.5
   _bulletLifeTime: 10
@@ -229,7 +232,7 @@ MonoBehaviour:
   _numberOfColumns: 0
   _fireRate: 0.9
   _spinSpeed: 0
-  _followRefreshRate: 0.05
+  _followRefreshRate: 0.2
   _target: {fileID: 0}
   _useReversedSpiral: 0
   _numberOfSides: 0

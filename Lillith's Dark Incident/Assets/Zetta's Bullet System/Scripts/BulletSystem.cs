@@ -14,6 +14,7 @@ public class BulletSystem : MonoBehaviour
     // Collision Detection
     [SerializeField] private bool _useCollision;
     [SerializeField] private LayerMask _collisionMask;
+    [SerializeField] private string _bulletsTag;
     [SerializeField, Range(0.0f, 1f)] private float _lifeLoss;
 
     // Bullet Configurations
@@ -126,6 +127,15 @@ public class BulletSystem : MonoBehaviour
     {
         get => _collisionMask;
         set => _collisionMask = value;
+    }
+
+    /// <summary>
+    /// The tag that the bullets will have. Leave empty for no tag.
+    /// </summary>
+    public string BulletsTag
+    {
+        get => _bulletsTag;
+        set => _bulletsTag = value;
     }
 
     /// <summary>
@@ -329,7 +339,10 @@ public class BulletSystem : MonoBehaviour
         // Change the name of the spawners to stop them
         foreach (Transform spawner in transform)
         {
-            spawner.name = "Stopped";
+            if (spawner.childCount != 0)
+            {
+                spawner.name = "Stopped";
+            }
         }
 
         CancelInvoke("Shoot");
@@ -368,12 +381,15 @@ public class BulletSystem : MonoBehaviour
         }
     }
 
-    // Kills all spawners instantly
+    // Kills all spawners instantly if the spawner is stopped.
     public void InstantKill()
     {
         foreach (Transform spawner in transform)
         {
-            Destroy(spawner.gameObject);
+            if (spawner.name == "Stopped")
+            {
+                Destroy(spawner.gameObject);
+            }
         }
     }
 
@@ -625,6 +641,13 @@ public class BulletSystem : MonoBehaviour
                 collision.collidesWith = _collisionMask;
                 collision.lifetimeLoss = _lifeLoss;
                 collision.sendCollisionMessages = true;
+
+                // Set the tag
+                if (_bulletsTag == string.Empty)
+                {
+                    _bulletsTag = "Untagged";
+                }
+                container.tag = _bulletsTag;
             }
         }
 

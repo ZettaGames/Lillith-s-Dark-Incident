@@ -13,6 +13,7 @@ TagManager:
   - Super
   - SuperPool
   - Check
+  - Ink
   layers:
   - Default
   - TransparentFX
@@ -22,7 +23,7 @@ TagManager:
   - UI
   - Bubble
   - Top
-  - 
+  - Ink
   - 
   - 
   - 

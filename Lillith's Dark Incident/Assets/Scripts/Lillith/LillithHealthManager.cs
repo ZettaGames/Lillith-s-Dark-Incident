@@ -17,6 +17,7 @@ public class LillithHealthManager : MonoBehaviour
 	private const string OBSTACLE = "Obstacle";
 	private const string UNTAGGED = "Untagged";
 	private const string DEFAULT = "Default";
+	private const string INK = "Ink";
 
     // Constants for the shake
     private const float SCREEN_SHAKE = 0.1f;
@@ -205,7 +206,14 @@ public class LillithHealthManager : MonoBehaviour
 
     private void OnParticleCollision(GameObject other)
     {
-        TakeDamage();
-        KnockBack(other.transform.position);
+		if (other.CompareTag(INK) && gameObject.CompareTag(PLAYER))
+		{
+			InkManager.Instance.ShowInkSpot();
+        }
+		else
+		{
+			TakeDamage();
+			KnockBack(other.transform.position);
+		}
     }
 }
