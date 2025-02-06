@@ -43,6 +43,9 @@ public class InkManager : MonoBehaviour
 
     private IEnumerator FadeOutInk(SpriteRenderer spriteRenderer, GameObject inkSpot)
     {
+        // Wait a bit before fading out
+        yield return new WaitForSeconds(5f);
+
         // Smoothly fade out the ink spot
         Color color = spriteRenderer.color;
         while (color.a > 0)

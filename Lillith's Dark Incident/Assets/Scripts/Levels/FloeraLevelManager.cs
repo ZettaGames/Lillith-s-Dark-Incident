@@ -11,6 +11,7 @@ public class FloeraLevelManager : MonoBehaviour
     [SerializeField] private SpawnerPassEnemy _passEnemySpawner;
 
     // Phases
+    [Header("Phases Settings")]
     [SerializeField] private float _phase1Duration;
     [SerializeField] private float _phase2Duration;
     [SerializeField] private TMP_Text _levelTime;
@@ -73,7 +74,9 @@ public class FloeraLevelManager : MonoBehaviour
     private void Update()
     {
         // Update the level time
-        _levelTime.text = $"Time: {Mathf.Round(_totalTime)}s";
+        int minutes = Mathf.FloorToInt(_totalTime / 60F);
+        int seconds = Mathf.FloorToInt(_totalTime % 60F);
+        _levelTime.text = $"Time: {minutes:00}:{seconds:00}";
         _totalTime -= Time.deltaTime * LocalTime.TimeScale;
         // Update the level phase
         if (_isPhase1)
@@ -87,7 +90,7 @@ public class FloeraLevelManager : MonoBehaviour
 
         if (_totalTime <= 0)
         {
-            _levelTime.text = "00:00!";
+            _levelTime.text = "Time: 00:00!";
             _levelPhase.text = "Extra Time";
         }
 

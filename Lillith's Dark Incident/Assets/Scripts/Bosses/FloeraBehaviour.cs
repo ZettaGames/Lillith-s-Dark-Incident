@@ -28,7 +28,6 @@ public class FloeraBehaviour : BossGeneric
 
     private Vector3 _leftside = new Vector3(-3, 0, 0);
     private Vector3 _rightSide = new Vector3(3, 0, 0);
-    private Vector3 _center = Vector3.zero;
 
     private int _timesToMove;
     private string _sideString;
@@ -87,7 +86,7 @@ public class FloeraBehaviour : BossGeneric
                     _bulletSystem.StopSpawner();
 
                     // Set the times the boss will move
-                    _timesToMove = Random.Range(3, 6);
+                    _timesToMove = Random.Range(1, 3);
 
                     // Set the bullet system
                     SetBulletMove();
@@ -190,7 +189,7 @@ public class FloeraBehaviour : BossGeneric
     {
         // Hide the boss
         _animator.SetTrigger(HIDE);
-        yield return new WaitForSeconds(1.75f);
+        yield return new WaitForSeconds(2f);
 
         // Go to the i position and start the bullet system
         for (int i = 0; i < 4; i++)
@@ -218,9 +217,9 @@ public class FloeraBehaviour : BossGeneric
 
         // Return to the start position
         _animator.SetTrigger(HIDE);
-        yield return new WaitForSeconds(1.75f);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(2f);
         MoveToDestination(new Vector3(0, 3, 0), 0.25f);
+        yield return new WaitForSeconds(0.5f);
         _bulletSystem.InstantKill();
         _animator.SetTrigger(ARISE);
         yield return new WaitForSeconds(1.5f);
@@ -246,7 +245,7 @@ public class FloeraBehaviour : BossGeneric
     {
         // Hide the boss and move it to the center
         _animator.SetTrigger(HIDE);
-        yield return new WaitForSeconds(1.75f);
+        yield return new WaitForSeconds(2f);
         MoveToDestination(Vector3.zero, 0.25f);
         yield return new WaitForSeconds(0.5f);
         _animator.SetTrigger(ARISE);
@@ -261,8 +260,9 @@ public class FloeraBehaviour : BossGeneric
 
         // Return to the center
         _animator.SetTrigger(HIDE);
-        yield return new WaitForSeconds(1.75f);
+        yield return new WaitForSeconds(2f);
         MoveToDestination(new Vector3(0, 3, 0), 0.25f);
+        yield return new WaitForSeconds(0.5f);
         _animator.SetTrigger(ARISE);
         yield return new WaitForSeconds(1.5f);
 
@@ -293,6 +293,12 @@ public class FloeraBehaviour : BossGeneric
         _animator.SetBool(DEATH, true);
         yield return new WaitForSeconds(2.2f);
 
+        // Check if the dead animation is over
+        while (_animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1)
+        {
+            yield return null;
+        }
+
         // Stop the animator
         _animator.enabled = false;
 
@@ -310,8 +316,8 @@ public class FloeraBehaviour : BossGeneric
         _bulletSystem.BulletSpeed = 6;
         _bulletSystem.NumberOfSides = 6;
         _bulletSystem.DotsPerSide = 4;
-        _bulletSystem.FireRate = 0.8f;
-        _bulletSystem.SpinSpeed = 100;
+        _bulletSystem.FireRate = 0.65f;
+        _bulletSystem.SpinSpeed = 150;
     }
 
     private void SetBulletTrap()

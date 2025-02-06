@@ -326,7 +326,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -125, y: 950}
+  m_AnchoredPosition: {x: -70, y: 950}
   m_SizeDelta: {x: 400, y: 100}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &149145502
@@ -349,7 +349,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Time: 00'
+  m_text: 'Time: 00:00!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 143394ee11784e1419a9fc6833244692, type: 2}
   m_sharedMaterial: {fileID: 7391338158441626989, guid: 143394ee11784e1419a9fc6833244692, type: 2}
@@ -3327,8 +3327,8 @@ MonoBehaviour:
   _obstacleSpawner: {fileID: 162682836}
   _followEnemySpawner: {fileID: 162682840}
   _passEnemySpawner: {fileID: 162682839}
-  _phase1Duration: 1
-  _phase2Duration: 1
+  _phase1Duration: 90
+  _phase2Duration: 90
   _levelTime: {fileID: 149145502}
   _levelPhase: {fileID: 2101077306}
   _grass: {fileID: 196299360}
@@ -3352,7 +3352,7 @@ Transform:
   m_GameObject: {fileID: 887275661}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.1785629, y: 2.2865434, z: -0.11643181}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5471,9 +5471,9 @@ MonoBehaviour:
   _stateText: {fileID: 2101077306}
   _timeBetweenAttacks: 15
   _attacksPropabilities:
-  - 0.4
-  - 0.3
-  - 0.3
+  - 0.6
+  - 0.25
+  - 0.15
   _trapArea: {fileID: 1090195313}
 --- !u!50 &1658565350
 Rigidbody2D:
@@ -6662,11 +6662,11 @@ SceneRoots:
   - {fileID: 84542949}
   - {fileID: 1461994270}
   - {fileID: 627702244}
+  - {fileID: 1090195314}
   - {fileID: 716435347}
   - {fileID: 1129996594}
   - {fileID: 162682838}
   - {fileID: 223033050}
-  - {fileID: 1090195314}
   - {fileID: 1658565354}
   - {fileID: 750514764}
   - {fileID: 1757074411}
