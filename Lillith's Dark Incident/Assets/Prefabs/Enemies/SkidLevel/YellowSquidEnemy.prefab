@@ -194,10 +194,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8af53ad1f962e804dab94f9e61a4c2cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 8
-  _speed: 7.5
-  _followTime: 10
-  _followRadius: 2
+  _health: 10
+  _speed: 5.5
+  _followTime: 3
+  _followRadius: 0.4
   _avoidanceRadius: 0.2
 --- !u!114 &8209855604601154470
 MonoBehaviour:
@@ -223,14 +223,14 @@ MonoBehaviour:
   _lifeLoss: 1
   _bulletSpeed: 3
   _bulletLifeTime: 15
-  _bulletSize: 0.15
+  _bulletSize: 0.2
   _bulletSprite: {fileID: 21300000, guid: 6c77d4dc703d5c248aebad4dc1278c2c, type: 3}
   _useColor: 0
   _bulletColor: {r: 0, g: 0, b: 0, a: 0}
   _numberOfColumns: 0
-  _fireRate: 0.5
+  _fireRate: 35
   _spinSpeed: 0
-  _followRefreshRate: 0.1
+  _followRefreshRate: 0.15
   _target: {fileID: 0}
   _useReversedSpiral: 0
   _numberOfSides: 0

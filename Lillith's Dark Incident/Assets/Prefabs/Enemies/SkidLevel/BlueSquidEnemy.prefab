@@ -194,6 +194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8acd2bf097fd6e145b09e327dca2052a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _health: 25
 --- !u!114 &7282572407954346104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,7 +219,7 @@ MonoBehaviour:
   _lifeLoss: 1
   _bulletSpeed: 5
   _bulletLifeTime: 10
-  _bulletSize: 0.15
+  _bulletSize: 0.2
   _bulletSprite: {fileID: 21300000, guid: 6c77d4dc703d5c248aebad4dc1278c2c, type: 3}
   _useColor: 0
   _bulletColor: {r: 0, g: 0, b: 0, a: 0}

@@ -11,7 +11,7 @@ public class PassEnemyBehaviour : MonoBehaviour
     private const string SUPER = "Super";
 
     // Enemy Settings
-    private int _health = 15;
+    [SerializeField] private int _health = 15;
     private float _speed = 1.25f;
     private float _moveTime = 3.0f;
     private float _stopTime = 1.5f;

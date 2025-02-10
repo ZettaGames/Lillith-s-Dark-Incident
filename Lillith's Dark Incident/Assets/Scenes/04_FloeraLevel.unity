@@ -3327,8 +3327,8 @@ MonoBehaviour:
   _obstacleSpawner: {fileID: 162682836}
   _followEnemySpawner: {fileID: 162682840}
   _passEnemySpawner: {fileID: 162682839}
-  _phase1Duration: 90
-  _phase2Duration: 90
+  _phase1Duration: 30
+  _phase2Duration: 30
   _levelTime: {fileID: 149145502}
   _levelPhase: {fileID: 2101077306}
   _grass: {fileID: 196299360}
@@ -6555,11 +6555,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1404820849065696316, guid: 1f697dc2d18b8974c8822f9e0510e626, type: 3}
       propertyPath: _knockBackForce.x
-      value: -3.5
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 1404820849065696316, guid: 1f697dc2d18b8974c8822f9e0510e626, type: 3}
       propertyPath: _knockBackForce.y
-      value: -3.5
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 1404820849065696316, guid: 1f697dc2d18b8974c8822f9e0510e626, type: 3}
       propertyPath: _stars.Array.data[0]
