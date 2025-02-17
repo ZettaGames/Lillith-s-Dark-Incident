@@ -15,6 +15,11 @@ public class BossGeneric : MonoBehaviour
     [SerializeField] protected float _timeBetweenAttacks;
     protected float _timer;
 
+    [Header("Music")]
+    [SerializeField] protected AudioClip _music;
+    [SerializeField] protected GameObject _musicPlayer;
+    protected AudioSource _audioSource;
+
     // Move the boss to the given position in the given time
     protected void MoveToDestination(Vector3 position, float time)
     {
@@ -116,7 +121,7 @@ public class BossGeneric : MonoBehaviour
         // Ensure the selected index is not the same as the last index
         if (selectedIndex == lastIndex)
         {
-            selectedIndex = (selectedIndex + 1) % probs.Length;
+            Choose(probs, selectedIndex);
         }
 
         return probs.Length - 1;
@@ -126,6 +131,9 @@ public class BossGeneric : MonoBehaviour
     {
         if (collision.CompareTag("Bullet"))
         {
+            // Upgrade the score
+            LevelScoreManager.Instance.BossHitBonus();
+
             Debug.Log(_currentHealth);
             TakeDamage();
         }

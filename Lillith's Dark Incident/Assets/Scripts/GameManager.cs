@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -26,9 +27,22 @@ public class GameManager : MonoBehaviour
 
 		// Set the target frame rate
 		Application.targetFrameRate = 60;
-	}
 
-	private void Update()
+        // Subscribe to the sceneLoaded event
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // Check if the current scene is the score screen
+        if (scene.name == "ScoreScreen")
+        {
+            // Start the score screen coroutine
+            ScoreGlobalManager.Instance.StartScreen();
+        }
+    }
+
+    private void Update()
 	{
 		if (Input.GetKeyDown(KeyCode.F1))
 		{
@@ -40,4 +54,6 @@ public class GameManager : MonoBehaviour
 			LocalTime.TimeScale = 1.0f;
         }
     }
+
+	
 }

@@ -27,6 +27,9 @@ EditorBuildSettings:
     path: Assets/Scenes/06_SkidLevel.unity
     guid: 81f26bf9497fff74da61962c954f6ceb
   - enabled: 1
+    path: Assets/Scenes/ScoreScreen.unity
+    guid: 7d580aa81f171744c8c4fda913e90fb4
+  - enabled: 1
     path: Assets/Scenes/ExitScene.unity
     guid: 8cd342fc0f680084c83ede210b7c2ac8
   m_configObjects: {}

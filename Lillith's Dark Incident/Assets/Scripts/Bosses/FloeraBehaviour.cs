@@ -11,6 +11,7 @@ public class FloeraBehaviour : BossGeneric
     private const string ARISE = "arise";
     private const string HELL = "hell";
     private const string DEATH = "death";
+    private const string SCORE_SCREEN = "ScoreScreen";
 
     // Floera Phrases
     private string[] _phrases = new string[]
@@ -302,9 +303,12 @@ public class FloeraBehaviour : BossGeneric
         // Stop the animator
         _animator.enabled = false;
 
+        // Save the score
+        LevelScoreManager.Instance.SaveScore();
+
         // Load the main menu and resume the game
-        LevelLoader.Instance.LoadLevel(5);
         yield return new WaitForSeconds(1.2f);
+        LevelLoader.Instance.LoadLevel(SCORE_SCREEN);
         LocalTime.TimeScale = 1.0f;
     }
 

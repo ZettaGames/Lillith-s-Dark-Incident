@@ -146,6 +146,9 @@ public class FollowEnemyBehaviour : MonoBehaviour
         // Check if the collision is with a bullet
         if (collision.gameObject.CompareTag(BULLET_TAG))
         {
+            // Update the score
+            LevelScoreManager.Instance.EnemyHitBonus();
+
             // Take damage
             StartCoroutine(TakeDamage());
         }
@@ -163,6 +166,9 @@ public class FollowEnemyBehaviour : MonoBehaviour
         // Check if the collision is with a bullet
         if (collision.gameObject.CompareTag(BULLET_TAG))
         {
+            // Update the score
+            LevelScoreManager.Instance.EnemyHitBonus();
+
             // Take damage
             StartCoroutine(TakeDamage());
         }

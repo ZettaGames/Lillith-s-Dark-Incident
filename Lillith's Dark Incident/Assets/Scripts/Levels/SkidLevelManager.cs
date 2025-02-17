@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class SkidLevelManager : MonoBehaviour
 {
@@ -57,10 +58,19 @@ public class SkidLevelManager : MonoBehaviour
     [Header("Lillith Controller")]
     [SerializeField] private LillithController _lillith;
 
-    // Floera Sakr'
+    // Skid L' Kuin
+    [Header("Skid L' Kuin")]
+    [SerializeField] private GameObject _skidStart;
+    [SerializeField] private GameObject _skidSplashArt;
+    [SerializeField] private GameObject _shadowSquare;
+    [SerializeField] private GameObject _healthBar;
+    [SerializeField] private GameObject _skidLKuin;
+    private Animator _skidStartAnimator;
 
     private void Start()
     {
+        _skidStartAnimator = _skidStart.GetComponent<Animator>();
+
         _totalTime = _phase1Duration + _phase2Duration;
 
         StartCoroutine(LevelFlow());
@@ -168,6 +178,9 @@ public class SkidLevelManager : MonoBehaviour
 
         yield return StartCoroutine(WaitForPausedSeconds(1.5f));
 
+        // Stop the score
+        LevelScoreManager.Instance.OnLevel = false;
+
         // Stop the background scrolling
         _water.StopScrolling();
 
@@ -178,7 +191,11 @@ public class SkidLevelManager : MonoBehaviour
         _lillith.CanMove = false;
         _lillith.ReturnToStart();
 
-        // Floera Sakr' presentation
+        // Wait for the player to return to the start   
+        yield return StartCoroutine(WaitForPausedSeconds(1.5f));
+
+        // Skid L' Kuin presentation
+        StartCoroutine(SkidPresentation());
     }
 
     private IEnumerator SpawnObstacles(float probability)
@@ -252,6 +269,67 @@ public class SkidLevelManager : MonoBehaviour
             _crazyEnemySpawner.SpawnWave(delay, amount);
             yield return new WaitForSeconds(_crazyEnemyTime);
         }
+    }
+
+    private IEnumerator SkidPresentation()
+    {
+        // Arise from the water
+        _skidStart.SetActive(true);
+        yield return new WaitForSeconds(1.5f);
+        _skidStartAnimator.SetTrigger("idle");
+
+        // Wait for the animation to finish
+        yield return new WaitForSeconds(1.5f);
+
+        // Smoothly increase the opacity of the splash art and the shadow square
+        float opacity = 0f;
+        while (opacity < 1)
+        {
+            opacity += Time.deltaTime;
+            _skidSplashArt.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, opacity);
+            _shadowSquare.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, opacity / 2);
+            yield return null;
+        }
+
+        // Smoothly moves the splashart to a certain position while smoothing up the opacity of the text
+        var splashartPosition = new Vector3(6.2f, 0f, 0f);
+        float elapsedTime = 0f;
+        float duration = 3.25f;
+        while (elapsedTime < duration)
+        {
+            // _floeraText.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, elapsedTime / duration);
+            _skidSplashArt.transform.position = Vector3.Lerp(_skidSplashArt.transform.position, splashartPosition, elapsedTime / duration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        // Wait for the animation to finish
+        yield return new WaitForSeconds(0.25f);
+
+        // Smoothly decrease the opacity of the splash art and the shadow square
+        opacity = 1f;
+        while (opacity > 0)
+        {
+            opacity -= Time.deltaTime;
+            _skidSplashArt.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, opacity);
+            // _floeraText.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, opacity);
+            _shadowSquare.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, opacity / 2);
+            yield return null;
+        }
+
+        // Let the player move again
+        _lillith.CanMove = true;
+
+        // Destroy the Skid start object
+        Destroy(_skidStart);
+
+        // Start the boss fight
+        _levelTime.gameObject.SetActive(false);
+        _healthBar.SetActive(true);
+        _skidLKuin.SetActive(true);
+
+        // Destroy itself
+        Destroy(this);
     }
 
     private IEnumerator WaitForPausedSeconds(float seconds)

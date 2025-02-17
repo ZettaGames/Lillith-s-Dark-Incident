@@ -199,6 +199,10 @@ public class LillithHealthManager : MonoBehaviour
         // Check if the player collided with an enemy
         if ((other.CompareTag(ENEMY) || other.CompareTag(OBSTACLE)) && gameObject.CompareTag(PLAYER))
         {
+            // Update the score
+            LevelScoreManager.Instance.HitPenalty();
+
+            // Apply the damaging effects
             TakeDamage();
             KnockBack(other.transform.position);
         }
@@ -212,7 +216,11 @@ public class LillithHealthManager : MonoBehaviour
         }
 		else
 		{
-			TakeDamage();
+            // Update the score
+            LevelScoreManager.Instance.HitPenalty();
+
+            // Apply the damaging effects
+            TakeDamage();
 			KnockBack(other.transform.position);
 		}
     }

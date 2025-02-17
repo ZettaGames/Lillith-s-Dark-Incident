@@ -87,6 +87,9 @@ public class PassEnemyBehaviour : MonoBehaviour
         // Check if the collision is with a bullet
         if (collision.CompareTag(BULLET_TAG))
         {
+            // Update the score
+            LevelScoreManager.Instance.EnemyHitBonus();
+
             // Take damage
             StartCoroutine(TakeDamage());
         }

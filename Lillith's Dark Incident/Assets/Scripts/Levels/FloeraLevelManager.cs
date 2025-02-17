@@ -167,6 +167,9 @@ public class FloeraLevelManager : MonoBehaviour
 
         yield return StartCoroutine(WaitForPausedSeconds(1.5f));
 
+        // Stop the score
+        LevelScoreManager.Instance.OnLevel = false;
+
         // Stop the background scrolling
         _grass.StopScrolling();
         _logsRight.StopScrolling();
@@ -286,7 +289,7 @@ public class FloeraLevelManager : MonoBehaviour
             yield return null;
         }
 
-        //Smoothly moves the splashart to a certain position while smoothing up the opacity of the text
+        // Smoothly moves the splashart to a certain position while smoothing up the opacity of the text
         var splashartPosition = new Vector3(-1.75f, 0f, 0f);
         elapsedTime = 0f;
         duration = 3.25f;
@@ -315,7 +318,7 @@ public class FloeraLevelManager : MonoBehaviour
         // Let the player move again
         _lillith.CanMove = true;
 
-        // Destroy the floera start object
+        // Destroy the Floera start object
         Destroy(_floeraStart);
 
         // Start the boss fight
