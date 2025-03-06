@@ -60,7 +60,7 @@ public class PauseMenuManager : MonoBehaviour
     {
         EventSystem.current.SetSelectedGameObject(null);
         LocalTime.TimeScale = 1;
-        LevelLoader.Instance.LoadLevel(2);
+        //LevelLoader.Instance.LoadLevel(2);
     }
 
     private IEnumerator Pause()

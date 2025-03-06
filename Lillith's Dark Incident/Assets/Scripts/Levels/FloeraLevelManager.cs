@@ -21,8 +21,8 @@ public class FloeraLevelManager : MonoBehaviour
     private bool _isPhase2;
 
     // Obstacles
-    private float _obsProbabilityP1 = 0.4f;
-    private float _obsProbabilityP2 = 0.6f;
+    private float _obsProbabilityP1 = 0.6f;
+    private float _obsProbabilityP2 = 0.7f;
     private float _obsTime;
 
     // Follow Enemies
@@ -107,11 +107,11 @@ public class FloeraLevelManager : MonoBehaviour
         Debug.Log("Phase 1 started");
 
         _isPhase1 = true;
-        // 40% chance of spawning obstacles
+        // 60% chance of spawning obstacles
         _obstacleCoroutine = StartCoroutine(SpawnObstacles(_obsProbabilityP1));
         // 3 follow enemies with 0.2s delay between each spawn
         _followEnemyCoroutine = StartCoroutine(SpawnFollowEnemies(_followEnemyDelayP1, _followEnemyAmountP1));
-        // 1 pass enemy every random 2-5 seconds
+        // 1 pass enemy every random 1-4 seconds
         _passEnemyCoroutine = StartCoroutine(SpawnPassEnemies(_passEnemyTime));
         // Wait for phase 1 to end
         yield return StartCoroutine(WaitForPausedSeconds(_phase1Duration));
@@ -127,11 +127,11 @@ public class FloeraLevelManager : MonoBehaviour
         Debug.Log("Phase 2 started");
 
         _isPhase2 = true;
-        // 60% chance of spawning obstacles
+        // 70% chance of spawning obstacles
         _obstacleCoroutine = StartCoroutine(SpawnObstacles(_obsProbabilityP2));
         // 4 follow enemies with 0.1s delay between each spawn
         _followEnemyCoroutine = StartCoroutine(SpawnFollowEnemies(_followEnemyDelayP2, _followEnemyAmountP2));
-        // 1 pass enemy every random 2-5 seconds
+        // 1 pass enemy every random 1-4 seconds
         _passEnemyCoroutine = StartCoroutine(SpawnPassEnemies(_passEnemyTime));
         // Wait for phase 2 to end
         yield return StartCoroutine(WaitForPausedSeconds(_phase2Duration));
@@ -231,8 +231,8 @@ public class FloeraLevelManager : MonoBehaviour
                 yield return null;
             }
 
-            // Repeat the process every 2-5 seconds
-            _passEnemyTime = Random.Range(2f, 5f);
+            // Repeat the process every 1-4 seconds
+            _passEnemyTime = Random.Range(1f, 4f);
             _passEnemySpawner.Spawn();
             yield return new WaitForSeconds(_passEnemyTime);
         }

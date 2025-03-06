@@ -4,9 +4,9 @@ using UnityEngine.EventSystems;
 
 public class MenuActionsManager : MonoBehaviour
 {
-	// ! Constants
-	private const int NEW_GAME_INDEX = 3;
-	private const string EXIT_SCENE_NAME = "ExitScene";
+	// Constants
+	private const int NewGameIndex = 3;
+	private const string ExitSceneName = "ExitScene";
 	
 	public void NewGameYes()
 	{
@@ -21,14 +21,14 @@ public class MenuActionsManager : MonoBehaviour
 	private IEnumerator StartNewGame()
 	{
 		EventSystem.current.SetSelectedGameObject(null);
-		LevelLoader.Instance.LoadLevel(NEW_GAME_INDEX);
-		yield return null;
+		SceneTransitionManager.Instance.LoadLevel(NewGameIndex);
+        yield return null;
 	}
 	
 	private IEnumerator ExitTransition()
 	{
 		EventSystem.current.SetSelectedGameObject(null);
-		LevelLoader.Instance.LoadLevel(EXIT_SCENE_NAME);
-		yield return null;
+        SceneTransitionManager.Instance.LoadLevel(ExitSceneName);
+        yield return null;
 	}
 }

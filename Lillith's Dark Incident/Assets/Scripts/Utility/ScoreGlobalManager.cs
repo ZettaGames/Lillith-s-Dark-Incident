@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ScoreGlobalManager : MonoBehaviour
 {
-    private float _totalScore = 0.0f;
+    private float _totalScore;
     private int _currentHealth;
     private int _maxHealth = 10;
 
@@ -16,31 +16,10 @@ public class ScoreGlobalManager : MonoBehaviour
     [SerializeField] private TMP_Text _multiplierText;
     [SerializeField] private TMP_Text _totalScoreText;
 
-    public static ScoreGlobalManager Instance { get; private set; }
-
-    public float TotalScore
-    {
-        get => _totalScore;
-        set => _totalScore = value;
-    }
-
-    public int CurrentHealth
-    {
-        get => _currentHealth;
-        set => _currentHealth = value;
-    }
-
     private void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        _totalScore = GameManager.Instance.TotalScore;
+        _currentHealth = GameManager.Instance.CurrentStars;
     }
 
     private void Start()
@@ -50,17 +29,15 @@ public class ScoreGlobalManager : MonoBehaviour
         {
             _stars[i].sprite = _fullStar;
         }
-    }
 
-    public void StartScreen()
-    {
         StartCoroutine(ScoreScreen());
     }
 
     private IEnumerator ScoreScreen()
     {
+        yield return new WaitForSeconds(1.5f);
+
         Debug.Log("Empezando puntaje");
-        transform.GetChild(0).gameObject.SetActive(true);
 
         // Make the score text to reach the total score
         while (_totalScoreText.text != $"{(int)_totalScore:D9}")
@@ -71,20 +48,18 @@ public class ScoreGlobalManager : MonoBehaviour
         yield return new WaitForSeconds(2);
 
         // Change the stars based on the current health and update the multiplier
-        while (_maxHealth != _currentHealth)
+        for (int i = 0; i < _maxHealth; i++)
         {
-            if (_currentHealth > 0)
+            if (i < _currentHealth)
             {
-                // Change the sprite of the last star
-                _stars[_currentHealth - 1].sprite = _emptyStar;
-                _multiplierText.text = $"{_currentHealth * 0.2}";
-                _currentHealth--;
+                _stars[i].sprite = _fullStar;
             }
             else
             {
-                break;
+                _stars[i].sprite = _emptyStar;
             }
         }
+        _multiplierText.text = $"{_currentHealth * 0.2f}";
         yield return new WaitForSeconds(2);
 
         // Multiply the total score by the multiplier

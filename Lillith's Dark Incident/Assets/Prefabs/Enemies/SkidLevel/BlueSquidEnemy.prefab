@@ -195,6 +195,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 18
+  speed: 4
+  _moveTime: 3
+  _stopTime: 1.5
+  _stopChance: 0.6
 --- !u!114 &7282572407954346104
 MonoBehaviour:
   m_ObjectHideFlags: 0

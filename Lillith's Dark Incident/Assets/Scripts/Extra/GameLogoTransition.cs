@@ -8,7 +8,7 @@ public class GameLogoTransition : MonoBehaviour
     [SerializeField] private CanvasGroup _logoImage;
 
     // Const for the logo
-    private const int SCENE_01 = 1;
+    private const int BLACK_SCENE = 1;
     private const float INITIAL_DELAY = 1.75f;
     private const float FADE_TIME = 1.5f;
     private const float FADE_DURATION = 2.25f;
@@ -30,7 +30,7 @@ public class GameLogoTransition : MonoBehaviour
         yield return new WaitForSeconds(INITIAL_DELAY);
 
         // Load the scene asynchronously
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(SCENE_01);
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(BLACK_SCENE);
         asyncLoad.allowSceneActivation = true;
     }
 

@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 /// <summary>
@@ -15,15 +14,5 @@ public static class LocalTime
     {
         get { return _timeScale; }
         set { _timeScale = Mathf.Clamp(value, 0f, 1f); }
-    }
-}
-
-public static class GameEvents
-{
-    public static event Action OnPhaseTwoStart;
-
-    public static void TriggerPhaseTwoStart()
-    {
-        OnPhaseTwoStart?.Invoke();
     }
 }

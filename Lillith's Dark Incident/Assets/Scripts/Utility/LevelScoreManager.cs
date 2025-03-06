@@ -33,7 +33,12 @@ public class LevelScoreManager : MonoBehaviour
 
     void Start()
     {
-        _score = ScoreGlobalManager.Instance.TotalScore;
+        _score = GameManager.Instance.TotalScore;
+
+        if (GameManager.Instance.CurrentStars != 0)
+        {
+            _lillithHealthManager.CurrentStars = GameManager.Instance.CurrentStars;
+        }
     }
 
     void Update()
@@ -44,7 +49,7 @@ public class LevelScoreManager : MonoBehaviour
 
         if (_onLevel)
         {
-            // Constantly update the score text (200 per second)
+            // Constantly update the score text (500 per second)
             _score += 500 * Time.deltaTime * LocalTime.TimeScale;
         }
     }
@@ -59,14 +64,25 @@ public class LevelScoreManager : MonoBehaviour
         _score += 100;
     }
 
+    public void SuperHitBonus()
+    {
+        _score += 500;
+    }
+
     public void BossHitBonus()
     {
         _score += Mathf.Max(1500 - (_score * 0.1f), 100);
     }
 
+    public void ScoreBonus()
+    {
+        var multiplier = Random.Range(1.05f, 1.25f);
+        _score *= multiplier;
+    }
+
     public void SaveScore()
     {
-        ScoreGlobalManager.Instance.TotalScore = _score;
-        ScoreGlobalManager.Instance.CurrentHealth = _currentHealth;
+        GameManager.Instance.TotalScore = _score;
+        GameManager.Instance.CurrentStars = _currentHealth;
     }
 }

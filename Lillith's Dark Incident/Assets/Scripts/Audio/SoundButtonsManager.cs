@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 public class SoundButtonsManager : MonoBehaviour
 {
 	// Constant for the sound volume
-	private const float VOLUME = 1f;
+	private const float Volume = 1f;
 	
 	// Audio clips to be played
 	[Header("Audio Clips")]
@@ -24,7 +24,7 @@ public class SoundButtonsManager : MonoBehaviour
 			if (currentSelected != null)
 			{
 				// Play the sound from the SoundFXManager
-				SoundFXManager.Instance.PlaySoundFXClip(_buttonSelectAudio, transform, 1f);
+				SoundFXManager.Instance.PlaySoundFXClip(_buttonSelectAudio, transform, Volume);
 				
 				// Update the current button
 				_lastSelected = currentSelected;
@@ -35,6 +35,6 @@ public class SoundButtonsManager : MonoBehaviour
 	// Method for playing "buttonClick" when pressing a new button (must be called from the button's OnClick event)
 	public void PlaySoundButton()
 	{
-		SoundFXManager.Instance.PlaySoundFXClip(_buttonClickAudio, transform, VOLUME);
+		SoundFXManager.Instance.PlaySoundFXClip(_buttonClickAudio, transform, Volume);
 	}
 }

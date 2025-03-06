@@ -786,7 +786,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1324,7 +1324,7 @@ GameObject:
   - component: {fileID: 141062653}
   - component: {fileID: 141062652}
   m_Layer: 5
-  m_Name: Placeholder
+  m_Name: LillithSound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1339,7 +1339,7 @@ RectTransform:
   m_GameObject: {fileID: 141062650}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: -1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 237796083}
@@ -1362,14 +1362,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 60ac16efe8017bd47ae44d89b05c8c0a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 07bb983eb23fb47468142be5698c805d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2199,6 +2199,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1018722984}
+  - {fileID: 912415992}
   - {fileID: 1224039638}
   - {fileID: 1825131752}
   m_Father: {fileID: 0}
@@ -3742,6 +3744,63 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1001 &372193243
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1638966922318332995, guid: 583b75dba3d879b4d885f0a84760fbed, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1638966922318332995, guid: 583b75dba3d879b4d885f0a84760fbed, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1638966922318332995, guid: 583b75dba3d879b4d885f0a84760fbed, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1638966922318332995, guid: 583b75dba3d879b4d885f0a84760fbed, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1638966922318332995, guid: 583b75dba3d879b4d885f0a84760fbed, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1638966922318332995, guid: 583b75dba3d879b4d885f0a84760fbed, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1638966922318332995, guid: 583b75dba3d879b4d885f0a84760fbed, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1638966922318332995, guid: 583b75dba3d879b4d885f0a84760fbed, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1638966922318332995, guid: 583b75dba3d879b4d885f0a84760fbed, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1638966922318332995, guid: 583b75dba3d879b4d885f0a84760fbed, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8974850315242388857, guid: 583b75dba3d879b4d885f0a84760fbed, type: 3}
+      propertyPath: m_Name
+      value: SceneTransitionManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 583b75dba3d879b4d885f0a84760fbed, type: 3}
 --- !u!1 &378942503
 GameObject:
   m_ObjectHideFlags: 0
@@ -3752,7 +3811,7 @@ GameObject:
   m_Component:
   - component: {fileID: 378942504}
   m_Layer: 5
-  m_Name: LoadVariants
+  m_Name: LeaderboardsVariants
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3890,7 +3949,7 @@ MonoBehaviour:
     m_Mode: 4
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 473221910}
-    m_SelectOnDown: {fileID: 473221910}
+    m_SelectOnDown: {fileID: 1997323002}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 3
@@ -4033,7 +4092,7 @@ GameObject:
   - component: {fileID: 461165803}
   - component: {fileID: 461165804}
   m_Layer: 0
-  m_Name: TransitionManager
+  m_Name: MenuTransitionsManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4277,7 +4336,7 @@ MonoBehaviour:
   m_Navigation:
     m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 447596619}
+    m_SelectOnUp: {fileID: 1595199987}
     m_SelectOnDown: {fileID: 447596619}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
@@ -4456,7 +4515,7 @@ GameObject:
   - component: {fileID: 537018022}
   - component: {fileID: 537018021}
   m_Layer: 5
-  m_Name: Placeholder (3)
+  m_Name: LillithReturn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4475,14 +4534,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 60ac16efe8017bd47ae44d89b05c8c0a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1c8e2667ee15d204aa9d346aa0b03eff, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4509,7 +4568,7 @@ RectTransform:
   m_GameObject: {fileID: 537018020}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: -1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 237796083}
@@ -7261,7 +7320,7 @@ GameObject:
   - component: {fileID: 841907347}
   - component: {fileID: 841907348}
   m_Layer: 5
-  m_Name: Placeholder (1)
+  m_Name: LillithScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7276,7 +7335,7 @@ RectTransform:
   m_GameObject: {fileID: 841907345}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: -1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 237796083}
@@ -7307,14 +7366,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 60ac16efe8017bd47ae44d89b05c8c0a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2456e3db5c3fe834291006395f264f8f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7336,7 +7395,7 @@ GameObject:
   - component: {fileID: 868516151}
   - component: {fileID: 868516152}
   m_Layer: 5
-  m_Name: Placeholder (2)
+  m_Name: LillithCredits
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7351,7 +7410,7 @@ RectTransform:
   m_GameObject: {fileID: 868516149}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: -1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 237796083}
@@ -7382,14 +7441,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 60ac16efe8017bd47ae44d89b05c8c0a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 40232232be104cb4faf83fcfdfa49281, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8027,12 +8086,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 912415991}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1224039638}
+  m_Father: {fileID: 221364345}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -8643,7 +8702,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1224039638}
+  m_Father: {fileID: 221364345}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -10150,8 +10209,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1018722984}
-  - {fileID: 912415992}
   - {fileID: 1166650231}
   - {fileID: 378942504}
   - {fileID: 237796083}
@@ -10967,7 +11024,7 @@ GameObject:
   - component: {fileID: 1395353064}
   - component: {fileID: 1395353063}
   m_Layer: 5
-  m_Name: LillithLoadCloud
+  m_Name: LillithCloud
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11440,7 +11497,7 @@ GameObject:
   - component: {fileID: 1569975992}
   - component: {fileID: 1569975991}
   m_Layer: 5
-  m_Name: LillithLoadSquid
+  m_Name: LillithSquid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11685,7 +11742,7 @@ GameObject:
   - component: {fileID: 1595199987}
   - component: {fileID: 1595199988}
   m_Layer: 5
-  m_Name: ControlsButton
+  m_Name: CreditsButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11730,7 +11787,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 0}
   m_OnClick:
     m_PersistentCalls:
@@ -12115,7 +12172,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Controls
+  m_text: Credits
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 143394ee11784e1419a9fc6833244692, type: 2}
   m_sharedMaterial: {fileID: 7391338158441626989, guid: 143394ee11784e1419a9fc6833244692, type: 2}
@@ -12818,67 +12875,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1777681725}
   m_CullTransparentMesh: 1
---- !u!1001 &1779867567
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1567474886856010149, guid: b2571c226c3e2864e96ccc27e6753840, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1567474886856010149, guid: b2571c226c3e2864e96ccc27e6753840, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1567474886856010149, guid: b2571c226c3e2864e96ccc27e6753840, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1567474886856010149, guid: b2571c226c3e2864e96ccc27e6753840, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1567474886856010149, guid: b2571c226c3e2864e96ccc27e6753840, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1567474886856010149, guid: b2571c226c3e2864e96ccc27e6753840, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1567474886856010149, guid: b2571c226c3e2864e96ccc27e6753840, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1567474886856010149, guid: b2571c226c3e2864e96ccc27e6753840, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1567474886856010149, guid: b2571c226c3e2864e96ccc27e6753840, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1567474886856010149, guid: b2571c226c3e2864e96ccc27e6753840, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2384420708020705252, guid: b2571c226c3e2864e96ccc27e6753840, type: 3}
-      propertyPath: m_Name
-      value: LevelLoader
-      objectReference: {fileID: 0}
-    - target: {fileID: 2384420708020705252, guid: b2571c226c3e2864e96ccc27e6753840, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b2571c226c3e2864e96ccc27e6753840, type: 3}
 --- !u!1 &1800329879
 GameObject:
   m_ObjectHideFlags: 0
@@ -13528,7 +13524,7 @@ GameObject:
   - component: {fileID: 1871465387}
   - component: {fileID: 1871465386}
   m_Layer: 5
-  m_Name: LillithLoadTree
+  m_Name: LillithTree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14483,7 +14479,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 0}
   m_OnClick:
     m_PersistentCalls:
@@ -15364,7 +15360,7 @@ SceneRoots:
   - {fileID: 59219686}
   - {fileID: 1305275983}
   - {fileID: 880374385}
-  - {fileID: 1779867567}
+  - {fileID: 372193243}
   - {fileID: 62845184}
   - {fileID: 651234685}
   - {fileID: 221364345}

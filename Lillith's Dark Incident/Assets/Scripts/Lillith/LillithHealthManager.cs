@@ -18,6 +18,8 @@ public class LillithHealthManager : MonoBehaviour
 	private const string UNTAGGED = "Untagged";
 	private const string DEFAULT = "Default";
 	private const string INK = "Ink";
+	private const string SCORE_DROP = "ScoreDrop";
+    private const string STAR_DROP = "StarDrop";
 
     // Constants for the shake
     private const float SCREEN_SHAKE = 0.1f;
@@ -33,8 +35,12 @@ public class LillithHealthManager : MonoBehaviour
 	[SerializeField] private int currentStars;
 	[SerializeField] private int _maxStars;
 	[SerializeField] private Image[] _stars;
-	public int CurrentStars { get { return currentStars; } }
-	private bool hasDied = false;
+	public int CurrentStars
+    {
+        get => currentStars;
+        set => currentStars = value;
+    }
+    private bool hasDied = false;
 
 	// Sprites variables
 	[Header("Sprites")]
@@ -178,8 +184,8 @@ public class LillithHealthManager : MonoBehaviour
 		yield return new WaitForSeconds(1.5f);
 
         // Load the main menu and resume the game
-        LevelLoader.Instance.LoadLevel(MAIN_MENU);
-		yield return new WaitForSeconds(1.2f);
+        SceneTransitionManager.Instance.LoadLevel(MAIN_MENU);
+        yield return new WaitForSeconds(1.2f);
 		LocalTime.TimeScale = 1.0f;
 	}
     #endregion
@@ -205,6 +211,21 @@ public class LillithHealthManager : MonoBehaviour
             // Apply the damaging effects
             TakeDamage();
             KnockBack(other.transform.position);
+        }
+
+        // Check if the player collided with a score drop
+        if (other.CompareTag(SCORE_DROP) && gameObject.CompareTag(PLAYER))
+        {
+            // Update the score
+            LevelScoreManager.Instance.ScoreBonus();
+            Destroy(other.gameObject);
+        }
+
+        // Check if the player collided with a star drop
+        if (other.CompareTag(STAR_DROP) && gameObject.CompareTag(PLAYER))
+        {
+            // Increase the amount of stars
+            currentStars++;
         }
     }
 

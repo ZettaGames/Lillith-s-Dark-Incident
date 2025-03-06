@@ -6,15 +6,17 @@ using UnityEngine.UI;
 public class IntroCinematic : MonoBehaviour
 {
 	// Constants for the direction
-	private const int NEXT = 1;
-	private const int PREVIOUS = -1;
+	private const int NextImage = 1;
+	private const int PreviousImage = -1;
 
 	// Scene to load
-	[SerializeField] private int _sceneToLoad;
+	[Header("Scene to Load")]
+    [SerializeField] private int _sceneToLoad;
 
     // Variables for the cinematic transition
+    [Header("Cinematic Settings")]
     [SerializeField] private Image[] _images;
-	[SerializeField] private float _delay = 0.75f;
+	[SerializeField] private float _delay;
 	private int _currentIndex = 0;
 
 	private void Start()
@@ -46,12 +48,12 @@ public class IntroCinematic : MonoBehaviour
 			if (_images[_currentIndex] == _images[_images.Length - 1])
 			{
 				// Load the scene and deactivate the cinematic
-				LevelLoader.Instance.LoadLevel(_sceneToLoad);
-				gameObject.SetActive(false);
+				SceneTransitionManager.Instance.LoadLevel(_sceneToLoad);
+                gameObject.SetActive(false);
 			}
 			else
 			{
-				ShowImage(NEXT); // Load the next image
+				ShowImage(NextImage); // Load the next image
 			}
 		}
 	}
@@ -66,7 +68,7 @@ public class IntroCinematic : MonoBehaviour
 			// Only transition if the current image is not the first one
 			if (_images[_currentIndex] != _images[0])
 			{
-				ShowImage(PREVIOUS); // Load the previous image
+				ShowImage(PreviousImage); // Load the previous image
 			}
 		}
 	}
@@ -79,7 +81,7 @@ public class IntroCinematic : MonoBehaviour
 		if ((gamepad != null && gamepad.buttonEast.wasPressedThisFrame) || Keyboard.current[Key.Escape].wasPressedThisFrame)
 		{
 			// Load the scene and deactivate the cinematic
-			LevelLoader.Instance.LoadLevel(_sceneToLoad);
+			SceneTransitionManager.Instance.LoadLevel(_sceneToLoad);
             // Deactivate the object to prevent unexpected behaviour
             gameObject.SetActive(false);
 		}

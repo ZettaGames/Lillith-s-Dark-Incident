@@ -367,9 +367,9 @@ MonoBehaviour:
   _music: {fileID: 8300000, guid: 835fb1ab8c8c97f48a89071d1d3e9512, type: 3}
   _musicPlayer: {fileID: 609581124}
   _attackProbabilies:
-  - 0.6
+  - 0.4
   - 0.3
-  - 0.1
+  - 0.3
   _rockBullet: {fileID: 21300000, guid: 0dce93164f974e44d99aa33335d89eed, type: 3}
   _inkBullet: {fileID: 21300000, guid: 6c77d4dc703d5c248aebad4dc1278c2c, type: 3}
   _tentacleTrap: {fileID: 3930372118355088300, guid: 366dc9253a94254468236c5c5772d89a, type: 3}
@@ -2792,67 +2792,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 756977918}
   m_CullTransparentMesh: 1
---- !u!1001 &945151430
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1567474886856010149, guid: b2571c226c3e2864e96ccc27e6753840, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1567474886856010149, guid: b2571c226c3e2864e96ccc27e6753840, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1567474886856010149, guid: b2571c226c3e2864e96ccc27e6753840, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1567474886856010149, guid: b2571c226c3e2864e96ccc27e6753840, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1567474886856010149, guid: b2571c226c3e2864e96ccc27e6753840, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1567474886856010149, guid: b2571c226c3e2864e96ccc27e6753840, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1567474886856010149, guid: b2571c226c3e2864e96ccc27e6753840, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1567474886856010149, guid: b2571c226c3e2864e96ccc27e6753840, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1567474886856010149, guid: b2571c226c3e2864e96ccc27e6753840, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1567474886856010149, guid: b2571c226c3e2864e96ccc27e6753840, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2384420708020705252, guid: b2571c226c3e2864e96ccc27e6753840, type: 3}
-      propertyPath: m_Name
-      value: LevelLoader
-      objectReference: {fileID: 0}
-    - target: {fileID: 2384420708020705252, guid: b2571c226c3e2864e96ccc27e6753840, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b2571c226c3e2864e96ccc27e6753840, type: 3}
 --- !u!1 &992098159
 GameObject:
   m_ObjectHideFlags: 0
@@ -5564,8 +5503,8 @@ MonoBehaviour:
   _followEnemySpawner: {fileID: 1231096403}
   _crazyEnemySpawner: {fileID: 507557276}
   _passEnemySpawner: {fileID: 1231096402}
-  _phase1Duration: 5
-  _phase2Duration: 5
+  _phase1Duration: 2
+  _phase2Duration: 2
   _levelTime: {fileID: 331034635}
   _levelPhase: {fileID: 756977920}
   _water: {fileID: 1517858135}
@@ -6092,7 +6031,6 @@ SceneRoots:
   - {fileID: 643600447}
   - {fileID: 1997192143}
   - {fileID: 1253602085}
-  - {fileID: 945151430}
   - {fileID: 1234941820}
   - {fileID: 1113284998}
   - {fileID: 1359011076}

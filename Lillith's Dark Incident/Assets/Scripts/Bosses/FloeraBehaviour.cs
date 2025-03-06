@@ -308,8 +308,7 @@ public class FloeraBehaviour : BossGeneric
 
         // Load the main menu and resume the game
         yield return new WaitForSeconds(1.2f);
-        LevelLoader.Instance.LoadLevel(SCORE_SCREEN);
-        LocalTime.TimeScale = 1.0f;
+        SceneTransitionManager.Instance.LoadLevel(SCORE_SCREEN);
     }
 
     #region Bullet Patterns

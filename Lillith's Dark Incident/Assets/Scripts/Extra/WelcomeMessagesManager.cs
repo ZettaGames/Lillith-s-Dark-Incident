@@ -2,7 +2,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 
-public class DisplayWelcomeMessages : MonoBehaviour
+public class WelcomeMessagesManager : MonoBehaviour
 {
 	private int _randomTen;
 	[SerializeField] private TMP_Text _welcomeMessage;

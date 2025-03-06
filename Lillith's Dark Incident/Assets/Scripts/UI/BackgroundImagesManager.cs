@@ -36,8 +36,8 @@ public class BackgroundImagesManager : MonoBehaviour
 	[SerializeField] private Image _controlsBackground;
 	[SerializeField] private Image _returnMenuBackground;
 
-	// Images for the load variants
-	[Header("Load Variants")]
+	// Images for the leaderboards variants
+	[Header("Leaderboards Variants")]
 	[SerializeField] private Image _treeBackground;
 	[SerializeField] private Image _squidBackground;
 	[SerializeField] private Image _cloudBackground;

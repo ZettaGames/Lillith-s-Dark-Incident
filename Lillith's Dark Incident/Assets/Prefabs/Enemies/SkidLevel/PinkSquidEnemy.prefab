@@ -195,7 +195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 12
-  _speed: 2
+  speed: 6
   _followTime: 5.5
   _followRadius: 3.5
   _avoidanceRadius: 1.5

@@ -4,7 +4,7 @@ public class SoundFXManager : MonoBehaviour
 {
 	[SerializeField] private AudioSource _soundFXObject;
 
-    // Instance of the SoundFXManager
+    // Singleton instance of the SoundFXManager
     public static SoundFXManager Instance { get; private set; }
 	private void Awake()
 	{
