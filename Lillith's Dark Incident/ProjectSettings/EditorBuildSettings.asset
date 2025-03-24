@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/00_ZettaLogo.unity
+    guid: ab1ddff905fd98743909fedab62a732c
+  - enabled: 1
+    path: Assets/Scenes/01_BlackToMenu.unity
+    guid: bb95af02a44dbc44283b8f4762ff1dbb
+  - enabled: 1
+    path: Assets/Scenes/02_MainMenu.unity
+    guid: 80fb1407575d35142af19a07f5d3e116
+  - enabled: 1
+    path: Assets/Scenes/03_Introduction.unity
+    guid: ca63808595128454ba55626989d3196e
+  - enabled: 1
+    path: Assets/Scenes/04_FloeraLevel.unity
+    guid: 16ae8d32fa898fb489e28f29c24924e9
+  - enabled: 1
+    path: Assets/Scenes/05_FloeraVictory.unity
+    guid: f132cdf44c0301941bb6668467c23186
+  - enabled: 1
+    path: Assets/Scenes/06_SkidLevel.unity
+    guid: 81f26bf9497fff74da61962c954f6ceb
+  - enabled: 1
+    path: Assets/Scenes/07_SkidVictory.unity
+    guid: a50157df36ce8cf43a751f18bacb377d
+  - enabled: 1
+    path: Assets/Scenes/08_DarkyLevel.unity
+    guid: 18cb8fe20f348cc408aa210d8736ae68
+  - enabled: 1
+    path: Assets/Scenes/09_DarkyVictory.unity
+    guid: a5916d2314af54c48bdfdb3964d2154d
+  - enabled: 1
+    path: Assets/Scenes/10_FinalThanks.unity
+    guid: 4cab8c38bede954468750e7380904931
+  - enabled: 1
+    path: Assets/Scenes/ScoreScreen.unity
+    guid: 7d580aa81f171744c8c4fda913e90fb4
+  - enabled: 1
+    path: Assets/Scenes/CreditsScene.unity
+    guid: 1163ad703d0f1d447bf3e45520e1d376
+  - enabled: 1
+    path: Assets/Scenes/ExitScene.unity
+    guid: 8cd342fc0f680084c83ede210b7c2ac8
+  m_configObjects: {}
