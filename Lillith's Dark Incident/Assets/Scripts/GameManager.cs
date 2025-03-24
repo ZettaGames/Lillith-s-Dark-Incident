@@ -2,6 +2,12 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    // Levels
+    private const int SkidLevel = 5;
+    private const int DarkyLevel = 7;
+    private const int LastCinematic = 9;
+    private int _levelCounter = 1;
+
     // Score
     private float _totalScore;
     private int _currentStars;
@@ -40,8 +46,8 @@ public class GameManager : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
 
-        // Set the target frame rate
-        Application.targetFrameRate = 60;
+        var vsync = PlayerPrefs.GetInt("VSync", 1) == 1;
+        SetFrameRate(vsync);
     }
 
     private void Update()
@@ -57,5 +63,40 @@ public class GameManager : MonoBehaviour
             LocalTime.TimeScale = 1.0f;
         }
 #endif
+    }
+
+    public void SetFrameRate(bool vsync)
+    {
+        if (vsync)
+        {
+            QualitySettings.vSyncCount = 1;
+        }
+
+        if (!vsync)
+        {
+            QualitySettings.vSyncCount = 0;
+        }
+    }
+
+    public void SetCurrentLevel(int level)
+    {
+        _levelCounter = level;
+    }
+
+    public int GetLevel()
+    {
+        _levelCounter++;
+        if (_levelCounter == 2)
+        {
+            return SkidLevel;
+        }
+        else if (_levelCounter == 3)
+        {
+            return DarkyLevel;
+        }
+        else
+        {
+             return LastCinematic;
+        }
     }
 }

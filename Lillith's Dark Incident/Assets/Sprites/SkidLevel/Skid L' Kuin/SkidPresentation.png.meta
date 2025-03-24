@@ -113,7 +113,7 @@ TextureImporter:
       name: SkidPresentation_0
       rect:
         serializedVersion: 2
-        x: 300
+        x: 0
         y: 768
         width: 300
         height: 192
@@ -124,8 +124,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: af15432aef0df594f86af70ae8f6242a
-      internalID: 91899961
+      spriteID: 49f6340593a238440851df0590a9cd71
+      internalID: 921679180
       vertices: []
       indices: 
       edges: []
@@ -134,7 +134,7 @@ TextureImporter:
       name: SkidPresentation_1
       rect:
         serializedVersion: 2
-        x: 600
+        x: 300
         y: 768
         width: 300
         height: 192
@@ -145,8 +145,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 882e341da2621ff4694c77ffe5bcea1b
-      internalID: -790561662
+      spriteID: 93fac7b8c6f573e48b65faf5eb2fe32c
+      internalID: 762802391
       vertices: []
       indices: 
       edges: []
@@ -155,7 +155,7 @@ TextureImporter:
       name: SkidPresentation_2
       rect:
         serializedVersion: 2
-        x: 900
+        x: 600
         y: 768
         width: 300
         height: 192
@@ -166,8 +166,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5f19310a23cdb5941af72336e459be9a
-      internalID: 2108569920
+      spriteID: 9926ae6b48f360040aac95ebf2a0bb27
+      internalID: -934228314
       vertices: []
       indices: 
       edges: []
@@ -176,6 +176,27 @@ TextureImporter:
       name: SkidPresentation_3
       rect:
         serializedVersion: 2
+        x: 900
+        y: 768
+        width: 300
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4acb3f8a9037de4449604a27e3215ce4
+      internalID: 730837367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SkidPresentation_4
+      rect:
+        serializedVersion: 2
         x: 1200
         y: 768
         width: 300
@@ -187,29 +208,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 15e6fabd098b7464e88b043a084f15e8
-      internalID: 1455273339
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SkidPresentation_4
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 576
-        width: 300
-        height: 192
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c4cb7ada8b9833c4d8747de556ab882c
-      internalID: -1365222624
+      spriteID: ea77eb2bff4812c47959c59d9bde7275
+      internalID: 1752089763
       vertices: []
       indices: 
       edges: []
@@ -218,7 +218,7 @@ TextureImporter:
       name: SkidPresentation_5
       rect:
         serializedVersion: 2
-        x: 300
+        x: 0
         y: 576
         width: 300
         height: 192
@@ -229,8 +229,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8e923fef8b306254b931339b58a1bd8d
-      internalID: -702921942
+      spriteID: 4f77be10fe08b78419cb1d2858e746fe
+      internalID: -1587348477
       vertices: []
       indices: 
       edges: []
@@ -239,7 +239,7 @@ TextureImporter:
       name: SkidPresentation_6
       rect:
         serializedVersion: 2
-        x: 600
+        x: 300
         y: 576
         width: 300
         height: 192
@@ -250,8 +250,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f63b6ff600dbc8a46acf510f3a3ec16d
-      internalID: 970678094
+      spriteID: 655f2e4d9be7cde4d95d8b3358a8716e
+      internalID: 1765960427
       vertices: []
       indices: 
       edges: []
@@ -260,7 +260,7 @@ TextureImporter:
       name: SkidPresentation_7
       rect:
         serializedVersion: 2
-        x: 900
+        x: 600
         y: 576
         width: 300
         height: 192
@@ -271,8 +271,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7973a290bff599044854dbdaaebb8256
-      internalID: -1385646098
+      spriteID: 342c6c767c31c7d428763ff5b9725a60
+      internalID: -1466472671
       vertices: []
       indices: 
       edges: []
@@ -281,6 +281,27 @@ TextureImporter:
       name: SkidPresentation_8
       rect:
         serializedVersion: 2
+        x: 900
+        y: 576
+        width: 300
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea3c976347d572f45b9f14184b7cbf0d
+      internalID: -436570761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SkidPresentation_9
+      rect:
+        serializedVersion: 2
         x: 1200
         y: 576
         width: 300
@@ -292,29 +313,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 57deb81f4f1742e48a507fafcda0a89a
-      internalID: -863590519
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SkidPresentation_9
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 384
-        width: 300
-        height: 192
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d604b15eaf85ffd43bc680dcb342c76f
-      internalID: -339885009
+      spriteID: d46bcd8e10e502d46b31f6fac3422648
+      internalID: 453514458
       vertices: []
       indices: 
       edges: []
@@ -323,7 +323,7 @@ TextureImporter:
       name: SkidPresentation_10
       rect:
         serializedVersion: 2
-        x: 300
+        x: 0
         y: 384
         width: 300
         height: 192
@@ -334,8 +334,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 64aac378209af48489156c26952fdd96
-      internalID: -1631649811
+      spriteID: 0894878172896414097168395a1255a4
+      internalID: 864127562
       vertices: []
       indices: 
       edges: []
@@ -344,7 +344,7 @@ TextureImporter:
       name: SkidPresentation_11
       rect:
         serializedVersion: 2
-        x: 600
+        x: 300
         y: 384
         width: 300
         height: 192
@@ -355,8 +355,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7607c59ab6fb0b343938fe0043bdf616
-      internalID: 2023889555
+      spriteID: cdc957290eaef9f449bff4036a2aaaae
+      internalID: -1518066546
       vertices: []
       indices: 
       edges: []
@@ -365,7 +365,7 @@ TextureImporter:
       name: SkidPresentation_12
       rect:
         serializedVersion: 2
-        x: 900
+        x: 600
         y: 384
         width: 300
         height: 192
@@ -376,8 +376,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 28717ea4bc91c6b46b91c7f81f0f6457
-      internalID: 1556358494
+      spriteID: d010f2ee4637cd345aa591ffa1bed970
+      internalID: -435744698
       vertices: []
       indices: 
       edges: []
@@ -386,6 +386,27 @@ TextureImporter:
       name: SkidPresentation_13
       rect:
         serializedVersion: 2
+        x: 900
+        y: 384
+        width: 300
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c08fb416acf44fa4291341e46089eaa0
+      internalID: 717750106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SkidPresentation_14
+      rect:
+        serializedVersion: 2
         x: 1200
         y: 384
         width: 300
@@ -397,14 +418,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 48ed140c19fd23848a4f91f1fca82571
-      internalID: -1270964358
+      spriteID: 2587859d31d6deb4aa8f419b4326bfd8
+      internalID: 128248119
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SkidPresentation_14
+      name: SkidPresentation_15
       rect:
         serializedVersion: 2
         x: 0
@@ -418,14 +439,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: af889e751979fdf4683cb3eee9ffddac
-      internalID: -561018925
+      spriteID: d57e63cd5af88f4498825363a960759c
+      internalID: -1805122757
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SkidPresentation_15
+      name: SkidPresentation_16
       rect:
         serializedVersion: 2
         x: 300
@@ -439,14 +460,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3e8db8f790124204f8d188c3f0a8ec6a
-      internalID: 520345962
+      spriteID: 19f7c9ab33ef11447ae71433e4fe5224
+      internalID: 679307571
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SkidPresentation_16
+      name: SkidPresentation_17
       rect:
         serializedVersion: 2
         x: 600
@@ -460,14 +481,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bb48a5ce33b90f7469a756589f0be36e
-      internalID: -1359588933
+      spriteID: 389a59b0315c41a4dac0e0a170a00b9c
+      internalID: -2071253774
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SkidPresentation_17
+      name: SkidPresentation_18
       rect:
         serializedVersion: 2
         x: 900
@@ -481,14 +502,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 05f594a4f105c2946b4bb8306d417dea
-      internalID: -2106976985
+      spriteID: a4175fe9c4212fd42b701fc84d1d71e5
+      internalID: 889833312
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SkidPresentation_18
+      name: SkidPresentation_19
       rect:
         serializedVersion: 2
         x: 1200
@@ -502,14 +523,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3229ce4c43716aa4db6bea3fa8869be7
-      internalID: 515330408
+      spriteID: 67a3edaf0a0b7bb44abcc01385e9a06a
+      internalID: 69545890
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SkidPresentation_19
+      name: SkidPresentation_20
       rect:
         serializedVersion: 2
         x: 0
@@ -523,14 +544,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 343eea8642b73674895ec00fa60ee5d3
-      internalID: 1814953241
+      spriteID: a77144dbcb783644084b48aeb222dec4
+      internalID: -166409451
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SkidPresentation_20
+      name: SkidPresentation_21
       rect:
         serializedVersion: 2
         x: 300
@@ -544,14 +565,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f8b4347f8307a4c4fbca23e8b8e45b49
-      internalID: -2057998069
+      spriteID: fa1353da4ee6bd3418060922d470eb67
+      internalID: 182552159
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SkidPresentation_21
+      name: SkidPresentation_22
       rect:
         serializedVersion: 2
         x: 600
@@ -565,29 +586,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6aaa791ec7933ab4692d84d079e77ce0
-      internalID: -945353253
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SkidPresentation_22
-      rect:
-        serializedVersion: 2
-        x: 900
-        y: 0
-        width: 300
-        height: 192
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6d8ceca1f332a184280ca141cc36a50e
-      internalID: -1838216209
+      spriteID: b9c19fe62dc526f4388e2cfb9979422e
+      internalID: 1773821115
       vertices: []
       indices: 
       edges: []
@@ -607,8 +607,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 64b2a6a0a59852b48b99fff616457f3c
-      internalID: -422036691
+      spriteID: 790fa9dbb575cfa4e9112a0e384968d9
+      internalID: 47888085
       vertices: []
       indices: 
       edges: []
@@ -624,30 +624,30 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      SkidPresentation_0: 91899961
-      SkidPresentation_1: -790561662
-      SkidPresentation_10: -1631649811
-      SkidPresentation_11: 2023889555
-      SkidPresentation_12: 1556358494
-      SkidPresentation_13: -1270964358
-      SkidPresentation_14: -561018925
-      SkidPresentation_15: 520345962
-      SkidPresentation_16: -1359588933
-      SkidPresentation_17: -2106976985
-      SkidPresentation_18: 515330408
-      SkidPresentation_19: 1814953241
-      SkidPresentation_2: 2108569920
-      SkidPresentation_20: -2057998069
-      SkidPresentation_21: -945353253
-      SkidPresentation_22: -1838216209
-      SkidPresentation_23: -422036691
-      SkidPresentation_3: 1455273339
-      SkidPresentation_4: -1365222624
-      SkidPresentation_5: -702921942
-      SkidPresentation_6: 970678094
-      SkidPresentation_7: -1385646098
-      SkidPresentation_8: -863590519
-      SkidPresentation_9: -339885009
+      SkidPresentation_0: 921679180
+      SkidPresentation_1: 762802391
+      SkidPresentation_10: 864127562
+      SkidPresentation_11: -1518066546
+      SkidPresentation_12: -435744698
+      SkidPresentation_13: 717750106
+      SkidPresentation_14: 128248119
+      SkidPresentation_15: -1805122757
+      SkidPresentation_16: 679307571
+      SkidPresentation_17: -2071253774
+      SkidPresentation_18: 889833312
+      SkidPresentation_19: 69545890
+      SkidPresentation_2: -934228314
+      SkidPresentation_20: -166409451
+      SkidPresentation_21: 182552159
+      SkidPresentation_22: 1773821115
+      SkidPresentation_23: 47888085
+      SkidPresentation_3: 730837367
+      SkidPresentation_4: 1752089763
+      SkidPresentation_5: -1587348477
+      SkidPresentation_6: 1765960427
+      SkidPresentation_7: -1466472671
+      SkidPresentation_8: -436570761
+      SkidPresentation_9: 453514458
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

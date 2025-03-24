@@ -205,7 +205,7 @@ MonoBehaviour:
   _lifeLoss: 1
   _bulletSpeed: 6
   _bulletLifeTime: 10
-  _bulletSize: 0.2
+  _bulletSize: 0.4
   _bulletSprite: {fileID: 21300000, guid: 0dce93164f974e44d99aa33335d89eed, type: 3}
   _useColor: 0
   _bulletColor: {r: 0, g: 0, b: 0, a: 0}

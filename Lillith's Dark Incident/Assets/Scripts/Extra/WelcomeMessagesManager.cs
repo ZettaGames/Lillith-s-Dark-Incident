@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -22,8 +22,15 @@ public class WelcomeMessagesManager : MonoBehaviour
 		DannyMessage,
 		VencesMessage,
 		MemeMessage,
-		AriMessage
-	}
+		AriMessage,
+		AndrosMessage,
+		RoussMessageOne,
+		RoussMessageTwo,
+        MarianaMessage,
+		SaulMessage,
+		ValeriaMessage,
+		KatiaMessage
+    }
 
 	private void Start()
 	{
@@ -63,7 +70,7 @@ public class WelcomeMessagesManager : MonoBehaviour
 
 	private string GetRandomWelcomeMessage()
 	{
-		var randomMessage = (WelcomeMessages)Random.Range(0, 14);
+		var randomMessage = (WelcomeMessages)Random.Range(0, 21);
 		switch (randomMessage)
 		{
 			case WelcomeMessages.HowdyMessage:
@@ -88,13 +95,27 @@ public class WelcomeMessagesManager : MonoBehaviour
 				return "I swear the VA was treated humanely... kinda.";
 			case WelcomeMessages.DannyMessage: // From: Danny Hernandez
 				return "If life gives you lemons, drop out of the career.";
-			case WelcomeMessages.VencesMessage:
-				return "Pending message, Vences not working.";
+			case WelcomeMessages.VencesMessage: // From: Vences
+                return "I hate this game.";
 			case WelcomeMessages.MemeMessage: // From: Meme4K
-				return "I S   T H A T   A   L I L L I T H   R E F E R E N C E ? ! ? ! ? !"; // From: Meme4K
+				return "I S   T H A T   A   L I L L I T H   R E F E R E N C E ?!?!?!";
 			case WelcomeMessages.AriMessage: // From: AriMichito
 				return "Error, brain ain't braining. Please try again later. ^w^";
-			default:
+			case WelcomeMessages.AndrosMessage: // From: Andros
+				return "Despite everything, it’s no longer you.";
+			case WelcomeMessages.RoussMessageOne: // From: Rouss
+				return "4096 pixels of pure pain";
+            case WelcomeMessages.RoussMessageTwo: // From: Rouss
+				return "Imagine getting paid to make pixel art.";
+			case WelcomeMessages.MarianaMessage: // From: Mariana
+				return "Let's go! ... I guess";
+            case WelcomeMessages.SaulMessage: // From: Saul
+				return "Error 404";
+            case WelcomeMessages.ValeriaMessage: // From: Valeria
+				return "VIIM  for the queen";
+			case WelcomeMessages.KatiaMessage: // From: Katia
+				return "Amidst the clutches of darkness, magic stands as the last salvation.";
+            default:
 				return "Is even possible to get here?";
 		}
 	}

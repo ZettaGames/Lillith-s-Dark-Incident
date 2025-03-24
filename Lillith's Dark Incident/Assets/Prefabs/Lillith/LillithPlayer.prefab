@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: -415213176, guid: 66846713e24e3b245b53848fb83c56b3, type: 3}
+  m_Sprite: {fileID: 2141877586, guid: 66846713e24e3b245b53848fb83c56b3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -218,15 +218,21 @@ MonoBehaviour:
   _moveSpeed: 10
   _smoothMove: 0.1
   _shootCooldown: 0.045
-  _superAttack: {fileID: 0}
-  _superCooldown: 0
+  _superAttack: {fileID: 5924513210253315321, guid: 630614fe766965247a8f6e6488384073, type: 3}
+  _superCooldown: 15
   _superText: {fileID: 0}
   _superIcon: {fileID: 0}
-  _shield: {fileID: 0}
-  _shieldDuration: 0
-  _shieldCooldown: 0
+  _shield: {fileID: 8790354761102853345, guid: 8e8dd7dfb6a6f7347b9b7686fad8174b, type: 3}
+  _shieldDuration: 10
+  _shieldCooldown: 25
   _shieldText: {fileID: 0}
   _shieldIcon: {fileID: 0}
+  _super1: {fileID: 8300000, guid: d3ee5c63f52f30249ae8cc0ce7456c9a, type: 3}
+  _super2: {fileID: 8300000, guid: 0a66781b1bbc6904a88702035fd03ffb, type: 3}
+  _super3: {fileID: 8300000, guid: b6b45cb25793788479ea513c0d32d425, type: 3}
+  _bubble1: {fileID: 8300000, guid: 2343779be6e709f45b6915ec8442f2fd, type: 3}
+  _bubble2: {fileID: 8300000, guid: c10ca2e2952eba240ac075b4a0cf2a1e, type: 3}
+  _bubble3: {fileID: 8300000, guid: 275784d8d8343cb4ca70d7c00770a6a5, type: 3}
 --- !u!114 &1404820849065696316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239,7 +245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6ff58e953fac204099d87698686cd6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentStars: 3
+  currentStars: 15
   _maxStars: 10
   _stars:
   - {fileID: 0}
@@ -256,4 +262,8 @@ MonoBehaviour:
   _emptyStar: {fileID: 21300000, guid: 10fccc2a05678404485f024b2e185506, type: 3}
   _noControlTime: 0.25
   _invincibilityTime: 1.5
-  _knockBackForce: {x: 0, y: 0}
+  _knockBackForce: {x: -3.5, y: -3.5}
+  _hitSound1: {fileID: 8300000, guid: af6664b64c83ee248b756928a294fd21, type: 3}
+  _hitSound2: {fileID: 8300000, guid: 6558f3b0940f3774aaa92e0ffa791426, type: 3}
+  _hitSound3: {fileID: 8300000, guid: ff246570749609c46907dcd502c3f9e1, type: 3}
+  _deathSound: {fileID: 8300000, guid: aa94f3817fc7b524a920c75de96a9e75, type: 3}

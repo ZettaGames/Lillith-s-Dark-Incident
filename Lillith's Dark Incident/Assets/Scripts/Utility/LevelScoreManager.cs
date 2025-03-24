@@ -71,13 +71,13 @@ public class LevelScoreManager : MonoBehaviour
 
     public void BossHitBonus()
     {
-        _score += Mathf.Max(1500 - (_score * 0.1f), 100);
+        _score += Mathf.Max(1500 - (_score * 0.1f), 125);
     }
 
     public void ScoreBonus()
     {
-        var multiplier = Random.Range(1.05f, 1.25f);
-        _score *= multiplier;
+        _score += 400;
+
     }
 
     public void SaveScore()

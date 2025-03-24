@@ -196,8 +196,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: 8
   speed: 8
+  _scoreDrop: {fileID: 2241293433198240086, guid: ece2ca09fb95d3a42819fd77099e7dbb, type: 3}
+  _starDrop: {fileID: 6866863526327915220, guid: 2c9933b386047264abcf44301b79d792, type: 3}
+  _scoreDropChance: 0.05
+  _starDropChance: 0.005
   _followTime: 3
-  _followRadius: 0.4
+  _followRadius: 1.25
   _avoidanceRadius: 0.2
 --- !u!114 &8209855604601154470
 MonoBehaviour:
@@ -223,7 +227,7 @@ MonoBehaviour:
   _lifeLoss: 1
   _bulletSpeed: 3
   _bulletLifeTime: 15
-  _bulletSize: 0.2
+  _bulletSize: 0.4
   _bulletSprite: {fileID: 21300000, guid: 6c77d4dc703d5c248aebad4dc1278c2c, type: 3}
   _useColor: 0
   _bulletColor: {r: 0, g: 0, b: 0, a: 0}

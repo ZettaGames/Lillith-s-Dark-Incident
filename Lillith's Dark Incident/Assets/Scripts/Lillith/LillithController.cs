@@ -52,8 +52,16 @@ public class LillithController : MonoBehaviour
 	[SerializeField] private TMP_Text _shieldText;
 	[SerializeField] private Image _shieldIcon;
 
-	// Unity components
-	private Rigidbody2D _rigidbody;
+	[Header("SFX")]
+    [SerializeField] private AudioClip _super1;
+    [SerializeField] private AudioClip _super2;
+    [SerializeField] private AudioClip _super3;
+    [SerializeField] private AudioClip _bubble1;
+    [SerializeField] private AudioClip _bubble2;
+    [SerializeField] private AudioClip _bubble3;
+
+    // Unity components
+    private Rigidbody2D _rigidbody;
 	private PlayerInput _playerInput;
 	private Animator _animator;
 	#endregion
@@ -167,8 +175,23 @@ public class LillithController : MonoBehaviour
 			// Reset the timer
 			_superTimer = 0f;
 
-			// Launch the player backwards and shoot the super attack
-			StartCoroutine(Super());
+            // Play a random super attack sound
+            var random = Random.Range(0, 3);
+			switch(random)
+            {
+                case 0:
+                    SoundFXManager.Instance.PlaySoundFXClip(_super1, transform, 1f);
+                    break;
+                case 1:
+                    SoundFXManager.Instance.PlaySoundFXClip(_super2, transform, 1f);
+                    break;
+                case 2:
+                    SoundFXManager.Instance.PlaySoundFXClip(_super3, transform, 1f);
+                    break;
+            }
+
+            // Launch the player backwards and shoot the super attack
+            StartCoroutine(Super());
 		}
 	}
 
@@ -179,8 +202,23 @@ public class LillithController : MonoBehaviour
 			// Reset the timer
 			_shieldTimer = 0f;
 
-			// Create the shield
-			StartCoroutine(Bubble());
+            // Play a random bubble sound
+            var random = Random.Range(0, 3);
+            switch (random)
+            {
+                case 0:
+                    SoundFXManager.Instance.PlaySoundFXClip(_bubble1, transform, 1f);
+                    break;
+                case 1:
+                    SoundFXManager.Instance.PlaySoundFXClip(_bubble2, transform, 1f);
+                    break;
+                case 2:
+                    SoundFXManager.Instance.PlaySoundFXClip(_bubble3, transform, 1f);
+                    break;
+            }
+
+            // Create the shield
+            StartCoroutine(Bubble());
 		}
 	}
 
@@ -245,5 +283,11 @@ public class LillithController : MonoBehaviour
 			Gamepad.current.SetMotorSpeeds(0.0f, 0.0f);
 		}
 	}
+
+	public void ResetCooldowns()
+	{
+        _superTimer = _superCooldown;
+        _shieldTimer = _shieldCooldown;
+    }
 	#endregion
 }

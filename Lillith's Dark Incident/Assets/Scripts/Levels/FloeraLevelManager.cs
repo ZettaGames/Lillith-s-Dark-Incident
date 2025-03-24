@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class FloeraLevelManager : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class FloeraLevelManager : MonoBehaviour
     private float _totalTime;
     private bool _isPhase1;
     private bool _isPhase2;
+    private bool _onLevel = false;
 
     // Obstacles
     private float _obsProbabilityP1 = 0.6f;
@@ -62,11 +64,31 @@ public class FloeraLevelManager : MonoBehaviour
     [SerializeField] private GameObject _HealthBar;
     private Animator _floeraStartAnimator;
 
+    [Header("Tutorial")]
+    [SerializeField] private LillithController _lillithController;
+    [SerializeField] private CanvasGroup _shootTutorial;
+    [SerializeField] private CanvasGroup _superTutorial;
+    [SerializeField] private CanvasGroup _shieldTutorial;
+    [SerializeField] private InputActionAsset _inputActions;
+    private InputAction _shootAction;
+    private InputAction _superAction;
+    private InputAction _shieldAction;
+
     private void Start()
     {
+        _shootAction = _inputActions.FindAction("Shoot");
+        _superAction = _inputActions.FindAction("Super");
+        _shieldAction = _inputActions.FindAction("Shield");
+
         _floeraStartAnimator = _floeraStart.GetComponent<Animator>();
 
         _totalTime = _phase1Duration + _phase2Duration;
+
+        int minutes = Mathf.FloorToInt(_totalTime / 60F);
+        int seconds = Mathf.FloorToInt(_totalTime % 60F);
+        _levelTime.text = $"Time: {minutes:00}:{seconds:00}";
+
+        LevelScoreManager.Instance.OnLevel = false;
 
         StartCoroutine(LevelFlow());
     }
@@ -74,10 +96,14 @@ public class FloeraLevelManager : MonoBehaviour
     private void Update()
     {
         // Update the level time
-        int minutes = Mathf.FloorToInt(_totalTime / 60F);
-        int seconds = Mathf.FloorToInt(_totalTime % 60F);
-        _levelTime.text = $"Time: {minutes:00}:{seconds:00}";
-        _totalTime -= Time.deltaTime * LocalTime.TimeScale;
+        if (_onLevel)
+        {
+            int minutes = Mathf.FloorToInt(_totalTime / 60F);
+            int seconds = Mathf.FloorToInt(_totalTime % 60F);
+            _levelTime.text = $"Time: {minutes:00}:{seconds:00}";
+            _totalTime -= Time.deltaTime * LocalTime.TimeScale;
+        }
+
         // Update the level phase
         if (_isPhase1)
         {
@@ -104,6 +130,13 @@ public class FloeraLevelManager : MonoBehaviour
 
     private IEnumerator LevelFlow()
     {
+        StartCoroutine(Tutorial());
+
+        while (!_onLevel)
+        {
+            yield return null;
+        }
+
         Debug.Log("Phase 1 started");
 
         _isPhase1 = true;
@@ -330,6 +363,93 @@ public class FloeraLevelManager : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    private IEnumerator Tutorial()
+    {
+        // Fade in the shoot tutorial
+        float opacity = 0f;
+        while (opacity < 1)
+        {
+            opacity += Time.deltaTime * LocalTime.TimeScale;
+            _shootTutorial.alpha = opacity;
+            yield return null;
+        }
+
+        // Wait for the shoot action to be pressed
+        while (!_shootAction.triggered)
+        {
+            yield return null;
+        }
+
+        // Fade out the shoot tutorial
+        while (opacity > 0)
+        {
+            opacity -= Time.deltaTime * LocalTime.TimeScale;
+            _shootTutorial.alpha = opacity;
+            yield return null;
+        }
+
+        // Fade in the super tutorial
+        opacity = 0f;
+        while (opacity < 1)
+        {
+            opacity += Time.deltaTime * LocalTime.TimeScale;
+            _superTutorial.alpha = opacity;
+            yield return null;
+        }
+
+        // Reset the habilities cooldown
+        _lillithController.ResetCooldowns();
+
+        // Wait for the super action to be pressed
+        while (!_superAction.triggered)
+        {
+            yield return null;
+        }
+
+        // Fade out the super tutorial
+        while (opacity > 0)
+        {
+            opacity -= Time.deltaTime * LocalTime.TimeScale;
+            _superTutorial.GetComponent<CanvasGroup>().alpha = opacity;
+            yield return null;
+        }
+
+        // Fade in the shield tutorial
+        opacity = 0f;
+        while (opacity < 1)
+        {
+            opacity += Time.deltaTime * LocalTime.TimeScale;
+            _shieldTutorial.GetComponent<CanvasGroup>().alpha = opacity;
+            yield return null;
+        }
+
+        // Reset the habilities cooldown
+        _lillithController.ResetCooldowns();
+
+        // Wait for the shield action to be pressed
+        while (!_shieldAction.triggered)
+        {
+            yield return null;
+        }
+
+        // Fade out the shield tutorial
+        while (opacity > 0)
+        {
+            opacity -= Time.deltaTime * LocalTime.TimeScale;
+            _shieldTutorial.GetComponent<CanvasGroup>().alpha = opacity;
+            yield return null;
+        }
+
+        // Reset the habilities cooldown
+        _lillithController.ResetCooldowns();
+
+        // Reanude the score
+        LevelScoreManager.Instance.OnLevel = true;
+
+        // Start the level
+        _onLevel = true;
+    }
+
     private IEnumerator WaitForPausedSeconds(float seconds)
     {
         float elapsedTime = 0f;
@@ -343,3 +463,4 @@ public class FloeraLevelManager : MonoBehaviour
         }
     }
 }
+

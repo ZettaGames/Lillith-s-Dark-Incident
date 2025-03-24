@@ -1503,6 +1503,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SceneTransitionManager
       objectReference: {fileID: 0}
+    - target: {fileID: 8974850315242388857, guid: 583b75dba3d879b4d885f0a84760fbed, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2095,7 +2099,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3a36feee6a2f9f4a80326b3a40b5056, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sceneToLoad: 6
+  _sceneToLoad: 8
   _images:
   - {fileID: 581816366}
   - {fileID: 183348444}

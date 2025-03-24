@@ -399,22 +399,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1404820849065696316, guid: 1f697dc2d18b8974c8822f9e0510e626, type: 3}
-      propertyPath: currentStars
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 1404820849065696316, guid: 1f697dc2d18b8974c8822f9e0510e626, type: 3}
-      propertyPath: _noControlTime
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 1404820849065696316, guid: 1f697dc2d18b8974c8822f9e0510e626, type: 3}
-      propertyPath: _knockBackForce.x
-      value: -3.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1404820849065696316, guid: 1f697dc2d18b8974c8822f9e0510e626, type: 3}
-      propertyPath: _knockBackForce.y
-      value: -3.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1404820849065696316, guid: 1f697dc2d18b8974c8822f9e0510e626, type: 3}
       propertyPath: _stars.Array.data[0]
       value: 
       objectReference: {fileID: 1008626252}
@@ -459,10 +443,6 @@ PrefabInstance:
       value: LillithPlayer
       objectReference: {fileID: 0}
     - target: {fileID: 9123310310434011771, guid: 1f697dc2d18b8974c8822f9e0510e626, type: 3}
-      propertyPath: _shield
-      value: 
-      objectReference: {fileID: 8790354761102853345, guid: 8e8dd7dfb6a6f7347b9b7686fad8174b, type: 3}
-    - target: {fileID: 9123310310434011771, guid: 1f697dc2d18b8974c8822f9e0510e626, type: 3}
       propertyPath: _superIcon
       value: 
       objectReference: {fileID: 730450816}
@@ -478,22 +458,6 @@ PrefabInstance:
       propertyPath: _shieldText
       value: 
       objectReference: {fileID: 1293527564}
-    - target: {fileID: 9123310310434011771, guid: 1f697dc2d18b8974c8822f9e0510e626, type: 3}
-      propertyPath: _superAttack
-      value: 
-      objectReference: {fileID: 5924513210253315321, guid: 630614fe766965247a8f6e6488384073, type: 3}
-    - target: {fileID: 9123310310434011771, guid: 1f697dc2d18b8974c8822f9e0510e626, type: 3}
-      propertyPath: _superCooldown
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 9123310310434011771, guid: 1f697dc2d18b8974c8822f9e0510e626, type: 3}
-      propertyPath: _shieldCooldown
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 9123310310434011771, guid: 1f697dc2d18b8974c8822f9e0510e626, type: 3}
-      propertyPath: _shieldDuration
-      value: 10
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1339,7 +1303,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e94bc1e58162ac145b9ccd38e00b2b20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _patternType: 4
+  _patternType: 2
   _emitterShape: 0
   _useEmitter: 0
   _spawnerName: Polygonal

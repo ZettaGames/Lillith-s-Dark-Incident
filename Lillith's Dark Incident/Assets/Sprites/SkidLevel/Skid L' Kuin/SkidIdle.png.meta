@@ -124,8 +124,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: efd78b8d0830c1341ad58a537bd43c00
-      internalID: -1487178124
+      spriteID: 040002a0f1a065b4aa2119b29376a537
+      internalID: -638266596
       vertices: []
       indices: 
       edges: []
@@ -145,8 +145,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 241ef97c8cf4acf4f86bdb8b22a0e4e4
-      internalID: 1661399299
+      spriteID: ad6329818aad45747ab201ee4a265708
+      internalID: 1193418229
       vertices: []
       indices: 
       edges: []
@@ -166,8 +166,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fb8bd004d4727e64abc8ccafc35cdc83
-      internalID: 1279007248
+      spriteID: 95011c0e92796b14d815db9e43850faf
+      internalID: -706214327
       vertices: []
       indices: 
       edges: []
@@ -187,8 +187,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5591bc5c46304bf4ebd8f19d75619954
-      internalID: -10227948
+      spriteID: 82d008b39e6c0f24285cdca667af4329
+      internalID: -1255935403
       vertices: []
       indices: 
       edges: []
@@ -208,29 +208,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bec5cfb58daffd342a01d4e5ca3b266a
-      internalID: 1962889337
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SkidIdle_5
-      rect:
-        serializedVersion: 2
-        x: 600
-        y: 0
-        width: 300
-        height: 192
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d67675ad443a8ea4eb46cf1cada96fe7
-      internalID: 1292816817
+      spriteID: e3d37f43363b84e4c859a7a53ba7cf95
+      internalID: -657700838
       vertices: []
       indices: 
       edges: []
@@ -246,12 +225,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      SkidIdle_0: -1487178124
-      SkidIdle_1: 1661399299
-      SkidIdle_2: 1279007248
-      SkidIdle_3: -10227948
-      SkidIdle_4: 1962889337
-      SkidIdle_5: 1292816817
+      SkidIdle_0: -638266596
+      SkidIdle_1: 1193418229
+      SkidIdle_2: -706214327
+      SkidIdle_3: -1255935403
+      SkidIdle_4: -657700838
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -55,8 +55,14 @@ public class LillithHealthManager : MonoBehaviour
 	[Header("Knockback")]
 	[SerializeField] private Vector2 _knockBackForce;
 
-	// Components variables
-	private Animator _animator;
+	[Header("SFX")]
+	[SerializeField] private AudioClip _hitSound1;
+    [SerializeField] private AudioClip _hitSound2;
+	[SerializeField] private AudioClip _hitSound3;
+	[SerializeField] private AudioClip _deathSound;
+
+    // Components variables
+    private Animator _animator;
 	private Rigidbody2D _rigidbody;
 	private LillithController _lillithController;
 
@@ -75,9 +81,15 @@ public class LillithHealthManager : MonoBehaviour
 	}
 
 	private void Update()
-	{	
-		// Kill the player if there are no stars left
-		if (currentStars <= 0 && !hasDied)
+	{
+        // Limit the health to the maximum amount
+        if (currentStars > _maxStars)
+        {
+            currentStars = _maxStars;
+        }
+
+        // Kill the player if there are no stars left
+        if (currentStars <= 0 && !hasDied)
 		{
 			hasDied = true;
 			StartCoroutine(Death());
@@ -110,8 +122,24 @@ public class LillithHealthManager : MonoBehaviour
     #region damaging_methods
     public void TakeDamage()
 	{
-		// Decrease the amount of stars
-		currentStars--;
+        // Play a random hit sound
+        int random = Random.Range(0, 3);
+        switch (random)
+        {
+            case 0:
+                SoundFXManager.Instance.PlaySoundFXClip(_hitSound1, transform, 1f);
+                break;
+            case 1:
+				// Change later
+                SoundFXManager.Instance.PlaySoundFXClip(_hitSound3, transform, 1f);
+                break;
+            case 2:
+                SoundFXManager.Instance.PlaySoundFXClip(_hitSound3, transform, 1f);
+                break;
+        }
+
+        // Decrease the amount of stars
+        currentStars--;
 
 		// Apply the damaging effects
 		StartCoroutine(NoControl());
@@ -128,9 +156,9 @@ public class LillithHealthManager : MonoBehaviour
 		// Disable the player's movement
 		_lillithController.CanMove = false;
 		// Wait for a certain amount of time
-		yield return new WaitForSeconds(_noControlTime);
-		// Enable the player's movement
-		_lillithController.CanMove = true;
+		yield return WaitForPausedSeconds(_noControlTime);
+        // Enable the player's movement
+        _lillithController.CanMove = true;
 	}
 
 	private IEnumerator Invincibility()
@@ -175,9 +203,12 @@ public class LillithHealthManager : MonoBehaviour
         // Stop the game
         LocalTime.TimeScale = 0.0f;
 
+        // Play the death sound
+        SoundFXManager.Instance.PlaySoundFXClip(_deathSound, transform, 1f);
+
         // Prevent more collisions
-        GetComponent<CircleCollider2D>().enabled = false;
-		yield return new WaitForSeconds(0.25f);
+        transform.tag = UNTAGGED;
+        yield return new WaitForSeconds(0.25f);
 
         // Play the death animation
         _animator.SetTrigger(DEATH);
@@ -244,5 +275,35 @@ public class LillithHealthManager : MonoBehaviour
             TakeDamage();
 			KnockBack(other.transform.position);
 		}
+    }
+
+    // Do constant damage if the player is inside the collider
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.CompareTag(OBSTACLE) && gameObject.CompareTag(PLAYER))
+        {
+            TakeDamage();
+        }
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag(OBSTACLE) && gameObject.CompareTag(PLAYER))
+        {
+            TakeDamage();
+        }
+    }
+
+    private IEnumerator WaitForPausedSeconds(float seconds)
+    {
+        float elapsedTime = 0f;
+        while (elapsedTime < seconds)
+        {
+            if (LocalTime.TimeScale == 1)
+            {
+                elapsedTime += Time.deltaTime;
+            }
+            yield return null;
+        }
     }
 }

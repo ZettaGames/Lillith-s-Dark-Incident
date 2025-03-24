@@ -586,7 +586,7 @@ public class BulletSystem : MonoBehaviour
             Material particleMaterial = new Material(Shader.Find(_materialPath));
 
             // Initialize the child object that will hold the particle system
-            var container = new GameObject($"{i}_ParticleSystem_{_angle * i}º"); // Syntax: ObjectNumber_ParticleSystem_Angleº
+            var container = new GameObject($"{i}_ParticleSystem_{_angle * i}ï¿½"); // Syntax: ObjectNumber_ParticleSystem_Angleï¿½
             container.transform.position = spawner.transform.position;
             container.transform.Rotate(_angle * i, 90f, 0f);
             container.transform.SetParent(spawner.transform);
@@ -601,7 +601,7 @@ public class BulletSystem : MonoBehaviour
             // Adjust the renderer for the material and particle rotation
             var renderer = container.GetComponent<ParticleSystemRenderer>();
             renderer.material = particleMaterial;
-            renderer.renderMode = ParticleSystemRenderMode.Stretch;
+            renderer.renderMode = ParticleSystemRenderMode.VerticalBillboard;
 
             // Disable the emission
             var emission = _particleSystem.emission;
@@ -617,6 +617,8 @@ public class BulletSystem : MonoBehaviour
                     break;
                 case EmitterShape.Box:
                     shape.shapeType = ParticleSystemShapeType.Box;
+                    // Increase the size of the box to avoid clipping
+                    shape.scale = new Vector3(1f, 3.5f, 1f);
                     break;
                 case EmitterShape.Cone:
                     shape.shapeType = ParticleSystemShapeType.Cone;
@@ -630,6 +632,12 @@ public class BulletSystem : MonoBehaviour
             texture.enabled = true;
             texture.mode = ParticleSystemAnimationMode.Sprites;
             texture.AddSprite(_bulletSprite);
+
+            // Adjust the scale of the particles to maintain the aspect ratio of the sprite
+            var spriteBounds = _bulletSprite.bounds;
+            var aspectRatio = spriteBounds.size.x / spriteBounds.size.y;
+            mainModule.startSizeXMultiplier = aspectRatio;
+            mainModule.startSizeYMultiplier = 1.0f;
 
             // Set the collision
             if (_useCollision)
@@ -648,6 +656,12 @@ public class BulletSystem : MonoBehaviour
                     _bulletsTag = "Untagged";
                 }
                 container.tag = _bulletsTag;
+            }
+
+            // Rotate the particle down if the emitter shape is a box
+            if (_emitterShape == EmitterShape.Box)
+            {
+                container.transform.Rotate(90f, 0f, 0f);
             }
         }
 

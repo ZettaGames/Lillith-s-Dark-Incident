@@ -9,6 +9,9 @@ public class SkidBehaviour : BossGeneric
     private const string RETURN = "return";
     private const string DEATH = "death";
 
+    // Scenes
+    private const string SCORE_SCREEN = "ScoreScreen";
+
     // Tags
     private const string INK = "Ink";
     private const string UNTAGGED = "Untagged";
@@ -64,6 +67,8 @@ public class SkidBehaviour : BossGeneric
 
     private void Start()
     {
+        GameManager.Instance.SetCurrentLevel(2);
+
         _animator = GetComponent<Animator>();
         _bulletSystem = GetComponent<BulletSystem>();
         _audioSource = _musicPlayer.GetComponent<AudioSource>();
@@ -134,7 +139,7 @@ public class SkidBehaviour : BossGeneric
             MoveToDestination(randomPosition, 1.5f);
 
             // Wait for the movement to end
-            yield return new WaitForSeconds(3f);
+            yield return WaitForPausedSeconds(3f);
         }
     }
 
@@ -153,11 +158,11 @@ public class SkidBehaviour : BossGeneric
                 transform.position.z
             );
             var tentacle = Instantiate(_tentacleTrap, randomPosition, Quaternion.identity);
-            yield return new WaitForSeconds(1.25f);
+            yield return WaitForPausedSeconds(1.25f);
 
             // Start the tentacle trap bullet pattern
             tentacle.GetComponent<BulletSystem>().StartSpawner();
-            yield return new WaitForSeconds(1.5f);
+            yield return WaitForPausedSeconds(2.75f);
             Destroy(tentacle);
         }
 
@@ -184,11 +189,11 @@ public class SkidBehaviour : BossGeneric
             {
                 tentacle.transform.localScale = new Vector3(tentacle.transform.localScale.x, tentacle.transform.localScale.y, -tentacle.transform.localScale.z);
             }
-            yield return new WaitForSeconds(0.75f);
+            yield return WaitForPausedSeconds(0.75f);
 
             // Instantiate the rock projectile
             Instantiate(_rockProjectile, randomPosition, Quaternion.identity);
-            yield return new WaitForSeconds(0.75f);
+            yield return WaitForPausedSeconds(0.75f);
             Destroy(tentacle);
         }
         _isShooting = false;
@@ -199,24 +204,24 @@ public class SkidBehaviour : BossGeneric
         // Stop the wander state and wait for the boss to stop moving
         _canWander = false;
         StopCoroutine(Wander());
-        yield return new WaitForSeconds(2f);
+        yield return WaitForPausedSeconds(2f);
 
         // Move the boss to the center
         MoveToDestination(_centerPosition, 0.75f);
 
         // Start the hell animation
         _animator.SetTrigger(HELL);
-        yield return new WaitForSeconds(1.75f);
+        yield return WaitForPausedSeconds(1.75f);
 
         // Start the hell bullet pattern
         SetBulletHell();
         _bulletSystem.StartSpawner();
-        yield return new WaitForSeconds(12f);
+        yield return WaitForPausedSeconds(12f);
 
         // Move the boss to the start position
         _bulletSystem.StopSpawner();
         _animator.SetTrigger(RETURN);
-        yield return new WaitForSeconds(1.5f);
+        yield return WaitForPausedSeconds(1.5f);
 
         // Return to the wander state
         _bulletSystem.StopSpawner();
@@ -244,16 +249,13 @@ public class SkidBehaviour : BossGeneric
         // Play the death animation
         _animator.SetTrigger(DEATH);
         yield return new WaitForSeconds(6.5f);
-        Destroy(gameObject);
 
-        // Check if the dead animation is over
-        while (_animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1)
-        {
-            yield return null;
-        }
+        // Save the score
+        LevelScoreManager.Instance.SaveScore();
 
-        // Stop the animator
-        _animator.enabled = false;
+        // Load the main menu and resume the game
+        yield return new WaitForSeconds(1.2f);
+        SceneTransitionManager.Instance.LoadLevel(SCORE_SCREEN);
     }
 
     private void SetBulletInk()
@@ -263,7 +265,7 @@ public class SkidBehaviour : BossGeneric
         _bulletSystem.SpawnerName = "SkidInk";
         _bulletSystem.BulletSprite = _inkBullet;
         _bulletSystem.BulletSpeed = 6f;
-        _bulletSystem.BulletSize = 0.2f;
+        _bulletSystem.BulletSize = 0.4f;
         _bulletSystem.NumberOfColumns = 35;
         _bulletSystem.FireRate = 1.5f;
         _bulletSystem.SpinSpeed = 0;
@@ -276,9 +278,9 @@ public class SkidBehaviour : BossGeneric
         _bulletSystem.SpawnerName = "SkidHell";
         _bulletSystem.BulletSprite = _rockBullet;
         _bulletSystem.BulletSpeed = 4f;
-        _bulletSystem.BulletSize = 0.2f;
+        _bulletSystem.BulletSize = 0.4f;
         _bulletSystem.NumberOfColumns = 10;
-        _bulletSystem.FireRate = 0.15f;
+        _bulletSystem.FireRate = 0.2f;
         _bulletSystem.SpinSpeed = 50;
     }
 
@@ -288,7 +290,20 @@ public class SkidBehaviour : BossGeneric
         {
             _stateText.text = _phrases[Random.Range(0, _phrases.Length)];
             Debug.Log("Phrase changed to " + _stateText.text);
-            yield return new WaitForSeconds(15f);
+            yield return WaitForPausedSeconds(15f);
+        }
+    }
+
+    private IEnumerator WaitForPausedSeconds(float seconds)
+    {
+        float elapsedTime = 0f;
+        while (elapsedTime < seconds)
+        {
+            if (LocalTime.TimeScale == 1)
+            {
+                elapsedTime += Time.deltaTime;
+            }
+            yield return null;
         }
     }
 }

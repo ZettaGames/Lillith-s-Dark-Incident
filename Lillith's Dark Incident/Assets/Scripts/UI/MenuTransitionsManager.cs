@@ -48,16 +48,18 @@ public class MenuTransitionsManager : MonoBehaviour
 	// Selectable buttons for Settings Menu
 	[Header("Settings Menu Button References")]
 	[SerializeField] private Button _soundButton;
-	[SerializeField] private Button _returnButton;
+    [SerializeField] private Button _screenButton;
+    [SerializeField] private Button _returnButton;
 
 	// Selectable buttons for Settings Menu PopOuts
 	[Header("Settings PopOuts Buttons References")]
 	[SerializeField] private Button _masterButton;
 	[SerializeField] private Button _musicButton;
 	[SerializeField] private Button _effectsButton;
+    [SerializeField] private Button _fullscreenButton;
 
-	// Sliders for Sound PopOut
-	[Header("Settings Components")]
+    // Sliders for Sound PopOut
+    [Header("Settings Components")]
 	[SerializeField] private Slider _masterSlider;
 	[SerializeField] private Slider _musicSlider;
 	[SerializeField] private Slider _effectsSlider;
@@ -76,10 +78,11 @@ public class MenuTransitionsManager : MonoBehaviour
 	// Settings
 	[Header("Settings PopOuts Animator")]
 	[SerializeField] private Animator _soundPopOutAnimator;
-	#endregion
+	[SerializeField] private Animator _screenPopOutAnimator;
+    #endregion
 
-	#region unity_functions
-	private void Start()
+    #region unity_functions
+    private void Start()
 	{
 		// Initialize the "Submit" action
 		_submitAction = _actionAsset.FindActionMap("UI").FindAction("Submit");
@@ -155,14 +158,24 @@ public class MenuTransitionsManager : MonoBehaviour
 		StartCoroutine(PopOutCorroutines(_soundPopOutAnimator, GoUp, GoOut, false, _settingsCanvasGroup, _masterButton));
 	}
 
+	public void ScreenButton()
+	{
+		StartCoroutine(PopOutCorroutines(_screenPopOutAnimator, GoUp, GoOut, false, _settingsCanvasGroup, _fullscreenButton));
+    }
+
 	public void ReturnSoundButton()
 	{
 		StartCoroutine(PopOutCorroutines(_soundPopOutAnimator, GoDown, GoIn, true, _settingsCanvasGroup, _soundButton));
 	}
-	#endregion
 
-	#region sound_sliders_transitions
-	public void MoveToSliderMaster()
+    public void ReturnScreenButton()
+    {
+        StartCoroutine(PopOutCorroutines(_screenPopOutAnimator, GoDown, GoIn, true, _settingsCanvasGroup, _screenButton));
+    }
+    #endregion
+
+    #region sound_sliders_transitions
+    public void MoveToSliderMaster()
 	{
 		StartCoroutine(SelectSlider(_masterSlider));
 	}

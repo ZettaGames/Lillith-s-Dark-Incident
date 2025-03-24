@@ -1,9 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class ScoreScreen : MonoBehaviour
 {
+    // CONSTANTS
+    private const float ButtonDelay = 0.25f;
+    private const float SpamDelay = 0.05f;
+    private const string GoUp = "GoUp";
+    private const string GoDown = "GoDown";
+
     private float _totalScore;
     private float _tempScore = 0;
     private int _currentStars;
@@ -20,10 +29,22 @@ public class ScoreScreen : MonoBehaviour
     [SerializeField] private Sprite _fullStar;
     [SerializeField] private Sprite _emptyStar;
 
+    [Header("Selection Buttons")]
+    [SerializeField] private Button _continueButton;
+    [SerializeField] private CanvasGroup _selectionCanvas;
+    [SerializeField] private InputActionAsset _actionAsset;
+    private InputActionMap _uiActionMap;
+
+    [Header("Return PopOut")]
+    [SerializeField] private Animator _returnPopOut;
+    [SerializeField] private Button _resumeButton;
+
     private void Start()
     {
         // Set the time scale to 1
         LocalTime.TimeScale = 1f;
+
+        _uiActionMap = _actionAsset.FindActionMap("UI");
 
         // Get the total score and current stars from the GameManager
         _totalScore = GameManager.Instance.TotalScore;
@@ -56,8 +77,6 @@ public class ScoreScreen : MonoBehaviour
         // Time to reach score
         float incrementTime = _totalScore / _scoreTime;
 
-        Debug.Log("Iniciando puntaje");
-
         // Make the score text to reach the total score
         while (_tempScore < _totalScore)
         {
@@ -67,10 +86,6 @@ public class ScoreScreen : MonoBehaviour
         }
         _scoreText.text = $"{(int)_totalScore:D9}";
 
-        Debug.Log("Puntaje alcanzado");
-
-        Debug.Log("Estrellas actuales: " + _currentStars);
-
         // Update the multiplier text based on the current stars
         for (int i = _maxStars; i >= _currentStars + 1; i--)
         {
@@ -79,9 +94,8 @@ public class ScoreScreen : MonoBehaviour
             yield return new WaitForSeconds(0.75f);
         }
 
-        Debug.Log("Estrellas actualizadas");
-
-        Debug.Log("Multiplicador: " + (_currentStars * 0.2f - 0.2f));
+        // Wait for 1.5 seconds before showing the total score
+        yield return new WaitForSeconds(1.5f);
 
         // Multiply the total score by the multiplier
         _totalScore *= _currentStars * 0.2f;
@@ -96,6 +110,67 @@ public class ScoreScreen : MonoBehaviour
         }
         _totalScoreText.text = $"{(int)_totalScore:D9}";
 
-        Debug.Log("Puntaje total multiplicado");
+        // Wait for 1.5 seconds before showing the selection buttons
+        yield return new WaitForSeconds(1.5f);
+
+        // Fade in the selection buttons
+        while (_selectionCanvas.alpha < 1)
+        {
+            _selectionCanvas.alpha += Time.deltaTime * LocalTime.TimeScale;
+            yield return null;
+        }
+
+        // Select the continue button
+        _continueButton.Select();
+    }
+
+    public void ContinueButton()
+    {
+        // Save the new total score
+        GameManager.Instance.TotalScore = _totalScore;
+
+        int nextLevel = GameManager.Instance.GetLevel();
+        SceneTransitionManager.Instance.LoadLevel(nextLevel);
+    }
+
+    public void MainMenuButton()
+    {
+        StartCoroutine(MainMenuPopOut());
+    }
+
+    private IEnumerator MainMenuPopOut()
+    {
+        // Prevent button spam
+        _uiActionMap.Disable();
+        // Animation of the pop out
+        _returnPopOut.SetTrigger(GoUp);
+        // Wait to prevent button spam
+        yield return new WaitForSeconds(SpamDelay);
+        _resumeButton.Select();
+        yield return new WaitForSeconds(ButtonDelay);
+        _uiActionMap.Enable();
+    }
+
+    public void Return()
+    {
+        SceneTransitionManager.Instance.LoadLevel(2);
+    }
+
+    public void Resume()
+    {
+        StartCoroutine(ResumePopOut());
+    }
+
+    private IEnumerator ResumePopOut()
+    {
+        // Prevent button spam
+        _uiActionMap.Disable();
+        // Animation 
+        _returnPopOut.SetTrigger(GoDown);
+        // Wait to prevent button spam
+        yield return new WaitForSeconds(SpamDelay);
+        _continueButton.Select();
+        yield return new WaitForSeconds(ButtonDelay);
+        _uiActionMap.Enable();
     }
 }

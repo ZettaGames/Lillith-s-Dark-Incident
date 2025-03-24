@@ -23,8 +23,8 @@ public class SkidLevelManager : MonoBehaviour
     private bool _isPhase2;
 
     // Obstacles
-    private float _obsProbabilityP1 = 0.5f;
-    private float _obsProbabilityP2 = 0.7f;
+    private float _obsProbabilityP1 = 0.65f;
+    private float _obsProbabilityP2 = 0.8f;
     private float _obsTime;
 
     // Follow Enemies
@@ -62,6 +62,7 @@ public class SkidLevelManager : MonoBehaviour
     [Header("Skid L' Kuin")]
     [SerializeField] private GameObject _skidStart;
     [SerializeField] private GameObject _skidSplashArt;
+    [SerializeField] private GameObject _skidText;
     [SerializeField] private GameObject _shadowSquare;
     [SerializeField] private GameObject _healthBar;
     [SerializeField] private GameObject _skidLKuin;
@@ -297,7 +298,7 @@ public class SkidLevelManager : MonoBehaviour
         float duration = 3.25f;
         while (elapsedTime < duration)
         {
-            // _floeraText.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, elapsedTime / duration);
+            _skidText.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, elapsedTime / duration);
             _skidSplashArt.transform.position = Vector3.Lerp(_skidSplashArt.transform.position, splashartPosition, elapsedTime / duration);
             elapsedTime += Time.deltaTime;
             yield return null;
@@ -312,7 +313,7 @@ public class SkidLevelManager : MonoBehaviour
         {
             opacity -= Time.deltaTime;
             _skidSplashArt.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, opacity);
-            // _floeraText.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, opacity);
+            _skidText.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, opacity);
             _shadowSquare.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, opacity / 2);
             yield return null;
         }

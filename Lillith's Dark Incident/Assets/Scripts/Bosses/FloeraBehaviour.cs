@@ -57,6 +57,8 @@ public class FloeraBehaviour : BossGeneric
 
     private void Start()
     {
+        GameManager.Instance.SetCurrentLevel(1);
+
         _animator = GetComponent<Animator>();
         _bulletSystem = GetComponent<BulletSystem>();
 
@@ -144,27 +146,27 @@ public class FloeraBehaviour : BossGeneric
 
         // Move to the chosen side
         _animator.SetTrigger(trigger);
-        yield return new WaitForSeconds(1.25f);
+        yield return WaitForPausedSeconds(1.25f);
         MoveToDestination(transform.position + position, 0.25f);
 
         // Stay in the side for a while
-        yield return new WaitForSeconds(2.25f);
+        yield return WaitForPausedSeconds(2.25f);
 
         // Return to the center
         _animator.SetTrigger(oppositeSide);
-        yield return new WaitForSeconds(1.25f);
+        yield return WaitForPausedSeconds(1.25f);
         MoveToDestination(transform.position + oppositePosition, 0.25f);
 
         // Repeat the process
         _timesToMove--;
         if (_timesToMove > 0)
         {
-            yield return new WaitForSeconds(2.25f);
+            yield return WaitForPausedSeconds(2.25f);
             MoveAttack();
         }
         else
         {
-            yield return new WaitForSeconds(2.25f);
+            yield return WaitForPausedSeconds(2.25f);
             _isMoving = false;
         }
     }
@@ -190,40 +192,40 @@ public class FloeraBehaviour : BossGeneric
     {
         // Hide the boss
         _animator.SetTrigger(HIDE);
-        yield return new WaitForSeconds(2f);
+        yield return WaitForPausedSeconds(2f);
 
         // Go to the i position and start the bullet system
         for (int i = 0; i < 4; i++)
         {
             MoveToDestination(_trapPositions[i], 0.25f);
-            yield return new WaitForSeconds(0.5f);
+            yield return WaitForPausedSeconds(0.5f);
             _animator.SetTrigger(TRAP);
-            yield return new WaitForSeconds(0.5f);
+            yield return WaitForPausedSeconds(0.5f);
             _bulletSystem.StartSpawner();
-            yield return new WaitForSeconds(0.25f);
+            yield return WaitForPausedSeconds(0.25f);
             _bulletSystem.StopSpawner();
-            yield return new WaitForSeconds(0.25f);
+            yield return WaitForPausedSeconds(0.25f);
         }
 
         // Go to the last position and start the bullet system
         MoveToDestination(_trapPositions[4], 0.25f);
-        yield return new WaitForSeconds(0.5f);
+        yield return WaitForPausedSeconds(0.5f);
         _animator.SetTrigger(ARISE);
-        yield return new WaitForSeconds(1.5f);
+        yield return WaitForPausedSeconds(1.5f);
         _bulletSystem.FireRate = 0.1f;
         _bulletSystem.SpinSpeed = 25;
         _bulletSystem.StartSpawner();
-        yield return new WaitForSeconds(0.5f);
+        yield return WaitForPausedSeconds(0.5f);
         _bulletSystem.StopSpawner();
 
         // Return to the start position
         _animator.SetTrigger(HIDE);
-        yield return new WaitForSeconds(2f);
+        yield return WaitForPausedSeconds(2f);
         MoveToDestination(new Vector3(0, 3, 0), 0.25f);
-        yield return new WaitForSeconds(0.5f);
+        yield return WaitForPausedSeconds(0.5f);
         _bulletSystem.InstantKill();
         _animator.SetTrigger(ARISE);
-        yield return new WaitForSeconds(1.5f);
+        yield return WaitForPausedSeconds(1.5f);
 
         // Start the move bullet system
         SetBulletMove();
@@ -246,26 +248,26 @@ public class FloeraBehaviour : BossGeneric
     {
         // Hide the boss and move it to the center
         _animator.SetTrigger(HIDE);
-        yield return new WaitForSeconds(2f);
+        yield return WaitForPausedSeconds(2f);
         MoveToDestination(Vector3.zero, 0.25f);
-        yield return new WaitForSeconds(0.5f);
+        yield return WaitForPausedSeconds(0.5f);
         _animator.SetTrigger(ARISE);
-        yield return new WaitForSeconds(1.5f);
+        yield return WaitForPausedSeconds(1.5f);
 
         // Start the hell attack
         _animator.SetBool(HELL, true);
         _bulletSystem.StartSpawner();
-        yield return new WaitForSeconds(14f);
+        yield return WaitForPausedSeconds(14f);
         _animator.SetBool(HELL, false);
         _bulletSystem.StopSpawner();
 
         // Return to the center
         _animator.SetTrigger(HIDE);
-        yield return new WaitForSeconds(2f);
+        yield return WaitForPausedSeconds(2f);
         MoveToDestination(new Vector3(0, 3, 0), 0.25f);
-        yield return new WaitForSeconds(0.5f);
+        yield return WaitForPausedSeconds(0.5f);
         _animator.SetTrigger(ARISE);
-        yield return new WaitForSeconds(1.5f);
+        yield return WaitForPausedSeconds(1.5f);
 
         // Start the move bullet system
         SetBulletMove();
@@ -287,18 +289,17 @@ public class FloeraBehaviour : BossGeneric
 
     private IEnumerator DeathAnimation()
     {
+        Debug.Log("Floera is dead");
+
         // Make the boss solid
         GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1f);
 
         // Play the death animation
-        _animator.SetBool(DEATH, true);
+        _animator.SetTrigger(DEATH);
         yield return new WaitForSeconds(2.2f);
 
-        // Check if the dead animation is over
-        while (_animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1)
-        {
-            yield return null;
-        }
+        // Wait for the boss to finish the death animation
+        yield return new WaitForSeconds(2.25f);
 
         // Stop the animator
         _animator.enabled = false;
@@ -352,7 +353,20 @@ public class FloeraBehaviour : BossGeneric
         {
             _stateText.text = _phrases[Random.Range(0, _phrases.Length)];
             Debug.Log("Phrase changed to " + _stateText.text);
-            yield return new WaitForSeconds(15f);
+            yield return WaitForPausedSeconds(15f);
+        }
+    }
+
+    private IEnumerator WaitForPausedSeconds(float seconds)
+    {
+        float elapsedTime = 0f;
+        while (elapsedTime < seconds)
+        {
+            if (LocalTime.TimeScale == 1)
+            {
+                elapsedTime += Time.deltaTime;
+            }
+            yield return null;
         }
     }
 }

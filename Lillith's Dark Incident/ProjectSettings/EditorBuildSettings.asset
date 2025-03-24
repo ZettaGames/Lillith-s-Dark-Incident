@@ -27,8 +27,23 @@ EditorBuildSettings:
     path: Assets/Scenes/06_SkidLevel.unity
     guid: 81f26bf9497fff74da61962c954f6ceb
   - enabled: 1
+    path: Assets/Scenes/07_SkidVictory.unity
+    guid: a50157df36ce8cf43a751f18bacb377d
+  - enabled: 1
+    path: Assets/Scenes/08_DarkyLevel.unity
+    guid: 18cb8fe20f348cc408aa210d8736ae68
+  - enabled: 1
+    path: Assets/Scenes/09_DarkyVictory.unity
+    guid: a5916d2314af54c48bdfdb3964d2154d
+  - enabled: 1
+    path: Assets/Scenes/10_FinalThanks.unity
+    guid: 4cab8c38bede954468750e7380904931
+  - enabled: 1
     path: Assets/Scenes/ScoreScreen.unity
     guid: 7d580aa81f171744c8c4fda913e90fb4
+  - enabled: 1
+    path: Assets/Scenes/CreditsScene.unity
+    guid: 1163ad703d0f1d447bf3e45520e1d376
   - enabled: 1
     path: Assets/Scenes/ExitScene.unity
     guid: 8cd342fc0f680084c83ede210b7c2ac8

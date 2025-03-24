@@ -196,6 +196,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: 12
   speed: 6
+  _scoreDrop: {fileID: 2241293433198240086, guid: ece2ca09fb95d3a42819fd77099e7dbb, type: 3}
+  _starDrop: {fileID: 6866863526327915220, guid: 2c9933b386047264abcf44301b79d792, type: 3}
+  _scoreDropChance: 0.05
+  _starDropChance: 0.005
   _followTime: 5.5
   _followRadius: 3.5
   _avoidanceRadius: 1.5
@@ -211,7 +215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e94bc1e58162ac145b9ccd38e00b2b20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _patternType: 0
+  _patternType: 3
   _emitterShape: 0
   _useEmitter: 0
   _spawnerName: PinkShoot
@@ -223,15 +227,15 @@ MonoBehaviour:
   _lifeLoss: 1
   _bulletSpeed: 5
   _bulletLifeTime: 10
-  _bulletSize: 0.2
+  _bulletSize: 0.4
   _bulletSprite: {fileID: 21300000, guid: 6c77d4dc703d5c248aebad4dc1278c2c, type: 3}
   _useColor: 0
   _bulletColor: {r: 0, g: 0, b: 0, a: 0}
-  _numberOfColumns: 0
-  _fireRate: 0.75
-  _spinSpeed: 0
+  _numberOfColumns: 2
+  _fireRate: 0.5
+  _spinSpeed: 125
   _followRefreshRate: 0
   _target: {fileID: 0}
-  _useReversedSpiral: 0
+  _useReversedSpiral: 1
   _numberOfSides: 0
   _dotsPerSide: 0

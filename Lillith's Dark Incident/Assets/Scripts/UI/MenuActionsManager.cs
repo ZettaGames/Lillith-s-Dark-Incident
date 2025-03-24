@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -7,8 +8,16 @@ public class MenuActionsManager : MonoBehaviour
 	// Constants
 	private const int NewGameIndex = 3;
 	private const string ExitSceneName = "ExitScene";
-	
-	public void NewGameYes()
+	private const string CreditsSceneName = "CreditsScene";
+
+	[SerializeField] private TMP_Text _scorePrefText;
+
+    private void Update()
+    {
+        _scorePrefText.text = $"Your current high score is: {PlayerPrefs.GetFloat("TotalScore", 0):000000000}";
+    }
+
+    public void NewGameYes()
 	{
 		StartCoroutine(StartNewGame());
 	}
@@ -17,8 +26,14 @@ public class MenuActionsManager : MonoBehaviour
 	{
 		StartCoroutine(ExitTransition());
 	}
-	
-	private IEnumerator StartNewGame()
+
+    public void Credits()
+    {
+        EventSystem.current.SetSelectedGameObject(null);
+        SceneTransitionManager.Instance.LoadLevel(CreditsSceneName);
+    }
+
+    private IEnumerator StartNewGame()
 	{
 		EventSystem.current.SetSelectedGameObject(null);
 		SceneTransitionManager.Instance.LoadLevel(NewGameIndex);
