@@ -365,6 +365,11 @@ public class FloeraLevelManager : MonoBehaviour
 
     private IEnumerator Tutorial()
     {
+        if (LocalTime.TimeScale == 0)
+        {
+            yield return null;
+        }
+
         // Fade in the shoot tutorial
         float opacity = 0f;
         while (opacity < 1)
@@ -375,7 +380,7 @@ public class FloeraLevelManager : MonoBehaviour
         }
 
         // Wait for the shoot action to be pressed
-        while (!_shootAction.triggered)
+        while (!_shootAction.WasPressedThisFrame() || LocalTime.TimeScale == 0)
         {
             yield return null;
         }
@@ -399,9 +404,10 @@ public class FloeraLevelManager : MonoBehaviour
 
         // Reset the habilities cooldown
         _lillithController.ResetCooldowns();
+        _lillithController.DestroyShields();
 
         // Wait for the super action to be pressed
-        while (!_superAction.triggered)
+        while (!_superAction.WasPressedThisFrame() || LocalTime.TimeScale == 0)
         {
             yield return null;
         }
@@ -425,9 +431,10 @@ public class FloeraLevelManager : MonoBehaviour
 
         // Reset the habilities cooldown
         _lillithController.ResetCooldowns();
+        _lillithController.DestroyShields();
 
         // Wait for the shield action to be pressed
-        while (!_shieldAction.triggered)
+        while (!_shieldAction.WasPressedThisFrame() || LocalTime.TimeScale == 0)
         {
             yield return null;
         }
@@ -442,6 +449,7 @@ public class FloeraLevelManager : MonoBehaviour
 
         // Reset the habilities cooldown
         _lillithController.ResetCooldowns();
+        _lillithController.DestroyShields();
 
         // Reanude the score
         LevelScoreManager.Instance.OnLevel = true;

@@ -129,6 +129,7 @@ public class ScoreScreen : MonoBehaviour
         // Save the new total score
         GameManager.Instance.TotalScore = _totalScore;
 
+        _uiActionMap.Disable();
         int nextLevel = GameManager.Instance.GetLevel();
         SceneTransitionManager.Instance.LoadLevel(nextLevel);
     }

@@ -245,7 +245,7 @@ public class LillithHealthManager : MonoBehaviour
         }
 
         // Check if the player collided with a score drop
-        if (other.CompareTag(SCORE_DROP) && gameObject.CompareTag(PLAYER))
+        if (other.CompareTag(SCORE_DROP))
         {
             // Update the score
             LevelScoreManager.Instance.ScoreBonus();
@@ -253,7 +253,7 @@ public class LillithHealthManager : MonoBehaviour
         }
 
         // Check if the player collided with a star drop
-        if (other.CompareTag(STAR_DROP) && gameObject.CompareTag(PLAYER))
+        if (other.CompareTag(STAR_DROP))
         {
             // Increase the amount of stars
             currentStars++;

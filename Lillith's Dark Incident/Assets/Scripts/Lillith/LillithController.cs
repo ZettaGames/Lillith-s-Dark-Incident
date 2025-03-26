@@ -289,5 +289,14 @@ public class LillithController : MonoBehaviour
         _superTimer = _superCooldown;
         _shieldTimer = _shieldCooldown;
     }
+
+	public void DestroyShields()
+	{
+		var shield = FindObjectOfType<LillithShield>();
+        if (shield != null)
+        {
+            Destroy(shield.gameObject);
+        }
+    }
 	#endregion
 }

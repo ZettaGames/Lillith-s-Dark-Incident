@@ -3373,7 +3373,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8974850315242388857, guid: 583b75dba3d879b4d885f0a84760fbed, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11273,7 +11273,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Release 1.0.0
+  m_text: Release 1.0.1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 143394ee11784e1419a9fc6833244692, type: 2}
   m_sharedMaterial: {fileID: 7391338158441626989, guid: 143394ee11784e1419a9fc6833244692, type: 2}

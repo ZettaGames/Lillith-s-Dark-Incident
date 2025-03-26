@@ -111,6 +111,11 @@ public class SkidLevelManager : MonoBehaviour
     private IEnumerator LevelFlow()
     {
         Debug.Log("Phase 1 started");
+        LevelScoreManager.Instance.OnLevel = false;
+
+        // Wait for the player to be ready
+        yield return StartCoroutine(WaitForPausedSeconds(1.25f));
+        LevelScoreManager.Instance.OnLevel = true;
 
         _isPhase1 = true;
         // 50% chance of spawning obstacles

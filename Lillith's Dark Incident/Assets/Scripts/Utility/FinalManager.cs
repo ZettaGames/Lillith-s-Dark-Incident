@@ -16,7 +16,10 @@ public class FinalManager : MonoBehaviour
     private void Start()
     {
         var score = GameManager.Instance.TotalScore;
-        PlayerPrefs.SetFloat("TotalScore", score);
+        if (score > PlayerPrefs.GetFloat("TotalScore"))
+        {
+            PlayerPrefs.SetFloat("TotalScore", score);
+        }
 
         _scoreText.text = $"Your total score was: {score:0000000000}";
     }

@@ -59,8 +59,8 @@ public class PauseMenuManager : MonoBehaviour
     public void MainMenuButton()
     {
         EventSystem.current.SetSelectedGameObject(null);
+        SceneTransitionManager.Instance.LoadLevel(2);
         LocalTime.TimeScale = 1;
-        //LevelLoader.Instance.LoadLevel(2);
     }
 
     private IEnumerator Pause()

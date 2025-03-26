@@ -6136,8 +6136,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190185
-  m_fontColor: {r: 0.41176474, g: 0, b: 0, a: 1}
+    rgba: 4290689254
+  m_fontColor: {r: 0.9019608, g: 0.72156864, b: 0.74509805, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -7990,7 +7990,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feaf9e6f1b483c540a703fafeedbfe13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 25
+  _maxHealth: 500
   _healthBar: {fileID: 1331351459}
   _stateText: {fileID: 2125102847}
   _timeBetweenAttacks: 15
