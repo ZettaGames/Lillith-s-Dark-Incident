@@ -48,6 +48,9 @@ public class GameManager : MonoBehaviour
 
         var vsync = PlayerPrefs.GetInt("VSync", 1) == 1;
         SetFrameRate(vsync);
+
+        // Set the resolution to always be 1920x1080
+        Screen.SetResolution(1920, 1080, true);
     }
 
     private void Update()
