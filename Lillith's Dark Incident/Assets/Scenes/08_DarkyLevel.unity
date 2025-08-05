@@ -3354,6 +3354,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8790354761102853345, guid: 8e8dd7dfb6a6f7347b9b7686fad8174b, type: 3}
     - target: {fileID: 9123310310434011771, guid: 1f697dc2d18b8974c8822f9e0510e626, type: 3}
+      propertyPath: _moveSpeed
+      value: 7.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9123310310434011771, guid: 1f697dc2d18b8974c8822f9e0510e626, type: 3}
       propertyPath: _superIcon
       value: 
       objectReference: {fileID: 1969435651}
@@ -7990,17 +7994,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feaf9e6f1b483c540a703fafeedbfe13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 500
+  _maxHealth: 1500
   _healthBar: {fileID: 1331351459}
   _stateText: {fileID: 2125102847}
   _timeBetweenAttacks: 15
   _music: {fileID: 8300000, guid: af05d9c0168c18f4cad5e140fcaa0a4a, type: 3}
   _musicPlayer: {fileID: 1577369174}
   _attackProbabilies:
-  - 0.5
-  - 0.2
+  - 0.45
+  - 0.25
   - 0.3
-  _finalMusic: {fileID: 8300000, guid: 18e9a5a3371c2f44ebeb1cc056b65569, type: 3}
+  _finalMusic: {fileID: 8300000, guid: 149ed6699cd17694ba42c9915b5ab0ae, type: 3}
   _spawnArea: {fileID: 1700307968}
   _centerArea: {fileID: 493840970}
   _lightThunder: {fileID: 3840165442449914378, guid: 6c713ce5908a7284e99a144f15ad8d5d, type: 3}

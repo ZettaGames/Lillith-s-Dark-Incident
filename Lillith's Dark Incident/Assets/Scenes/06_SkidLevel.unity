@@ -360,7 +360,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1cee929f55fc3647b5a1ebc65d94296, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 1250
+  _maxHealth: 1350
   _healthBar: {fileID: 1806655202}
   _stateText: {fileID: 756977920}
   _timeBetweenAttacks: 5
@@ -2341,7 +2341,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -2406743489951425425, guid: 77d741376a195f84a9750d370c33fdcb, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 835fb1ab8c8c97f48a89071d1d3e9512, type: 3}
+  m_audioClip: {fileID: 8300000, guid: efebaeda15a5c4b40bda210f08ecacf2, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -6881,8 +6881,8 @@ MonoBehaviour:
   _followEnemySpawner: {fileID: 1231096403}
   _crazyEnemySpawner: {fileID: 507557276}
   _passEnemySpawner: {fileID: 1231096402}
-  _phase1Duration: 60
-  _phase2Duration: 60
+  _phase1Duration: 45
+  _phase2Duration: 45
   _levelTime: {fileID: 331034635}
   _levelPhase: {fileID: 756977920}
   _water: {fileID: 1517858135}

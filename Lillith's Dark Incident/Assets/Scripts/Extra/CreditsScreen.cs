@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 public class CreditsScreen : MonoBehaviour
 {
     [Header("Credits")]
+    [SerializeField] private AudioSource _musicSource;
     [SerializeField] private RectTransform _creditsPanel;
     [SerializeField] private float _speed;
     private float _doubleSpeed;

@@ -2879,8 +2879,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 995b6da20d109dc43b27223e592f50ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _musicSource: {fileID: 1796770261}
   _creditsPanel: {fileID: 552785289}
-  _speed: 150
+  _speed: 75
 --- !u!1 &1441381373
 GameObject:
   m_ObjectHideFlags: 0

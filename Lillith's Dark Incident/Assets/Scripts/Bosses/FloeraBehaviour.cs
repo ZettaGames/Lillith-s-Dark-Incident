@@ -61,6 +61,11 @@ public class FloeraBehaviour : BossGeneric
 
         _animator = GetComponent<Animator>();
         _bulletSystem = GetComponent<BulletSystem>();
+        _audioSource = _musicPlayer.GetComponent<AudioSource>();
+
+        // Start the music
+        _audioSource.clip = _music;
+        _audioSource.Play();
 
         _currentHealth = _maxHealth;
         Debug.Log($"Max Health: {_maxHealth}, Current Health: {_currentHealth}");

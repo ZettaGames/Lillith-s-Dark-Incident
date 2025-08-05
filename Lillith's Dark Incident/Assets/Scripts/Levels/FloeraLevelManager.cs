@@ -273,11 +273,35 @@ public class FloeraLevelManager : MonoBehaviour
 
     private IEnumerator FloeraPresentation()
     {
+        // Get the object named "SoundMusicManager" in the scene
+        GameObject musicManager = GameObject.Find("SoundMusicManager");
+        AudioSource audioSource = musicManager.GetComponent<AudioSource>();
+
+        // Fade out music
+        float fadeOutDuration = 3.5f;
+        float elapsedTime = 0f;
+        while (elapsedTime < fadeOutDuration)
+        {
+            // Pause if LocalTime is not 1
+            while (LocalTime.TimeScale != 1)
+            {
+                yield return null;
+            }
+            audioSource.volume = Mathf.Lerp(1f, 0f, elapsedTime / fadeOutDuration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        audioSource.volume = 0f;
+
+        // Remove the audio and return the volume to 1
+        audioSource.clip = null;
+        audioSource.volume = 1f;
+
         // Floeras position
         var floeraPosition = new Vector3(0f, 3f, 0f);
         var startPosition = _floeraStart.transform.position;
         float duration = 3.5f; // Duración fija en segundos
-        float elapsedTime = 0f;
+        elapsedTime = 0f;
 
         // Move floera to the screen
         while (elapsedTime < duration)

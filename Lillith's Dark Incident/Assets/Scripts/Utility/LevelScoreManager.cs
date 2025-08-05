@@ -80,6 +80,11 @@ public class LevelScoreManager : MonoBehaviour
 
     }
 
+    public void StarBonus()
+    {
+        _score += _score * 0.1f;
+    }
+
     public void SaveScore()
     {
         GameManager.Instance.TotalScore = _score;

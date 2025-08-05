@@ -194,12 +194,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8acd2bf097fd6e145b09e327dca2052a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 18
-  speed: 4
+  _health: 15
+  speed: 3
   _scoreDrop: {fileID: 2241293433198240086, guid: ece2ca09fb95d3a42819fd77099e7dbb, type: 3}
   _starDrop: {fileID: 6866863526327915220, guid: 2c9933b386047264abcf44301b79d792, type: 3}
   _scoreDropChance: 0.05
-  _starDropChance: 0.005
+  _starDropChance: 0.0075
   _moveTime: 3
   _stopTime: 2
   _stopChance: 0.75

@@ -463,6 +463,7 @@ public class DarkyBehaviour : BossGeneric
         // Change the music
         _audioSource.clip = _finalMusic;
         _audioSource.Play();
+        _audioSource.loop = false;
 
         // Fade in the music
         while (_audioSource.volume < 1)

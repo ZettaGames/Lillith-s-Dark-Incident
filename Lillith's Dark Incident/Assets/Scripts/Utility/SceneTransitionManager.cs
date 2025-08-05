@@ -49,11 +49,13 @@ public class SceneTransitionManager : MonoBehaviour
     #region Level Loading
     public void LoadLevel(int index)
     {
+        StartCoroutine(FadeOutMusic());
         StartCoroutine(Load(index));
     }
 
     public void LoadLevel(string name)
     {
+        StartCoroutine(FadeOutMusic());
         StartCoroutine(Load(name));
     }
 
@@ -116,5 +118,32 @@ public class SceneTransitionManager : MonoBehaviour
     {
         Scene activeScene = SceneManager.GetActiveScene();
         return activeScene.buildIndex == BlackSceneIndex;
+    }
+
+    private IEnumerator FadeOutMusic()
+    {
+        // Get the object named "SoundMusicManager" in the scene
+        GameObject musicManager = GameObject.Find("SoundMusicManager");
+
+        if (musicManager != null)
+        {
+            // Get the AudioSource component
+            AudioSource audioSource = musicManager.GetComponent<AudioSource>();
+            if (audioSource != null)
+            {
+                // Fade out the music over 1 second
+                float startVolume = audioSource.volume;
+                float fadeDuration = 1f;
+                float elapsedTime = 0f;
+                while (elapsedTime < fadeDuration)
+                {
+                    audioSource.volume = Mathf.Lerp(startVolume, 0f, elapsedTime / fadeDuration);
+                    elapsedTime += Time.deltaTime;
+                    yield return null;
+                }
+                // Ensure volume is set to 0 at the end
+                audioSource.volume = 0f;
+            }
+        }
     }
 }

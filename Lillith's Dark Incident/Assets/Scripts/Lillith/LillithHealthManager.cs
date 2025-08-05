@@ -255,8 +255,16 @@ public class LillithHealthManager : MonoBehaviour
         // Check if the player collided with a star drop
         if (other.CompareTag(STAR_DROP))
         {
-            // Increase the amount of stars
-            currentStars++;
+            if (currentStars < _maxStars)
+            {
+                // Increase the amount of stars
+                currentStars++;
+            }
+            else
+            {
+                // Update the score
+                LevelScoreManager.Instance.ScoreBonus();
+            }
         }
     }
 

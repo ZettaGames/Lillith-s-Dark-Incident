@@ -3547,8 +3547,8 @@ MonoBehaviour:
   _obstacleSpawner: {fileID: 162682836}
   _followEnemySpawner: {fileID: 162682840}
   _passEnemySpawner: {fileID: 162682839}
-  _phase1Duration: 60
-  _phase2Duration: 60
+  _phase1Duration: 45
+  _phase2Duration: 45
   _levelTime: {fileID: 149145502}
   _levelPhase: {fileID: 2101077306}
   _grass: {fileID: 196299360}
@@ -4744,7 +4744,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -2406743489951425425, guid: 77d741376a195f84a9750d370c33fdcb, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 0612f6d7f549d884097f0ee50b26644d, type: 3}
+  m_audioClip: {fileID: 8300000, guid: efebaeda15a5c4b40bda210f08ecacf2, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -6241,7 +6241,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec6ea30d564c2f44eafa30c33aa3459a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 1250
+  _maxHealth: 1350
   _healthBar: {fileID: 714520144}
   _stateText: {fileID: 2101077306}
   _timeBetweenAttacks: 15
@@ -7823,7 +7823,7 @@ PrefabInstance:
       objectReference: {fileID: 8790354761102853345, guid: 8e8dd7dfb6a6f7347b9b7686fad8174b, type: 3}
     - target: {fileID: 9123310310434011771, guid: 1f697dc2d18b8974c8822f9e0510e626, type: 3}
       propertyPath: _moveSpeed
-      value: 10
+      value: 7.5
       objectReference: {fileID: 0}
     - target: {fileID: 9123310310434011771, guid: 1f697dc2d18b8974c8822f9e0510e626, type: 3}
       propertyPath: _superIcon

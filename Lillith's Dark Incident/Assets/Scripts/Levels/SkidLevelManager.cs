@@ -279,6 +279,30 @@ public class SkidLevelManager : MonoBehaviour
 
     private IEnumerator SkidPresentation()
     {
+        // Get the object named "SoundMusicManager" in the scene
+        GameObject musicManager = GameObject.Find("SoundMusicManager");
+        AudioSource audioSource = musicManager.GetComponent<AudioSource>();
+
+        // Fade out music
+        float fadeOutDuration = 1.5f;
+        float elapsedTime = 0f;
+        while (elapsedTime < fadeOutDuration)
+        {
+            // Pause if LocalTime is not 1
+            while (LocalTime.TimeScale != 1)
+            {
+                yield return null;
+            }
+            audioSource.volume = Mathf.Lerp(1f, 0f, elapsedTime / fadeOutDuration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        audioSource.volume = 0f;
+
+        // Remove the audio and return the volume to 1
+        audioSource.clip = null;
+        audioSource.volume = 1f;
+
         // Arise from the water
         _skidStart.SetActive(true);
         yield return new WaitForSeconds(1.5f);
@@ -299,7 +323,7 @@ public class SkidLevelManager : MonoBehaviour
 
         // Smoothly moves the splashart to a certain position while smoothing up the opacity of the text
         var splashartPosition = new Vector3(6.2f, 0f, 0f);
-        float elapsedTime = 0f;
+        elapsedTime = 0f;
         float duration = 3.25f;
         while (elapsedTime < duration)
         {
