@@ -1,0 +1,5 @@
+Assets/TextMesh\ Pro/* linguist-vendored
+Assets/Plugins/* linguist-vendored
+*.shader linguist-vendored
+*.cginc linguist-vendored
+*.hlsl linguist-vendored
