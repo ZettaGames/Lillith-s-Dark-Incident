@@ -35,7 +35,7 @@ public class DarkyPresentation : MonoBehaviour
         float opacity = 0f;
         while (opacity < 1)
         {
-            opacity += Time.deltaTime;
+            opacity += Time.deltaTime * LocalTime.TimeScale;
             _darkyLightSplashtArt.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, opacity);
             _shadowSquare.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, opacity / 2);
             yield return null;
@@ -49,7 +49,7 @@ public class DarkyPresentation : MonoBehaviour
         {
             _darkyText.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, elapsedTime / duration);
             _darkyLightSplashtArt.transform.position = Vector3.Lerp(_darkyLightSplashtArt.transform.position, splashartPosition, elapsedTime / duration);
-            elapsedTime += Time.deltaTime;
+            elapsedTime += Time.deltaTime * LocalTime.TimeScale;
             yield return null;
         }
 
@@ -57,7 +57,7 @@ public class DarkyPresentation : MonoBehaviour
         opacity = 0f;
         while (opacity < 1)
         {
-            opacity += Time.deltaTime * 10;
+            opacity += Time.deltaTime * 10 * LocalTime.TimeScale;
             _darkyDarkSplashArt.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, opacity);
             _shadowSquare.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, opacity / 2);
             yield return null;
@@ -65,7 +65,7 @@ public class DarkyPresentation : MonoBehaviour
 
         while (opacity > 0)
         {
-            opacity -= Time.deltaTime * 5;
+            opacity -= Time.deltaTime * 5 * LocalTime.TimeScale;
             _darkyDarkSplashArt.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, opacity);
             _shadowSquare.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, opacity / 2);
             yield return null;
@@ -75,7 +75,7 @@ public class DarkyPresentation : MonoBehaviour
         opacity = 1f;
         while (opacity > 0)
         {
-            opacity -= Time.deltaTime;
+            opacity -= Time.deltaTime * LocalTime.TimeScale;
             _darkyLightSplashtArt.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, opacity);
             _darkyText.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, opacity);
             _shadowSquare.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, opacity / 2);

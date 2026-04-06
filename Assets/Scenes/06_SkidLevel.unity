@@ -360,7 +360,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1cee929f55fc3647b5a1ebc65d94296, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 1350
+  _maxHealth: 1150
   _healthBar: {fileID: 1806655202}
   _stateText: {fileID: 756977920}
   _timeBetweenAttacks: 5
