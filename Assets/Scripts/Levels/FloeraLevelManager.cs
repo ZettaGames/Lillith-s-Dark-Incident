@@ -18,6 +18,7 @@ public class FloeraLevelManager : MonoBehaviour
     [SerializeField] private TMP_Text _levelTime;
     [SerializeField] private TMP_Text _levelPhase;
     private float _totalTime;
+    private bool _isTutorial;
     private bool _isPhase1;
     private bool _isPhase2;
     private bool _onLevel = false;
@@ -95,6 +96,14 @@ public class FloeraLevelManager : MonoBehaviour
 
     private void Update()
     {
+        if (_isTutorial)
+        {
+            int minutes = Mathf.FloorToInt(_totalTime / 60F);
+            int seconds = Mathf.FloorToInt(_totalTime % 60F);
+            _levelTime.text = $"Time: {minutes:00}:{seconds:00}";
+            _levelPhase.text = "Tutorial!";
+        }
+
         // Update the level time
         if (_onLevel)
         {
@@ -121,7 +130,7 @@ public class FloeraLevelManager : MonoBehaviour
         }
 
         // Update the text when the presentation starts
-        if (!_isPhase1 && !_isPhase2)
+        if (!_isTutorial && !_isPhase1 && !_isPhase2)
         {
             _levelTime.text = "00:00!";
             _levelPhase.text = "Boss Incoming!";
@@ -389,6 +398,8 @@ public class FloeraLevelManager : MonoBehaviour
 
     private IEnumerator Tutorial()
     {
+        _isTutorial = true;
+
         if (LocalTime.TimeScale == 0)
         {
             yield return null;
@@ -479,6 +490,7 @@ public class FloeraLevelManager : MonoBehaviour
         LevelScoreManager.Instance.OnLevel = true;
 
         // Start the level
+        _isTutorial = false;
         _onLevel = true;
     }
 

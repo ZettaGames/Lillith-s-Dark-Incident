@@ -49,40 +49,40 @@ public class LevelScoreManager : MonoBehaviour
 
         if (_onLevel)
         {
-            // Constantly update the score text (500 per second)
-            _score += 500 * Time.deltaTime * LocalTime.TimeScale;
+            // Constantly update the score text (750 per second)
+            _score += 750 * Time.deltaTime * LocalTime.TimeScale;
         }
     }
 
     public void HitPenalty()
     {
-        _score -= _score * 0.25f;
+        _score -= Mathf.Max(_score * 0.05f, 25000);
     }
 
     public void EnemyHitBonus()
     {
-        _score += 100;
+        _score += 250;
     }
 
     public void SuperHitBonus()
     {
-        _score += 500;
+        _score += 1000;
     }
 
     public void BossHitBonus()
     {
-        _score += Mathf.Max(1500 - (_score * 0.1f), 125);
+        _score += Mathf.Max(5000 - (_score * 0.1f), 125);
     }
 
     public void ScoreBonus()
     {
-        _score += 400;
+        _score += 1500;
 
     }
 
     public void StarBonus()
     {
-        _score += _score * 0.1f;
+        _score += _score * 0.15f;
     }
 
     public void SaveScore()

@@ -1,0 +1,189 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\SebzSZ\\Documents\\Zetta Games\\Lillith-s-Dark-Incident\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{293E7477-3AAB-7A03-ADF1-190C110C6618}|Assembly-CSharp.csproj|c:\\users\\sebzsz\\documents\\zetta games\\lillith-s-dark-incident\\assets\\scripts\\utility\\scorescreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{293E7477-3AAB-7A03-ADF1-190C110C6618}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\utility\\scorescreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{293E7477-3AAB-7A03-ADF1-190C110C6618}|Assembly-CSharp.csproj|c:\\users\\sebzsz\\documents\\zetta games\\lillith-s-dark-incident\\assets\\scripts\\bosses\\darkybehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{293E7477-3AAB-7A03-ADF1-190C110C6618}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\bosses\\darkybehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{293E7477-3AAB-7A03-ADF1-190C110C6618}|Assembly-CSharp.csproj|c:\\users\\sebzsz\\documents\\zetta games\\lillith-s-dark-incident\\assets\\scripts\\utility\\levelscoremanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{293E7477-3AAB-7A03-ADF1-190C110C6618}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\utility\\levelscoremanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{293E7477-3AAB-7A03-ADF1-190C110C6618}|Assembly-CSharp.csproj|c:\\users\\sebzsz\\documents\\zetta games\\lillith-s-dark-incident\\assets\\scripts\\utility\\scoreglobalmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{293E7477-3AAB-7A03-ADF1-190C110C6618}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\utility\\scoreglobalmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{293E7477-3AAB-7A03-ADF1-190C110C6618}|Assembly-CSharp.csproj|c:\\users\\sebzsz\\documents\\zetta games\\lillith-s-dark-incident\\assets\\scripts\\lillith\\lillithhealthmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{293E7477-3AAB-7A03-ADF1-190C110C6618}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\lillith\\lillithhealthmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{293E7477-3AAB-7A03-ADF1-190C110C6618}|Assembly-CSharp.csproj|c:\\users\\sebzsz\\documents\\zetta games\\lillith-s-dark-incident\\assets\\scripts\\levels\\darkypresentation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{293E7477-3AAB-7A03-ADF1-190C110C6618}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\levels\\darkypresentation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{293E7477-3AAB-7A03-ADF1-190C110C6618}|Assembly-CSharp.csproj|c:\\users\\sebzsz\\documents\\zetta games\\lillith-s-dark-incident\\assets\\scripts\\extra\\dropbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{293E7477-3AAB-7A03-ADF1-190C110C6618}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\extra\\dropbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{293E7477-3AAB-7A03-ADF1-190C110C6618}|Assembly-CSharp.csproj|c:\\users\\sebzsz\\documents\\zetta games\\lillith-s-dark-incident\\assets\\scripts\\lillith\\lillithcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{293E7477-3AAB-7A03-ADF1-190C110C6618}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\lillith\\lillithcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{293E7477-3AAB-7A03-ADF1-190C110C6618}|Assembly-CSharp.csproj|c:\\users\\sebzsz\\documents\\zetta games\\lillith-s-dark-incident\\assets\\scripts\\levels\\floeralevelmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{293E7477-3AAB-7A03-ADF1-190C110C6618}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\levels\\floeralevelmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{293E7477-3AAB-7A03-ADF1-190C110C6618}|Assembly-CSharp.csproj|C:\\Users\\SebzSZ\\Documents\\Zetta Games\\Lillith-s-Dark-Incident\\assets\\scripts\\extra\\welcomemessagesmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{293E7477-3AAB-7A03-ADF1-190C110C6618}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\extra\\welcomemessagesmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ScoreScreen.cs",
+              "DocumentMoniker": "C:\\Users\\SebzSZ\\Documents\\Zetta Games\\Lillith-s-Dark-Incident\\Assets\\Scripts\\Utility\\ScoreScreen.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Utility\\ScoreScreen.cs",
+              "ToolTip": "C:\\Users\\SebzSZ\\Documents\\Zetta Games\\Lillith-s-Dark-Incident\\Assets\\Scripts\\Utility\\ScoreScreen.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Utility\\ScoreScreen.cs",
+              "ViewState": "AgIAALAAAAAAAAAAAAAAAE0AAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-06T22:15:31.783Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "LevelScoreManager.cs",
+              "DocumentMoniker": "C:\\Users\\SebzSZ\\Documents\\Zetta Games\\Lillith-s-Dark-Incident\\Assets\\Scripts\\Utility\\LevelScoreManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Utility\\LevelScoreManager.cs",
+              "ToolTip": "C:\\Users\\SebzSZ\\Documents\\Zetta Games\\Lillith-s-Dark-Incident\\Assets\\Scripts\\Utility\\LevelScoreManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Utility\\LevelScoreManager.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAwwD0AAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-06T22:09:59.08Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ScoreGlobalManager.cs",
+              "DocumentMoniker": "C:\\Users\\SebzSZ\\Documents\\Zetta Games\\Lillith-s-Dark-Incident\\Assets\\Scripts\\Utility\\ScoreGlobalManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Utility\\ScoreGlobalManager.cs",
+              "ToolTip": "C:\\Users\\SebzSZ\\Documents\\Zetta Games\\Lillith-s-Dark-Incident\\Assets\\Scripts\\Utility\\ScoreGlobalManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Utility\\ScoreGlobalManager.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAgwBMAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-06T22:08:47.128Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "DarkyPresentation.cs",
+              "DocumentMoniker": "C:\\Users\\SebzSZ\\Documents\\Zetta Games\\Lillith-s-Dark-Incident\\Assets\\Scripts\\Levels\\DarkyPresentation.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Levels\\DarkyPresentation.cs",
+              "ToolTip": "C:\\Users\\SebzSZ\\Documents\\Zetta Games\\Lillith-s-Dark-Incident\\Assets\\Scripts\\Levels\\DarkyPresentation.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Levels\\DarkyPresentation.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAQwE0AAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-06T22:00:07.062Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DarkyBehaviour.cs",
+              "DocumentMoniker": "C:\\Users\\SebzSZ\\Documents\\Zetta Games\\Lillith-s-Dark-Incident\\Assets\\Scripts\\Bosses\\DarkyBehaviour.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Bosses\\DarkyBehaviour.cs",
+              "ToolTip": "C:\\Users\\SebzSZ\\Documents\\Zetta Games\\Lillith-s-Dark-Incident\\Assets\\Scripts\\Bosses\\DarkyBehaviour.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Bosses\\DarkyBehaviour.cs",
+              "ViewState": "AgIAABoCAAAAAAAAAAAWwDECAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-06T21:55:19.863Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "DropBehaviour.cs",
+              "DocumentMoniker": "C:\\Users\\SebzSZ\\Documents\\Zetta Games\\Lillith-s-Dark-Incident\\Assets\\Scripts\\Extra\\DropBehaviour.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Extra\\DropBehaviour.cs",
+              "ToolTip": "C:\\Users\\SebzSZ\\Documents\\Zetta Games\\Lillith-s-Dark-Incident\\Assets\\Scripts\\Extra\\DropBehaviour.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Extra\\DropBehaviour.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-06T21:38:52.167Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "LillithHealthManager.cs",
+              "DocumentMoniker": "C:\\Users\\SebzSZ\\Documents\\Zetta Games\\Lillith-s-Dark-Incident\\Assets\\Scripts\\Lillith\\LillithHealthManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Lillith\\LillithHealthManager.cs",
+              "ToolTip": "C:\\Users\\SebzSZ\\Documents\\Zetta Games\\Lillith-s-Dark-Incident\\Assets\\Scripts\\Lillith\\LillithHealthManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Lillith\\LillithHealthManager.cs",
+              "ViewState": "AgIAAGwAAAAAAAAAAAAnwAoBAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-06T21:34:50.707Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "FloeraLevelManager.cs",
+              "DocumentMoniker": "C:\\Users\\SebzSZ\\Documents\\Zetta Games\\Lillith-s-Dark-Incident\\Assets\\Scripts\\Levels\\FloeraLevelManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Levels\\FloeraLevelManager.cs",
+              "ToolTip": "C:\\Users\\SebzSZ\\Documents\\Zetta Games\\Lillith-s-Dark-Incident\\Assets\\Scripts\\Levels\\FloeraLevelManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Levels\\FloeraLevelManager.cs",
+              "ViewState": "AgIAAG8AAAAAAAAAAAAYwIQAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-06T21:27:47.85Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "LillithController.cs",
+              "DocumentMoniker": "C:\\Users\\SebzSZ\\Documents\\Zetta Games\\Lillith-s-Dark-Incident\\Assets\\Scripts\\Lillith\\LillithController.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Lillith\\LillithController.cs",
+              "ToolTip": "C:\\Users\\SebzSZ\\Documents\\Zetta Games\\Lillith-s-Dark-Incident\\Assets\\Scripts\\Lillith\\LillithController.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Lillith\\LillithController.cs",
+              "ViewState": "AgIAAJEAAAAAAAAAAAAowBcAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-06T21:18:30.173Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "WelcomeMessagesManager.cs",
+              "DocumentMoniker": "C:\\Users\\SebzSZ\\Documents\\Zetta Games\\Lillith-s-Dark-Incident\\Assets\\Scripts\\Extra\\WelcomeMessagesManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Extra\\WelcomeMessagesManager.cs",
+              "ToolTip": "C:\\Users\\SebzSZ\\Documents\\Zetta Games\\Lillith-s-Dark-Incident\\Assets\\Scripts\\Extra\\WelcomeMessagesManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Extra\\WelcomeMessagesManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-06T21:14:13.824Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

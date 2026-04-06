@@ -21,7 +21,7 @@ public class LillithController : MonoBehaviour
 	[Header("Movement")]
 	// Movement variables
 	[SerializeField] private float _moveSpeed;
-	[SerializeField, Range(0.05f, 0.15f)] private float _smoothMove;
+	[SerializeField] private float _smoothMove;
 	public bool CanMove { get; set; } = true;
 
 	// Vector variables

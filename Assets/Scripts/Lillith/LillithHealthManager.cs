@@ -265,6 +265,7 @@ public class LillithHealthManager : MonoBehaviour
                 // Update the score
                 LevelScoreManager.Instance.ScoreBonus();
             }
+            Destroy(other.gameObject);
         }
     }
 

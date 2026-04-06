@@ -20,7 +20,7 @@ public class DarkyBehaviour : BossGeneric
         "Cloudy… with a guarantee of darkness",
         "Dark... Darker... Yet darker...",
         "You dare fight the wind?",
-        "The stars turned their gaze... A dark incident approach",
+        "A dark incident approach...",
         "Incident? No. Ascension!"
     };
 
@@ -161,7 +161,7 @@ public class DarkyBehaviour : BossGeneric
         var sign = Instantiate(_warningSign, position, Quaternion.identity);
 
         // Wait for the warning sign to show
-        yield return WaitForPausedSeconds(0.75f);
+        yield return WaitForPausedSeconds(1.0f);
         Destroy(sign);
 
         // Show the thunder and play the sound
@@ -553,6 +553,7 @@ public class DarkyBehaviour : BossGeneric
         }
 
         // Smoothly increase the health
+        _maxHealth += 250;
         while (_currentHealth < _maxHealth)
         {
             _currentHealth += 500;

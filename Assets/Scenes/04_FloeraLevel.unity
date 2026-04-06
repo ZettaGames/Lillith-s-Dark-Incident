@@ -3547,8 +3547,8 @@ MonoBehaviour:
   _obstacleSpawner: {fileID: 162682836}
   _followEnemySpawner: {fileID: 162682840}
   _passEnemySpawner: {fileID: 162682839}
-  _phase1Duration: 45
-  _phase2Duration: 45
+  _phase1Duration: 40
+  _phase2Duration: 20
   _levelTime: {fileID: 149145502}
   _levelPhase: {fileID: 2101077306}
   _grass: {fileID: 196299360}
@@ -6241,7 +6241,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec6ea30d564c2f44eafa30c33aa3459a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 1350
+  _maxHealth: 1150
   _healthBar: {fileID: 714520144}
   _stateText: {fileID: 2101077306}
   _timeBetweenAttacks: 15
@@ -7843,7 +7843,7 @@ PrefabInstance:
       objectReference: {fileID: 1275370446}
     - target: {fileID: 9123310310434011771, guid: 1f697dc2d18b8974c8822f9e0510e626, type: 3}
       propertyPath: _smoothMove
-      value: 0.05
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9123310310434011771, guid: 1f697dc2d18b8974c8822f9e0510e626, type: 3}
       propertyPath: _superAttack

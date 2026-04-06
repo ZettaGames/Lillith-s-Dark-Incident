@@ -7994,7 +7994,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feaf9e6f1b483c540a703fafeedbfe13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 1500
+  _maxHealth: 1000
   _healthBar: {fileID: 1331351459}
   _stateText: {fileID: 2125102847}
   _timeBetweenAttacks: 15
@@ -9471,8 +9471,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -50, y: 860}
-  m_SizeDelta: {x: 400, y: 100}
+  m_AnchoredPosition: {x: -25, y: 860}
+  m_SizeDelta: {x: 450, y: 100}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &2125102847
 MonoBehaviour:

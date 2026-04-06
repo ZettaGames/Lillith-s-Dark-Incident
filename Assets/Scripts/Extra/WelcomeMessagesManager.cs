@@ -22,7 +22,6 @@ public class WelcomeMessagesManager : MonoBehaviour
 		DannyMessage,
 		VencesMessage,
 		MemeMessage,
-		AriMessage,
 		AndrosMessage,
 		RoussMessageOne,
 		RoussMessageTwo,
@@ -70,7 +69,7 @@ public class WelcomeMessagesManager : MonoBehaviour
 
 	private string GetRandomWelcomeMessage()
 	{
-		var randomMessage = (WelcomeMessages)Random.Range(0, 21);
+		var randomMessage = (WelcomeMessages)Random.Range(0, 20);
 		switch (randomMessage)
 		{
 			case WelcomeMessages.HowdyMessage:
@@ -99,8 +98,6 @@ public class WelcomeMessagesManager : MonoBehaviour
                 return "I hate this game.";
 			case WelcomeMessages.MemeMessage: // From: Meme4K
 				return "I S   T H A T   A   L I L L I T H   R E F E R E N C E ?!?!?!";
-			case WelcomeMessages.AriMessage: // From: AriMichito
-				return "Error, brain ain't braining. Please try again later. ^w^";
 			case WelcomeMessages.AndrosMessage: // From: Andros
 				return "Despite everything, it’s no longer you.";
 			case WelcomeMessages.RoussMessageOne: // From: Rouss
